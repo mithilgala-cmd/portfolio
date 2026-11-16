@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { portfolioData } from "@/data/portfolio";
 import {
   Menu,
@@ -11,7 +12,10 @@ import {
   Check,
   ArrowUpRight,
 } from "lucide-react";
-import CommandPalette from "./CommandPalette";
+
+const CommandPalette = dynamic(() => import("./CommandPalette"), {
+  ssr: false,
+});
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -62,7 +66,7 @@ export default function Navbar() {
               <span className="font-bold text-sm tracking-tight text-white group-hover:text-cyan-400 transition-colors">
                 Mithil Gala
               </span>
-              <span className="font-mono text-[9px] text-slate-500 uppercase tracking-widest -mt-0.5">
+              <span className="font-mono text-[9px] text-slate-400 uppercase tracking-widest -mt-0.5">
                 Engineering v2.0
               </span>
             </div>
@@ -74,9 +78,9 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-slate-400 hover:text-cyan-400 transition-colors py-1 flex items-center gap-1"
+                className="text-slate-400 hover:text-cyan-400 transition-colors py-1 flex items-center gap-1 focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
               >
-                <span className="text-[10px] text-slate-600">{link.index}</span>
+                <span className="text-[10px] text-slate-400">{link.index}</span>
                 <span>{link.label}</span>
               </a>
             ))}
@@ -153,7 +157,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-2 py-1.5 text-slate-300 hover:text-cyan-400 transition-colors"
                 >
-                  <span className="text-[10px] text-slate-500">{link.index} {"//"}</span>
+                  <span className="text-[10px] text-slate-400">{link.index} {"//"}</span>
                   <span>{link.label}</span>
                 </a>
               ))}

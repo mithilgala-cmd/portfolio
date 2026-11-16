@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { portfolioData } from "@/data/portfolio";
 import { Github, Code2, Linkedin, Radio } from "lucide-react";
@@ -14,7 +12,7 @@ export default function Footer() {
             <span className="font-bold text-white font-sans text-sm">
               {portfolioData.name}
             </span>
-            <span className="hidden sm:inline text-slate-600">/</span>
+            <span className="hidden sm:inline text-slate-400">/</span>
             <span className="text-slate-400">{portfolioData.subheadline}</span>
           </div>
 
@@ -25,7 +23,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
             >
               <Github className="w-4 h-4 text-slate-300" />
               <span>GitHub</span>
@@ -35,7 +33,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LeetCode Profile"
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
             >
               <Code2 className="w-4 h-4 text-amber-400" />
               <span>LeetCode</span>
@@ -45,7 +43,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
             >
               <Linkedin className="w-4 h-4 text-sky-400" />
               <span>LinkedIn</span>
@@ -54,7 +52,7 @@ export default function Footer() {
         </div>
 
         {/* Structural Sub-footer */}
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-400">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1 text-emerald-400">
               <Radio className="w-3 h-3 animate-pulse" />

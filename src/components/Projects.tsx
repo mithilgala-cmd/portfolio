@@ -47,10 +47,10 @@ export default function Projects() {
   return (
     <section id="projects" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
-      <div className="section-index mb-8">
+      <h2 className="section-index mb-8">
         <span>01 // PROJECTS</span>
         <span className="text-slate-400 font-normal">Featured Systems & Repositories</span>
-      </div>
+      </h2>
 
       {/* 4 Large Featured Project Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -116,7 +116,7 @@ export default function Projects() {
           <div className="flex items-center gap-2">
             <FolderGit2 className="w-4 h-4 text-cyan-400" />
             <span className="font-semibold text-white">More Repositories ({moreRepos.length})</span>
-            <span className="text-slate-500 hidden sm:inline">
+            <span className="text-slate-400 hidden sm:inline">
               · Additional algorithmic patterns, pipelines & tools
             </span>
           </div>
@@ -147,7 +147,7 @@ export default function Projects() {
                       className="font-bold text-white hover:text-cyan-400 transition-colors flex items-center gap-1 truncate"
                     >
                       <span className="truncate">{repo.name}</span>
-                      <ArrowUpRight className="w-3 h-3 text-slate-500" />
+                      <ArrowUpRight className="w-3 h-3 text-slate-400" />
                     </a>
                     <span
                       className={`text-[9px] px-1.5 py-0.2 rounded border font-semibold ${getLanguageColor(

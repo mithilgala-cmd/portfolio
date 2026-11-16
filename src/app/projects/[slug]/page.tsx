@@ -69,7 +69,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             <span className="px-2.5 py-0.5 rounded bg-cyan-950/40 text-cyan-300 border border-cyan-500/30">
               {project.language}
             </span>
-            <span className="text-slate-500">•</span>
+            <span className="text-slate-400">•</span>
             <span className="text-slate-400">{project.highlight}</span>
           </div>
 
@@ -199,7 +199,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono">
                     {project.results.metrics.map((m) => (
                       <div key={m.label} className="p-3 rounded-lg bg-[#06080c] border border-white/5">
-                        <span className="text-[10px] text-slate-500 block mb-0.5">{m.label}</span>
+                        <span className="text-[10px] text-slate-400 block mb-0.5">{m.label}</span>
                         <span className="text-lg font-bold text-cyan-400">{m.value}</span>
                       </div>
                     ))}

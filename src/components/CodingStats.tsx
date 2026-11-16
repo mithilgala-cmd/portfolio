@@ -100,15 +100,15 @@ export default function CodingStats() {
   return (
     <section id="telemetry" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
-      <div className="section-index mb-8">
-        <span>01 // TELEMETRY</span>
+      <h2 className="section-index mb-8">
+        <span>{"//"} TELEMETRY</span>
         <span className="text-slate-400 font-normal">
           Metrics & Activity {formattedDate ? `(as of ${formattedDate})` : ""}{" "}
-          <span className="text-slate-500 font-mono text-[11px]">
+          <span className="text-slate-400 font-mono text-[11px]">
             [{overallSource === "live" ? "Live Connected" : "Fallback Baseline"}]
           </span>
         </span>
-      </div>
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Card 1: LeetCode Telemetry */}
@@ -147,7 +147,7 @@ export default function CodingStats() {
                   href={portfolioData.socials.leetcode.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-cyan-400 transition-colors"
+                  className="text-slate-400 hover:text-cyan-400 transition-colors"
                   aria-label="View LeetCode Profile"
                 >
                   <ArrowUpRight className="w-4 h-4" />
@@ -254,7 +254,7 @@ export default function CodingStats() {
                   href={portfolioData.socials.github.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-cyan-400 transition-colors"
+                  className="text-slate-400 hover:text-cyan-400 transition-colors"
                   aria-label="View GitHub Profile"
                 >
                   <ArrowUpRight className="w-4 h-4" />
@@ -288,7 +288,7 @@ export default function CodingStats() {
               <span>View Repository Index</span>
               <span>→</span>
             </a>
-            <span className="text-slate-500">All {stats.github.publicRepos} Public</span>
+            <span className="text-slate-400">All {stats.github.publicRepos} Public</span>
           </div>
         </SpotlightCard>
 
@@ -313,7 +313,7 @@ export default function CodingStats() {
                 href={portfolioData.socials.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-500 hover:text-cyan-400 transition-colors"
+                className="text-slate-400 hover:text-cyan-400 transition-colors"
                 aria-label="View LinkedIn Profile"
               >
                 <ArrowUpRight className="w-4 h-4" />
@@ -347,7 +347,7 @@ export default function CodingStats() {
               <span>Connect on LinkedIn</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
-            <span className="text-slate-500 font-mono text-[11px]">
+            <span className="text-slate-400 font-mono text-[11px]">
               Profile Snapshot
             </span>
           </div>

@@ -69,7 +69,7 @@ export default function Hero() {
         {/* Engineering Credentials Subtitle */}
         <div className="font-mono text-xs sm:text-sm text-cyan-400 mb-6 flex flex-wrap items-center gap-2">
           <span>{portfolioData.subheadline}</span>
-          <span className="text-slate-600 hidden sm:inline">•</span>
+          <span className="text-slate-400 hidden sm:inline">•</span>
           <span className="text-slate-400">Backend & Distributed Systems · Agentic AI</span>
         </div>
 
@@ -162,7 +162,7 @@ export default function Hero() {
           >
             <Github className="w-3.5 h-3.5 text-slate-400" />
             <span>GitHub</span>
-            <ArrowUpRight className="w-3 h-3 text-slate-500" />
+            <ArrowUpRight className="w-3 h-3 text-slate-400" />
           </a>
 
           <a
@@ -173,7 +173,7 @@ export default function Hero() {
           >
             <Code2 className="w-3.5 h-3.5 text-amber-400" />
             <span>LeetCode ({totalSolved})</span>
-            <ArrowUpRight className="w-3 h-3 text-slate-500" />
+            <ArrowUpRight className="w-3 h-3 text-slate-400" />
           </a>
 
           <a
@@ -184,7 +184,7 @@ export default function Hero() {
           >
             <Linkedin className="w-3.5 h-3.5 text-sky-400" />
             <span>LinkedIn</span>
-            <ArrowUpRight className="w-3 h-3 text-slate-500" />
+            <ArrowUpRight className="w-3 h-3 text-slate-400" />
           </a>
         </div>
       </div>

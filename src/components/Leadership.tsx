@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { portfolioData } from "@/data/portfolio";
 import { Users, Calendar, Trophy, Activity } from "lucide-react";
@@ -9,10 +7,10 @@ export default function Leadership() {
   return (
     <section id="leadership" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
-      <div className="section-index mb-8">
+      <h2 className="section-index mb-8">
         <span>04 // LEADERSHIP</span>
         <span className="text-slate-400 font-normal">Leadership & Achievements</span>
-      </div>
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Leadership Roles */}

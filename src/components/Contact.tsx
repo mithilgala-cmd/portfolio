@@ -17,10 +17,10 @@ export default function Contact() {
   return (
     <section id="contact" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
-      <div className="section-index mb-8">
+      <h2 className="section-index mb-8">
         <span>06 // CONTACT</span>
         <span className="text-slate-400 font-normal">Get In Touch</span>
-      </div>
+      </h2>
 
       <SpotlightCard className="p-6 sm:p-8">
         <div className="max-w-2xl">
@@ -29,9 +29,9 @@ export default function Contact() {
             <span>COMMUNICATION // DIRECT</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-sans mb-3">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white font-sans mb-3">
             Let&apos;s Build Something Reliable.
-          </h2>
+          </h3>
 
           <p className="text-sm text-slate-300 leading-relaxed mb-6 font-sans">
             Currently open to 2027 Software Engineering internships and engineering roles across
@@ -86,7 +86,7 @@ export default function Contact() {
               >
                 <Github className="w-3.5 h-3.5" />
                 <span>GitHub</span>
-                <ArrowUpRight className="w-3 h-3 text-slate-500" />
+                <ArrowUpRight className="w-3 h-3 text-slate-400" />
               </a>
 
               <a
@@ -97,7 +97,7 @@ export default function Contact() {
               >
                 <Code2 className="w-3.5 h-3.5 text-amber-400" />
                 <span>LeetCode</span>
-                <ArrowUpRight className="w-3 h-3 text-slate-500" />
+                <ArrowUpRight className="w-3 h-3 text-slate-400" />
               </a>
 
               <a
@@ -108,7 +108,7 @@ export default function Contact() {
               >
                 <Linkedin className="w-3.5 h-3.5 text-sky-400" />
                 <span>LinkedIn</span>
-                <ArrowUpRight className="w-3 h-3 text-slate-500" />
+                <ArrowUpRight className="w-3 h-3 text-slate-400" />
               </a>
             </div>
           </div>

@@ -45,10 +45,10 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
-      <div className="section-index mb-8">
-        <span>05 // CREDENTIALS</span>
+      <h2 className="section-index mb-8">
+        <span>05 // CERTIFICATIONS</span>
         <span className="text-slate-400 font-normal">Licenses & Certifications</span>
-      </div>
+      </h2>
 
       {/* Verification Header Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 p-4 rounded-xl bg-[#0b0f17] border border-white/10 font-mono">
@@ -57,9 +57,9 @@ export default function Certifications() {
             <Award className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-white font-sans">
+            <h3 className="text-sm font-bold text-white font-sans">
               Professional Certifications & Completed Training
-            </h4>
+            </h3>
             <p className="text-xs text-slate-400">
               Issued by Anthropic, Amazon Web Services (AWS), AI CERTs & Udemy
             </p>
@@ -70,7 +70,7 @@ export default function Certifications() {
           href={portfolioData.socials.linkedin.certificationsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 self-start sm:self-auto px-3.5 py-2 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-200 hover:text-white text-xs font-semibold transition-all"
+          className="inline-flex items-center gap-2 self-start sm:self-auto px-3.5 py-2 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-200 hover:text-white text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-cyan-400"
         >
           <span>LinkedIn Certifications</span>
           <ArrowUpRight className="w-3.5 h-3.5 text-cyan-400" />
@@ -78,14 +78,20 @@ export default function Certifications() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-6 font-mono text-xs">
+      <div
+        role="tablist"
+        aria-label="Filter certifications by category"
+        className="flex flex-wrap items-center gap-2 mb-6 font-mono text-xs"
+      >
         {categories.map((cat) => {
           const isActive = selectedFilter === cat.value;
           return (
             <button
               key={cat.value}
+              role="tab"
+              aria-selected={isActive}
               onClick={() => setSelectedFilter(cat.value)}
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
+              className={`px-3 py-1.5 rounded-lg border transition-all focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none ${
                 isActive
                   ? "bg-cyan-500/10 text-cyan-300 border-cyan-400/50 font-bold"
                   : "bg-[#0b0f17] text-slate-400 border-white/10 hover:border-white/20 hover:text-white"
@@ -98,7 +104,11 @@ export default function Certifications() {
       </div>
 
       {/* Certifications Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        role="tabpanel"
+        aria-label="Certifications list"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
         {displayedCerts.map((cert) => (
           <SpotlightCard
             key={cert.id}
@@ -109,14 +119,14 @@ export default function Certifications() {
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-white/5 text-cyan-400 border border-white/10">
                   {cert.category}
                 </span>
-                <span className="text-[11px] text-slate-500">
+                <span className="text-[11px] text-slate-400">
                   {cert.issueDate}
                 </span>
               </div>
 
-              <h4 className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors mb-2 font-sans leading-snug">
+              <h3 className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors mb-2 font-sans leading-snug">
                 {cert.title}
-              </h4>
+              </h3>
 
               <div className="text-xs text-slate-300 flex items-center gap-1.5 mb-2 font-mono">
                 <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
@@ -128,14 +138,14 @@ export default function Certifications() {
                   className="text-[10px] text-slate-400 font-mono truncate bg-[#06080c] px-2 py-1 rounded border border-white/5 mb-2"
                   title={cert.credentialId}
                 >
-                  <span className="text-slate-500">ID: </span>
+                  <span className="text-slate-400">ID: </span>
                   <span className="text-slate-300">{cert.credentialId}</span>
                 </div>
               )}
             </div>
 
             <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono">
-              <span className="text-slate-500">
+              <span className="text-slate-400">
                 {cert.featured ? "Featured" : "Coursework"}
               </span>
               {cert.credentialUrl && (
