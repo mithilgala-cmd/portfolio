@@ -18,7 +18,7 @@ export default function Footer() {
             <span className="text-slate-400">{portfolioData.subheadline}</span>
           </div>
 
-          {/* Direct External Verified Profiles */}
+          {/* Direct External Profiles */}
           <div className="flex items-center gap-6">
             <a
               href={portfolioData.socials.github.url}

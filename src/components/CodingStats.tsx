@@ -10,7 +10,6 @@ import {
   Flame,
   Trophy,
   GitFork,
-  Radio,
 } from "lucide-react";
 import SpotlightCard from "./SpotlightCard";
 
@@ -18,7 +17,7 @@ interface LiveStatsState {
   github: {
     username: string;
     publicRepos: number;
-    isLive: boolean;
+    source: "live" | "fallback";
   };
   leetcode: {
     username: string;
@@ -29,7 +28,7 @@ interface LiveStatsState {
     acceptanceRate: string;
     maxStreak: string;
     rankingHighlight: string;
-    isLive: boolean;
+    source: "live" | "fallback";
   };
   linkedin: {
     username: string;
@@ -43,18 +42,20 @@ export default function CodingStats() {
     github: {
       username: portfolioData.socials.github.username,
       publicRepos: fallback.github.publicRepos,
-      isLive: false,
+      source: "fallback",
     },
     leetcode: {
       username: portfolioData.socials.leetcode.username,
       ...fallback.leetcode,
-      isLive: false,
+      source: "fallback",
     },
     linkedin: {
       username: portfolioData.socials.linkedin.username,
       followers: portfolioData.socials.linkedin.followers,
     },
   });
+  const [fetchedAt, setFetchedAt] = useState<string | null>(null);
+  const [overallSource, setOverallSource] = useState<"live" | "fallback">("fallback");
 
   useEffect(() => {
     let isMounted = true;
@@ -65,6 +66,8 @@ export default function CodingStats() {
           const json = await res.json();
           if (json.data && isMounted) {
             setStats(json.data);
+            setFetchedAt(json.fetchedAt || null);
+            setOverallSource(json.source || "fallback");
           }
         }
       } catch (err) {
@@ -86,12 +89,25 @@ export default function CodingStats() {
   const medPct = Math.round((med / total) * 100);
   const hardPct = Math.max(1, 100 - easyPct - medPct);
 
+  const formattedDate = fetchedAt
+    ? new Date(fetchedAt).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    : null;
+
   return (
     <section id="telemetry" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <div className="section-index mb-8">
         <span>01 // TELEMETRY</span>
-        <span className="text-slate-400 font-normal">Real-Time Metrics & Activity</span>
+        <span className="text-slate-400 font-normal">
+          Metrics & Activity {formattedDate ? `(as of ${formattedDate})` : ""}{" "}
+          <span className="text-slate-500 font-mono text-[11px]">
+            [{overallSource === "live" ? "Live Connected" : "Fallback Baseline"}]
+          </span>
+        </span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -105,22 +121,38 @@ export default function CodingStats() {
                 </div>
                 <div>
                   <h3 className="font-bold text-sm text-slate-100 group-hover:text-cyan-400 transition-colors">
-                    LeetCode Telemetry
+                    LeetCode Metrics
                   </h3>
                   <span className="font-mono text-[11px] text-slate-400">
                     @{stats.leetcode.username}
                   </span>
                 </div>
               </div>
-              <a
-                href={portfolioData.socials.leetcode.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-500 hover:text-cyan-400 transition-colors"
-                aria-label="View LeetCode Profile"
-              >
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
+              <div className="flex items-center gap-2">
+                <span
+                  className={`font-mono text-[10px] px-2 py-0.5 rounded border ${
+                    stats.leetcode.source === "live"
+                      ? "text-emerald-400 bg-emerald-950/40 border-emerald-500/30"
+                      : "text-slate-400 bg-white/5 border-white/10"
+                  }`}
+                  title={
+                    stats.leetcode.source === "live"
+                      ? "Live from LeetCode GraphQL API"
+                      : "Displaying cached fallback statistics"
+                  }
+                >
+                  {stats.leetcode.source === "live" ? "Live" : "Fallback"}
+                </span>
+                <a
+                  href={portfolioData.socials.leetcode.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-500 hover:text-cyan-400 transition-colors"
+                  aria-label="View LeetCode Profile"
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
             </div>
 
             <div className="mb-4">
@@ -203,15 +235,31 @@ export default function CodingStats() {
                   </span>
                 </div>
               </div>
-              <a
-                href={portfolioData.socials.github.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-500 hover:text-cyan-400 transition-colors"
-                aria-label="View GitHub Profile"
-              >
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
+              <div className="flex items-center gap-2">
+                <span
+                  className={`font-mono text-[10px] px-2 py-0.5 rounded border ${
+                    stats.github.source === "live"
+                      ? "text-emerald-400 bg-emerald-950/40 border-emerald-500/30"
+                      : "text-slate-400 bg-white/5 border-white/10"
+                  }`}
+                  title={
+                    stats.github.source === "live"
+                      ? "Live from GitHub REST API"
+                      : "Displaying cached fallback repository count"
+                  }
+                >
+                  {stats.github.source === "live" ? "Live" : "Fallback"}
+                </span>
+                <a
+                  href={portfolioData.socials.github.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-500 hover:text-cyan-400 transition-colors"
+                  aria-label="View GitHub Profile"
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
             </div>
 
             <div className="mb-4">
@@ -240,11 +288,11 @@ export default function CodingStats() {
               <span>View Repository Index</span>
               <span>→</span>
             </a>
-            <span className="text-slate-500">All 15 Public</span>
+            <span className="text-slate-500">All {stats.github.publicRepos} Public</span>
           </div>
         </SpotlightCard>
 
-        {/* Card 3: Engineering Network */}
+        {/* Card 3: Professional Network */}
         <SpotlightCard className="p-6 flex flex-col justify-between group">
           <div>
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
@@ -299,8 +347,8 @@ export default function CodingStats() {
               <span>Connect on LinkedIn</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
-            <span className="text-emerald-400 flex items-center gap-1">
-              <Radio className="w-3 h-3 animate-pulse" /> Live
+            <span className="text-slate-500 font-mono text-[11px]">
+              Profile Snapshot
             </span>
           </div>
         </SpotlightCard>

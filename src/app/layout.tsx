@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     siteName: "Mithil Gala // Systems Portfolio",
     title: "Mithil Gala | Systems & Software Engineer · Distributed Systems & Agentic AI",
     description:
-      "B.Tech Computer Engineering '27 at MPSTME, NMIMS Mumbai. Specializing in Distributed Systems, Agentic AI, and High-Throughput Cloud Platforms.",
+      "B.Tech Computer Engineering '27 at MPSTME, NMIMS Mumbai. Specializing in Distributed Systems, Backend Engineering, and Agentic AI.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Mithil Gala | Systems & Software Engineer",
     description:
-      "B.Tech Computer Engineering '27 at MPSTME, NMIMS Mumbai. Specializing in Distributed Systems, Agentic AI, and High-Throughput Cloud Platforms.",
+      "B.Tech Computer Engineering '27 at MPSTME, NMIMS Mumbai. Specializing in Distributed Systems, Backend Engineering, and Agentic AI.",
   },
   robots: {
     index: true,

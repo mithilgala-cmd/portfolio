@@ -71,10 +71,10 @@ export default function Hero() {
         {/* Concrete, authentic engineering summary */}
         <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed mb-8">
           Computer Engineering undergraduate (&apos;27) focused on{" "}
-          <strong className="text-white font-semibold">High-Concurrency Cloud Platforms</strong>,{" "}
-          <strong className="text-white font-semibold">Autonomous Multi-Agent Architectures</strong>, and{" "}
-          <strong className="text-white font-semibold">Backend Software Engineering</strong>.
-          Verified track record with{" "}
+          <strong className="text-white font-semibold">Distributed Systems</strong>,{" "}
+          <strong className="text-white font-semibold">Backend Engineering</strong>, and{" "}
+          <strong className="text-white font-semibold">Agentic AI Architectures</strong>.
+          Track record of{" "}
           <span className="inline-flex items-center gap-1 font-mono text-cyan-400 font-bold bg-cyan-950/40 px-1.5 py-0.5 rounded border border-cyan-400/20">
             {totalSolved}+
           </span>{" "}

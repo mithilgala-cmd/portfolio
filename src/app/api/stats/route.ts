@@ -18,6 +18,35 @@ interface LeetCodeGraphQLResponse {
   };
 }
 
+export interface StatsResponseData {
+  github: {
+    username: string;
+    publicRepos: number;
+    source: "live" | "fallback";
+  };
+  leetcode: {
+    username: string;
+    totalSolved: number;
+    easy: number;
+    medium: number;
+    hard: number;
+    acceptanceRate: string;
+    maxStreak: string;
+    rankingHighlight: string;
+    source: "live" | "fallback";
+  };
+  linkedin: {
+    username: string;
+    followers: string;
+  };
+}
+
+export interface StatsApiResponse {
+  data: StatsResponseData;
+  fetchedAt: string;
+  source: "live" | "fallback";
+}
+
 export async function GET() {
   const fallback = portfolioData.fallbackStats;
 
@@ -26,13 +55,14 @@ export async function GET() {
   let isGithubLive = false;
   let isLeetCodeLive = false;
 
-  // 1. Fetch GitHub stats
+  // 1. Fetch GitHub stats with 5s timeout
   try {
     const ghRes = await fetch("https://api.github.com/users/mithilgala-cmd", {
       headers: {
         "User-Agent": "MithilGala-Systems-Portfolio/2.0",
         Accept: "application/vnd.github.v3+json",
       },
+      signal: AbortSignal.timeout(5000),
       next: { revalidate: 900 },
     });
 
@@ -47,7 +77,7 @@ export async function GET() {
     console.warn("GitHub API fetch fallback used:", error);
   }
 
-  // 2. Fetch LeetCode stats
+  // 2. Fetch LeetCode stats with 5s timeout
   try {
     const lcRes = await fetch("https://leetcode.com/graphql", {
       method: "POST",
@@ -71,6 +101,7 @@ export async function GET() {
         `,
         variables: { username: portfolioData.socials.leetcode.username },
       }),
+      signal: AbortSignal.timeout(5000),
       next: { revalidate: 900 },
     });
 
@@ -108,24 +139,29 @@ export async function GET() {
     console.warn("LeetCode GraphQL fetch fallback used:", error);
   }
 
-  return NextResponse.json({
-    success: true,
+  const overallSource: "live" | "fallback" =
+    isGithubLive && isLeetCodeLive ? "live" : "fallback";
+
+  const responseBody: StatsApiResponse = {
     data: {
       github: {
         username: portfolioData.socials.github.username,
         publicRepos,
-        isLive: isGithubLive,
+        source: isGithubLive ? "live" : "fallback",
       },
       leetcode: {
         username: portfolioData.socials.leetcode.username,
         ...leetcodeStats,
-        isLive: isLeetCodeLive,
+        source: isLeetCodeLive ? "live" : "fallback",
       },
       linkedin: {
         username: portfolioData.socials.linkedin.username,
         followers: portfolioData.socials.linkedin.followers,
       },
-      lastUpdated: new Date().toISOString(),
     },
-  });
+    fetchedAt: new Date().toISOString(),
+    source: overallSource,
+  };
+
+  return NextResponse.json(responseBody);
 }

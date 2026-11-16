@@ -43,27 +43,26 @@ export default function AboutBento() {
             </p>
 
             <p className="text-sm text-slate-300 leading-relaxed mb-4">
-              Directly responsible for maintaining live financial web infrastructure, legacy PHP
-              backend scripts, secure server deployment pipelines, and public regulatory disclosure
-              portals. Ensuring zero downtime and strict adherence to non-banking statutory
-              compliance mandates.
+              Responsible for maintaining legacy PHP backend scripts, DNS configuration, SSL
+              certificates, and public regulatory disclosure portals in adherence to non-banking
+              statutory compliance requirements.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono mb-2">
               <div className="bg-[#06080c] p-2.5 rounded border border-white/5">
                 <span className="text-[10px] text-slate-500 block mb-0.5">CORE_SCOPE</span>
-                <span className="text-slate-200">PHP scripts, DNS, SSL & audit reports</span>
+                <span className="text-slate-200">PHP scripts, DNS, SSL & regulatory portals</span>
               </div>
               <div className="bg-[#06080c] p-2.5 rounded border border-white/5">
                 <span className="text-[10px] text-slate-500 block mb-0.5">COMPLIANCE</span>
-                <span className="text-slate-200">RBI disclosure standards & data security</span>
+                <span className="text-slate-200">RBI disclosure standards & updates</span>
               </div>
             </div>
           </div>
 
           <div className="pt-4 border-t border-white/5 flex items-center justify-between font-mono text-[11px] text-slate-400">
-            <span>Server Health: Monitored</span>
-            <span className="text-emerald-400 font-medium">99.9% Uptime Maintained</span>
+            <span>Maintenance: Legacy PHP & Web</span>
+            <span className="text-slate-300 font-medium">Statutory Disclosures</span>
           </div>
         </SpotlightCard>
 
@@ -88,9 +87,9 @@ export default function AboutBento() {
             </p>
 
             <p className="text-xs text-slate-300 leading-relaxed mb-4">
-              Core academic and engineering focus spanning Distributed Computing, Operating Systems
-              internals, Network Protocol design, Database Architecture, and Multi-Agent Orchestration
-              Research under international faculty supervision.
+              Coursework and engineering foundations spanning Operating Systems, Computer Networks,
+              Database Systems, and Distributed Computing, supplemented by a 5-day (~30-hour) hands-on
+              training program in Agentic AI conducted by visiting faculty from Japan.
             </p>
 
             <div className="space-y-1.5 font-mono text-[11px] text-slate-300">
@@ -100,11 +99,11 @@ export default function AboutBento() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
-                <span>Agentic AI & LLM Tool Automation (Visiting Faculty, Japan)</span>
+                <span>Agentic AI & Tool Integration (5-Day Program, Japan Faculty)</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
-                <span>Cloud Architecting & AWS Academy Graduate</span>
+                <span>Cloud Architecting (AWS Academy Graduate)</span>
               </div>
             </div>
           </div>
@@ -166,7 +165,7 @@ export default function AboutBento() {
               rel="noopener noreferrer"
               className="text-cyan-400 hover:underline flex items-center gap-1"
             >
-              <span>Verify on LeetCode</span>
+              <span>View LeetCode Profile</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>

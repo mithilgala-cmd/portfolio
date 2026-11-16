@@ -45,7 +45,7 @@ export default function Skills() {
             </div>
 
             <div className="mt-6 pt-3 border-t border-white/5 text-[11px] text-slate-500 font-mono">
-              {"//"} {cat.skills.length} verified competencies
+              {"//"} {cat.skills.length} technical competencies
             </div>
           </SpotlightCard>
         ))}

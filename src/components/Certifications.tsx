@@ -16,10 +16,13 @@ type CategoryFilter = "All" | "AI & Agents" | "Cloud & DevOps" | "Data & BI" | "
 
 export default function Certifications() {
   const [selectedFilter, setSelectedFilter] = useState<CategoryFilter>("All");
-  const [showAll, setShowAll] = useState<boolean>(true);
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const allCerts = portfolioData.certifications;
-  const totalCount = allCerts.length; // 17
+  const totalCount = allCerts.length;
+
+  const countFor = (cat: CategoryFilter) =>
+    cat === "All" ? allCerts.length : allCerts.filter((c) => c.category === cat).length;
 
   // Filter based on selected tag
   const filteredCerts = allCerts.filter((cert) => {
@@ -29,14 +32,14 @@ export default function Certifications() {
 
   const displayedCerts = showAll || selectedFilter !== "All"
     ? filteredCerts
-    : filteredCerts.filter((c) => c.featured);
+    : filteredCerts.filter((c) => c.featured).slice(0, 5);
 
   const categories: { label: string; value: CategoryFilter }[] = [
-    { label: `All (${totalCount})`, value: "All" },
-    { label: "AI & Agents (11)", value: "AI & Agents" },
-    { label: "Software Eng (3)", value: "Software Eng" },
-    { label: "Cloud & DevOps (2)", value: "Cloud & DevOps" },
-    { label: "Data & BI (1)", value: "Data & BI" },
+    { label: `All (${countFor("All")})`, value: "All" },
+    { label: `AI & Agents (${countFor("AI & Agents")})`, value: "AI & Agents" },
+    { label: `Cloud & DevOps (${countFor("Cloud & DevOps")})`, value: "Cloud & DevOps" },
+    { label: `Software Eng (${countFor("Software Eng")})`, value: "Software Eng" },
+    { label: `Data & BI (${countFor("Data & BI")})`, value: "Data & BI" },
   ];
 
   return (
@@ -44,7 +47,7 @@ export default function Certifications() {
       {/* Section Header with Monospace Index */}
       <div className="section-index mb-8">
         <span>05 // CREDENTIALS</span>
-        <span className="text-slate-400 font-normal">17 Verified Licenses & Certifications</span>
+        <span className="text-slate-400 font-normal">Licenses & Certifications</span>
       </div>
 
       {/* Verification Header Banner */}
@@ -55,10 +58,10 @@ export default function Certifications() {
           </div>
           <div>
             <h4 className="text-sm font-bold text-white font-sans">
-              17 Verified Licenses & Professional Certifications
+              Professional Certifications & Completed Training
             </h4>
             <p className="text-xs text-slate-400">
-              Verified by Anthropic, Amazon Web Services (AWS), AI CERTs, Udemy & Unstop
+              Issued by Anthropic, Amazon Web Services (AWS), AI CERTs & Udemy
             </p>
           </div>
         </div>
@@ -69,7 +72,7 @@ export default function Certifications() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 self-start sm:self-auto px-3.5 py-2 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-200 hover:text-white text-xs font-semibold transition-all"
         >
-          <span>LinkedIn Verification Vault</span>
+          <span>LinkedIn Certifications</span>
           <ArrowUpRight className="w-3.5 h-3.5 text-cyan-400" />
         </a>
       </div>
@@ -133,30 +136,32 @@ export default function Certifications() {
 
             <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono">
               <span className="text-slate-500">
-                {cert.featured ? "Featured Badge" : "Verified Record"}
+                {cert.featured ? "Featured" : "Coursework"}
               </span>
-              <a
-                href={cert.credentialUrl || portfolioData.socials.linkedin.certificationsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-cyan-400 hover:underline font-medium"
-              >
-                <span>Verify</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
+              {cert.credentialUrl && (
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-cyan-400 hover:underline font-medium"
+                >
+                  <span>Verify</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
             </div>
           </SpotlightCard>
         ))}
       </div>
 
       {/* Expand / Collapse Toggle (for "All" filter) */}
-      {selectedFilter === "All" && (
+      {selectedFilter === "All" && totalCount > 5 && (
         <div className="mt-8 flex justify-center font-mono text-xs">
           <button
             onClick={() => setShowAll(!showAll)}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0b0f17] border border-white/10 hover:border-cyan-400/40 text-slate-200 hover:text-white transition-all"
           >
-            <span>{showAll ? "Collapse to Top 5 Featured Only" : "Show All 17 Certifications"}</span>
+            <span>{showAll ? "Collapse to Top 5 Featured Only" : `Show All ${totalCount} Certifications`}</span>
             {showAll ? (
               <ChevronUp className="w-4 h-4 text-cyan-400" />
             ) : (

@@ -101,8 +101,8 @@ export default function CommandPalette({
       {
         id: "sec-credentials",
         category: "Sections",
-        title: "05 // Verified Credentials",
-        description: "All 17 verified licenses & certifications (Anthropic, AWS, etc.)",
+        title: "05 // Credentials",
+        description: "Licenses & certifications (Anthropic, AWS, etc.)",
         icon: <Hash className="w-4 h-4 text-cyan-400" />,
         action: () => navigateTo("#certifications"),
       },
