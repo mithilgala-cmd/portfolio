@@ -24,3 +24,42 @@ This document tracks all data points, assets, and verification items requiring c
 - **Action Required**: Provide direct verification URLs (e.g., Credly URLs for AWS Academy, direct Anthropic verification links, or Udemy certificate verification links) in `src/data/portfolio.ts`.
 
 ---
+
+## 4. Case Study Architecture Diagrams
+- **Item**: Architecture diagrams for the 4 featured projects:
+  - `infrapulse` (`/projects/infrapulse`)
+  - `agent-orchestration-system` (`/projects/agent-orchestration-system`)
+  - `smart-gateway-mcp` (`/projects/smart-gateway-mcp`)
+  - `distributed-consensus-simulations` (`/projects/distributed-consensus-simulations`)
+- **Status**: Hidden in UI until diagram URLs/assets are supplied.
+- **Action Required**: Add architecture diagrams/flowcharts to `public/` and populate `architectureDiagramUrl` in `src/data/projects.ts`.
+
+---
+
+## 5. Case Study Technical Decisions & Tradeoffs
+- **Item**: Key decision, rejected alternative, and engineering rationale for each of the 4 featured projects.
+- **Status**: Hidden in UI until populated in `src/data/projects.ts`.
+- **Action Required**: Provide the technical decision, rejected alternative, and tradeoff rationale in `keyDecision` within `src/data/projects.ts`.
+
+---
+
+## 6. Case Study Quantified Performance Benchmarks & Results
+- **Item**: Real, measured benchmarks (e.g. latency, throughput, requests/sec, rate limiting accuracy) for each featured project.
+- **Status**: Hidden in UI to prevent unverified or invented numbers.
+- **Action Required**: Provide real benchmark metrics in `results` within `src/data/projects.ts`.
+
+---
+
+## 7. Case Study Known Limitations & Next Steps
+- **Item**: Technical constraints and roadmap items for each featured project.
+- **Status**: Hidden in UI until documented.
+- **Action Required**: Populate `limitations` and `nextSteps` arrays in `src/data/projects.ts`.
+
+---
+
+## 8. Case Study Live Demo URLs
+- **Item**: Live interactive or deployed demo links for the featured projects.
+- **Status**: Hidden in UI (only GitHub repository links are rendered).
+- **Action Required**: Add live URLs in `links.demo` within `src/data/projects.ts` if hosted.
+
+---
