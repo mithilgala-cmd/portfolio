@@ -63,3 +63,10 @@ This document tracks all data points, assets, and verification items requiring c
 - **Action Required**: Add live URLs in `links.demo` within `src/data/projects.ts` if hosted.
 
 ---
+
+## 9. Privacy-Friendly Analytics Provider
+- **Item**: Site analytics integration.
+- **Status**: No third-party analytics script or dependency injected. Placeholder left in `src/app/layout.tsx`.
+- **Action Required**: Decide on privacy-friendly analytics (e.g. Cloudflare Web Analytics beacon token, Plausible, or self-hosted Umami script) and paste the token/script into `src/app/layout.tsx`.
+
+---
