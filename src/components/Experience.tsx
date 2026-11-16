@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { portfolioData } from "@/data/portfolio";
 import { Briefcase, Calendar, CheckCircle2 } from "lucide-react";
@@ -7,12 +5,13 @@ import SpotlightCard from "./SpotlightCard";
 
 export default function Experience() {
   return (
-    <section id="leadership" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="experience" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
-      <div className="section-index mb-8">
-        <span>04 // LEADERSHIP</span>
-        <span className="text-slate-400 font-normal">Executive Operations & Programs</span>
-      </div>
+      <h2 className="section-index mb-8">
+        <span>02</span>
+        <span>Experience</span>
+        <span className="text-slate-400 font-normal">Production & Engineering Experience</span>
+      </h2>
 
       <div className="relative border-l border-white/10 ml-3 sm:ml-4 pl-6 sm:pl-8 space-y-8">
         {portfolioData.experience.map((item) => (

@@ -19,6 +19,29 @@ html {
   color-scheme: dark;
 }
 
+/* Reduced Motion Override for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .spotlight-card::before {
+    display: none !important;
+  }
+}
+
+/* Global Visible Focus Rings */
+:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
 body {
   background-color: var(--bg-obsidian);
   color: var(--text-main);
@@ -28,6 +51,7 @@ body {
   background-size: 24px 24px, 100% 100%;
   background-attachment: fixed;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Crisp Systems Hairline Card */

@@ -17,6 +17,24 @@ export interface ExperienceItem {
   badge?: string;
 }
 
+export interface LeadershipItem {
+  id: string;
+  role: string;
+  organization: string;
+  period: string;
+  description: string;
+  highlights?: string[];
+  badge?: string;
+}
+
+export interface AchievementItem {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  metric?: string;
+}
+
 export interface Certification {
   id: string;
   title: string;
@@ -75,6 +93,8 @@ export interface PortfolioData {
   };
   publicRepositories: PublicRepo[];
   experience: ExperienceItem[];
+  leadership: LeadershipItem[];
+  achievements: AchievementItem[];
   certifications: Certification[];
   skills: SkillCategory[];
 }
@@ -85,7 +105,7 @@ export const portfolioData: PortfolioData = {
   headline: "Mithil Gala",
   subheadline: "B.Tech Computer Engineering '27 · MPSTME, NMIMS Mumbai",
   statusBadge: "Open to 2027 Software Engineering Internships & Roles · Mumbai / Remote",
-  bio: "Software and systems engineer focused on Full-Stack Cloud Platforms, Agentic AI Architectures, and High-Performance Java/Python Backend Systems. 630+ verified algorithmic solutions on LeetCode (Top 0.8% LeetCode Java ranking). Track record maintaining live financial web infrastructure and directing large-scale campus engineering operations.",
+  bio: "Software and systems engineer focused on cloud backends, distributed systems, and agentic AI architectures. 630+ algorithmic solutions on LeetCode (Top 0.8% LeetCode Java ranking). Track record maintaining live financial web infrastructure and directing large-scale campus engineering operations.",
   location: "Mumbai, India",
   email: "mithil.gala@gmail.com",
   liveUrl: "https://mithilgala.is-a.dev",
@@ -206,7 +226,7 @@ export const portfolioData: PortfolioData = {
       language: "Java",
       categoryTag: "Java",
       description:
-        "Java local networking and service discovery application for high-throughput LAN communication.",
+        "Java local networking and service discovery application for local network communication.",
       url: "https://github.com/mithilgala-cmd/LocalConnect",
       highlight: "Socket Networking & Discovery",
     },
@@ -258,12 +278,40 @@ export const portfolioData: PortfolioData = {
   ],
   experience: [
     {
+      id: "minolta-finance",
+      role: "Web Infrastructure & Backend Maintenance",
+      organization: "Minolta Finance Ltd. (RBI-Registered NBFC)",
+      period: "2024 – Present",
+      description:
+        "Maintain legacy PHP scripts, SSL/TLS certificates, DNS routing, and public regulatory disclosure portals in adherence to statutory compliance standards.",
+      highlights: [
+        "Maintain official regulatory disclosure portals and audit documents adhering to NBFC statutory mandates",
+        "Manage legacy PHP backend scripts, production server environments, and domain routing",
+      ],
+      badge: "Production Web",
+    },
+    {
+      id: "agentic-ai-program",
+      role: "5-Day International Agentic AI Program",
+      organization: "MPSTME, NMIMS (Conducted by Dr. Shun Okuhara & Dr. Haruka Murai, Mie University, Japan)",
+      period: "Sep 2026",
+      description:
+        "5-Day International Agentic AI Program, ~30 hours, taught by visiting faculty from Japan. Covered autonomous agent loops, tool integration, and multi-agent workflows.",
+      highlights: [
+        "Constructed tool-calling autonomous loops with evaluation-guided task refinement",
+        "Implemented multi-agent coordination and automated task dispatch workflows",
+      ],
+      badge: "Academic Training",
+    },
+  ],
+  leadership: [
+    {
       id: "4c-advisory",
       role: "Advisory",
       organization: "4C – The Marketing Cell of NMIMS",
       period: "Jul 2026 – Present",
       description:
-        "Providing strategic advisory and mentorship to the executive board on operational workflows, university relations, and logistical scaling for large-format collegiate marketing events.",
+        "Advise the executive board on operational workflows, university relations, and logistical scaling for large-format collegiate marketing events.",
       badge: "Current Leadership",
     },
     {
@@ -272,11 +320,7 @@ export const portfolioData: PortfolioData = {
       organization: "4C – The Marketing Cell of NMIMS",
       period: "Jul 2025 – Jul 2026",
       description:
-        "Directed end-to-end operations, resource allocation, budgeting, logistics, and multi-department teams for three flagship campus events: Wings & Roots, DeBattle, and Roulette.",
-      highlights: [
-        "Managed cross-functional coordination across hundreds of attendees, guest dignitaries, and student teams",
-        "Streamlined supply chain logistics and venue timelines, reducing downtime and operational friction",
-      ],
+        "Directed event operations, budgeting, venue logistics, and multi-department teams for flagship collegiate events hosting 500+ attendees.",
       badge: "Executive Board",
     },
     {
@@ -285,25 +329,8 @@ export const portfolioData: PortfolioData = {
       organization: "Sattva NMIMS & Social Conclave",
       period: "Jul 2025 – Jul 2026",
       description:
-        "Led multi-year logistics operations (2023–2026) across flagship cultural and social conclave events, managing material inventory, stage tech coordination, and crowd safety compliance.",
-      highlights: [
-        "Scaled event logistics for multi-day conclaves welcoming delegates and speakers across India",
-        "Spearheaded vendor negotiation and emergency management protocols",
-      ],
-      badge: "Flagship Cultural & Conclave",
-    },
-    {
-      id: "agentic-ai-program",
-      role: "5-Day International Agentic AI Program",
-      organization: "MPSTME, NMIMS (Conducted by Dr. Shun Okuhara & Dr. Haruka Murai, Japan)",
-      period: "Sep 2026",
-      description:
-        "Completed ~30 hours of intensive hands-on training in autonomous agent loops, tool integration, LangChain pipelines, and multi-agent system research led by visiting Japanese professors.",
-      highlights: [
-        "Constructed tool-calling autonomous loops with evaluation-guided task refinement",
-        "Explored multi-agent consensus and automated workflow distribution paradigms",
-      ],
-      badge: "International Academic Program",
+        "Led event logistics operations across flagship cultural and social conclave events, managing material inventory, stage technical setups, and vendor timelines.",
+      badge: "Flagship Conclave",
     },
     {
       id: "taqneeq-subhead",
@@ -311,8 +338,18 @@ export const portfolioData: PortfolioData = {
       organization: "TAQNEEQ 17.0 – Official Tech Fest of MPSTME",
       period: "Jul 2024 – Jul 2025",
       description:
-        "Managed technical event infrastructure, scheduling, and venue coordination for NMIMS Mumbai's annual flagship technology festival.",
+        "Managed technical event infrastructure, venue scheduling, and logistics for NMIMS Mumbai's annual flagship technology festival.",
       badge: "Tech Fest Leadership",
+    },
+  ],
+  achievements: [
+    {
+      id: "half-marathon",
+      title: "Endurance Running Regimen",
+      category: "Endurance & Discipline",
+      description:
+        "Trained for timed 21.1 km half-marathons in Mumbai, balancing structured distance running regimens with engineering studies and campus operations.",
+      metric: "21.1 KM Half-Marathon Regimen",
     },
   ],
   certifications: [
@@ -322,7 +359,7 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Nov 2026",
       credentialId: "cfa2e9f53f8fad3382d0dbe2cd63de5d",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      // TODO(mithil): provide per-credential verification URL if available
       category: "AI & Agents",
       featured: true,
     },
@@ -332,7 +369,7 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Nov 2026",
       credentialId: "0a8bdd9e4f77ca0fd2d2d0402a40846e",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      // TODO(mithil): provide per-credential verification URL if available
       category: "AI & Agents",
       featured: true,
     },
@@ -342,7 +379,7 @@ export const portfolioData: PortfolioData = {
       issuer: "Amazon Web Services (AWS)",
       issueDate: "Sep 2026",
       credentialId: "7FcufFZw",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      // TODO(mithil): provide per-credential verification URL if available
       category: "Cloud & DevOps",
       featured: true,
     },
@@ -352,7 +389,7 @@ export const portfolioData: PortfolioData = {
       issuer: "Udemy",
       issueDate: "Apr 2026",
       credentialId: "UC-ded8cd88-7109-4991-8869-d4f611e94374",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      // TODO(mithil): provide per-credential verification URL if available
       category: "Data & BI",
       featured: true,
     },
@@ -362,7 +399,7 @@ export const portfolioData: PortfolioData = {
       issuer: "AI CERTs",
       issueDate: "Sep 2026",
       credentialId: "5KJPML745IGH",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      // TODO(mithil): provide per-credential verification URL if available
       category: "AI & Agents",
       featured: true,
     },
@@ -372,7 +409,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Nov 2026",
       credentialId: "f300ed76fbe391405b647c80a53a2e79",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
@@ -382,7 +418,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Nov 2026",
       credentialId: "acead8b6e549c271310f6e9da803a1eb",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
@@ -392,7 +427,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Nov 2026",
       credentialId: "ee18dd95430c83f5b0e17751cd7a4bdf",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
@@ -402,7 +436,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Nov 2026",
       credentialId: "4e03534c37f40bf477edeba21121e33e",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
@@ -412,7 +445,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Nov 2026",
       credentialId: "8bda5e5a86c60c67ce67c9bfba052648",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "Software Eng",
       featured: false,
     },
@@ -422,7 +454,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Oct 2026",
       credentialId: "f04b91a83dbe822b0d103333de7d8483",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "Software Eng",
       featured: false,
     },
@@ -432,7 +463,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Oct 2026",
       credentialId: "367199ec10eb2bce000590150ddf9416",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
@@ -442,7 +472,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Oct 2026",
       credentialId: "3655a684b41e903920f470cfee14d822",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
@@ -452,7 +481,6 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Oct 2026",
       credentialId: "13ec902eb3d329b03b74d73a4aa77c61",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
@@ -462,28 +490,7 @@ export const portfolioData: PortfolioData = {
       issuer: "Anthropic",
       issueDate: "Oct 2026",
       credentialId: "925bb1a37f871ee87edf149809abd4a0",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
-      featured: false,
-    },
-    {
-      id: "cert-adobe-hackathon",
-      title: "Adobe University Hackathon 2026 (Round 1 Assessment)",
-      issuer: "Unstop",
-      issueDate: "Aug 2026",
-      credentialId: "b8795c8a-4d99-4acd-901f-a3bf8f1f3973",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Software Eng",
-      featured: false,
-    },
-    {
-      id: "cert-dsa-pregrad",
-      title: "DSA Mentorship Program (C/C++)",
-      issuer: "Pregrad",
-      issueDate: "Mar 2024",
-      credentialId: "PRGLPR34173",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Software Eng",
       featured: false,
     },
   ],

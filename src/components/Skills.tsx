@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { portfolioData } from "@/data/portfolio";
 import { Code, Cpu, Cloud } from "lucide-react";
@@ -16,10 +14,11 @@ export default function Skills() {
   return (
     <section id="skills" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
-      <div className="section-index mb-8">
-        <span>06 // TOOLING & SPECIFICATIONS</span>
+      <h2 className="section-index mb-8">
+        <span>03</span>
+        <span>Skills</span>
         <span className="text-slate-400 font-normal">Technical Competencies</span>
-      </div>
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {portfolioData.skills.map((cat) => (
@@ -44,8 +43,8 @@ export default function Skills() {
               </div>
             </div>
 
-            <div className="mt-6 pt-3 border-t border-white/5 text-[11px] text-slate-500 font-mono">
-              {"//"} {cat.skills.length} verified competencies
+            <div className="mt-6 pt-3 border-t border-white/5 text-[11px] text-slate-400 font-mono">
+              {cat.skills.length} technical competencies
             </div>
           </SpotlightCard>
         ))}

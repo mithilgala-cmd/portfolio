@@ -1,0 +1,166 @@
+import { portfolioData } from "../data/portfolio.ts";
+
+export const revalidate = 900; // 15-minute ISR cache
+
+interface LeetCodeAcSubmission {
+  difficulty: string;
+  count: number;
+}
+
+interface LeetCodeGraphQLResponse {
+  data?: {
+    matchedUser?: {
+      submitStats?: {
+        acSubmissionNum?: LeetCodeAcSubmission[];
+      };
+    };
+  };
+}
+
+export interface StatsResponseData {
+  github: {
+    username: string;
+    publicRepos: number;
+    source: "live" | "fallback";
+  };
+  leetcode: {
+    username: string;
+    totalSolved: number;
+    easy: number;
+    medium: number;
+    hard: number;
+    acceptanceRate: string;
+    maxStreak: string;
+    rankingHighlight: string;
+    source: "live" | "fallback";
+  };
+  linkedin: {
+    username: string;
+    followers: string;
+  };
+}
+
+export interface StatsApiResponse {
+  data: StatsResponseData;
+  fetchedAt: string;
+  source: "live" | "fallback";
+}
+
+export async function getStats(
+  fetcher: typeof fetch = fetch
+): Promise<StatsApiResponse> {
+  const fallback = portfolioData.fallbackStats;
+
+  let publicRepos = fallback.github.publicRepos;
+  let leetcodeStats = { ...fallback.leetcode };
+  let isGithubLive = false;
+  let isLeetCodeLive = false;
+
+  // 1. Fetch GitHub stats with 5s timeout
+  try {
+    const ghRes = await fetcher("https://api.github.com/users/mithilgala-cmd", {
+      headers: {
+        "User-Agent": "MithilGala-Systems-Portfolio/2.0",
+        Accept: "application/vnd.github.v3+json",
+      },
+      signal: AbortSignal.timeout(5000),
+      next: { revalidate: 900 },
+    });
+
+    if (ghRes.ok) {
+      const ghData = await ghRes.json();
+      if (typeof ghData.public_repos === "number") {
+        publicRepos = ghData.public_repos;
+        isGithubLive = true;
+      }
+    }
+  } catch (error) {
+    console.warn("GitHub API fetch fallback used:", error);
+  }
+
+  // 2. Fetch LeetCode stats with 5s timeout
+  try {
+    const lcRes = await fetcher("https://leetcode.com/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      },
+      body: JSON.stringify({
+        query: `
+          query getUserProfile($username: String!) {
+            matchedUser(username: $username) {
+              submitStats: submitStatsGlobal {
+                acSubmissionNum {
+                  difficulty
+                  count
+                }
+              }
+            }
+          }
+        `,
+        variables: { username: portfolioData.socials.leetcode.username },
+      }),
+      signal: AbortSignal.timeout(5000),
+      next: { revalidate: 900 },
+    });
+
+    if (lcRes.ok) {
+      const lcData: LeetCodeGraphQLResponse = await lcRes.json();
+      const submissions = lcData.data?.matchedUser?.submitStats?.acSubmissionNum;
+      if (Array.isArray(submissions) && submissions.length > 0) {
+        let total = 0;
+        let easy = 0;
+        let medium = 0;
+        let hard = 0;
+
+        for (const item of submissions) {
+          if (item.difficulty === "All") total = item.count;
+          if (item.difficulty === "Easy") easy = item.count;
+          if (item.difficulty === "Medium") medium = item.count;
+          if (item.difficulty === "Hard") hard = item.count;
+        }
+
+        if (total > 0) {
+          leetcodeStats = {
+            totalSolved: total,
+            easy,
+            medium,
+            hard,
+            acceptanceRate: fallback.leetcode.acceptanceRate,
+            maxStreak: fallback.leetcode.maxStreak,
+            rankingHighlight: fallback.leetcode.rankingHighlight,
+          };
+          isLeetCodeLive = true;
+        }
+      }
+    }
+  } catch (error) {
+    console.warn("LeetCode GraphQL fetch fallback used:", error);
+  }
+
+  const overallSource: "live" | "fallback" =
+    isGithubLive && isLeetCodeLive ? "live" : "fallback";
+
+  return {
+    data: {
+      github: {
+        username: portfolioData.socials.github.username,
+        publicRepos,
+        source: isGithubLive ? "live" : "fallback",
+      },
+      leetcode: {
+        username: portfolioData.socials.leetcode.username,
+        ...leetcodeStats,
+        source: isLeetCodeLive ? "live" : "fallback",
+      },
+      linkedin: {
+        username: portfolioData.socials.linkedin.username,
+        followers: portfolioData.socials.linkedin.followers,
+      },
+    },
+    fetchedAt: new Date().toISOString(),
+    source: overallSource,
+  };
+}
