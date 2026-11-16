@@ -94,7 +94,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
           >
             <span className="flex items-center gap-2">
               <span className="text-slate-500">INIT //</span>
-              <span>distributed-grid & agent-runtime</span>
+              <span>fullstack-cloud & agent-runtime</span>
             </span>
             <span className="text-emerald-400 font-semibold flex items-center gap-1">
               {step >= 1 ? (

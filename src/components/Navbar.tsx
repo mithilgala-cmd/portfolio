@@ -35,11 +35,11 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Telemetry", href: "#telemetry", index: "01" },
-    { label: "Systems", href: "#projects", index: "02" },
-    { label: "Repos", href: "#repos", index: "03" },
-    { label: "Engineering", href: "#about", index: "04" },
-    { label: "Leadership", href: "#experience", index: "05" },
-    { label: "Credentials", href: "#certifications", index: "06" },
+    { label: "Repositories", href: "#repos", index: "02" },
+    { label: "Engineering", href: "#engineering", index: "03" },
+    { label: "Leadership", href: "#leadership", index: "04" },
+    { label: "Credentials", href: "#certifications", index: "05" },
+    { label: "Tooling", href: "#skills", index: "06" },
   ];
 
   return (
@@ -63,7 +63,7 @@ export default function Navbar() {
                 Mithil Gala
               </span>
               <span className="font-mono text-[9px] text-slate-500 uppercase tracking-widest -mt-0.5">
-                Systems v2.0
+                Engineering v2.0
               </span>
             </div>
           </Link>

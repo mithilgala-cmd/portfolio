@@ -16,7 +16,7 @@ type CategoryFilter = "All" | "AI & Agents" | "Cloud & DevOps" | "Data & BI" | "
 
 export default function Certifications() {
   const [selectedFilter, setSelectedFilter] = useState<CategoryFilter>("All");
-  const [showAll, setShowAll] = useState<boolean>(true); // default to showing all so all 17 are visible or easily filterable
+  const [showAll, setShowAll] = useState<boolean>(true);
 
   const allCerts = portfolioData.certifications;
   const totalCount = allCerts.length; // 17
@@ -43,7 +43,7 @@ export default function Certifications() {
     <section id="certifications" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <div className="section-index mb-8">
-        <span>06 // CREDENTIALS</span>
+        <span>05 // CREDENTIALS</span>
         <span className="text-slate-400 font-normal">17 Verified Licenses & Certifications</span>
       </div>
 

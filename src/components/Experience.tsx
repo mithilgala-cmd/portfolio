@@ -7,10 +7,10 @@ import SpotlightCard from "./SpotlightCard";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="leadership" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <div className="section-index mb-8">
-        <span>05 // LEADERSHIP</span>
+        <span>04 // LEADERSHIP</span>
         <span className="text-slate-400 font-normal">Executive Operations & Programs</span>
       </div>
 
