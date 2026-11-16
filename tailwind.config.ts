@@ -9,15 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#070b14",
-        surface: "#0f172a",
-        surfaceHover: "#162038",
-        borderDark: "#1e293b",
+        background: "#06080c",
+        surface: "#0b0f17",
+        surfaceHover: "#111824",
+        surfaceElevated: "#151e2e",
+        borderHairline: "rgba(255, 255, 255, 0.08)",
+        borderSubtle: "#1a2436",
+        borderActive: "rgba(56, 189, 248, 0.4)",
         cyanAccent: "#38bdf8",
-        cyanGlow: "rgba(56, 189, 248, 0.15)",
         lcEasy: "#00b8a3",
         lcMed: "#ffc01e",
         lcHard: "#ff375f",
+      },
+      fontFamily: {
+        mono: [
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          '"Liberation Mono"',
+          '"Courier New"',
+          "monospace",
+        ],
       },
     },
   },
@@ -25,4 +39,3 @@ const config: Config = {
 };
 
 export default config;
-

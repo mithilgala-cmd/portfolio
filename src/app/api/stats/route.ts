@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { portfolioData } from "@/data/portfolio";
 
-export const revalidate = 3600; // Cache for 1 hour
+export const revalidate = 900; // 15-minute ISR cache
 
 interface LeetCodeAcSubmission {
   difficulty: string;
@@ -30,10 +30,10 @@ export async function GET() {
   try {
     const ghRes = await fetch("https://api.github.com/users/mithilgala-cmd", {
       headers: {
-        "User-Agent": "MithilGala-Portfolio-Stats/1.0",
+        "User-Agent": "MithilGala-Systems-Portfolio/2.0",
         Accept: "application/vnd.github.v3+json",
       },
-      next: { revalidate: 3600 },
+      next: { revalidate: 900 },
     });
 
     if (ghRes.ok) {
@@ -71,7 +71,7 @@ export async function GET() {
         `,
         variables: { username: portfolioData.socials.leetcode.username },
       }),
-      next: { revalidate: 3600 },
+      next: { revalidate: 900 },
     });
 
     if (lcRes.ok) {
@@ -129,4 +129,3 @@ export async function GET() {
     },
   });
 }
-

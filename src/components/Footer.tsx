@@ -2,34 +2,32 @@
 
 import React from "react";
 import { portfolioData } from "@/data/portfolio";
-import { Github, Code2, Linkedin } from "lucide-react";
+import { Github, Code2, Linkedin, Radio } from "lucide-react";
 
 export default function Footer() {
-  const currentYear = 2026;
-
   return (
-    <footer className="border-t border-borderDark/80 bg-background/95 mt-16 py-10">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          {/* Copyright & Location */}
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-            <span className="font-semibold text-slate-200">
-              © {currentYear} {portfolioData.name}
+    <footer className="border-t border-white/10 bg-[#06080c] mt-20 py-12 font-mono">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
+          {/* Identity & Status */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+            <span className="font-bold text-white font-sans text-sm">
+              {portfolioData.name}
             </span>
-            <span className="hidden sm:inline text-slate-600">·</span>
-            <span className="text-slate-400">{portfolioData.location}</span>
+            <span className="hidden sm:inline text-slate-600">/</span>
+            <span className="text-slate-400">{portfolioData.subheadline}</span>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-5">
+          {/* Direct External Verified Profiles */}
+          <div className="flex items-center gap-6">
             <a
               href={portfolioData.socials.github.url}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="hover:text-cyanAccent transition-colors flex items-center gap-1.5"
+              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
             >
-              <Github className="w-4 h-4" />
+              <Github className="w-4 h-4 text-slate-300" />
               <span>GitHub</span>
             </a>
             <a
@@ -37,9 +35,9 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LeetCode Profile"
-              className="hover:text-cyanAccent transition-colors flex items-center gap-1.5"
+              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
             >
-              <Code2 className="w-4 h-4 text-[#ffc01e]" />
+              <Code2 className="w-4 h-4 text-amber-400" />
               <span>LeetCode</span>
             </a>
             <a
@@ -47,29 +45,36 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="hover:text-cyanAccent transition-colors flex items-center gap-1.5"
+              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
             >
-              <Linkedin className="w-4 h-4 text-[#0077b5]" />
+              <Linkedin className="w-4 h-4 text-sky-400" />
               <span>LinkedIn</span>
             </a>
           </div>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-borderDark/40 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500 text-center sm:text-left">
-          <p>
-            Built with Next.js 15 App Router, TypeScript & Tailwind CSS. Hosted on Vercel.
-          </p>
-          <p>
-            Portfolio URL:{" "}
+        {/* Structural Sub-footer */}
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1 text-emerald-400">
+              <Radio className="w-3 h-3 animate-pulse" />
+              <span>TELEMETRY_ONLINE</span>
+            </span>
+            <span>·</span>
+            <span>Next.js 15 App Router · TypeScript · Tailwind CSS</span>
+          </div>
+
+          <div>
+            <span>Canonical Domain: </span>
             <a
               href={portfolioData.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cyanAccent hover:underline"
+              className="text-cyan-400 hover:underline"
             >
-              {portfolioData.liveUrl.replace("https://", "")}
+              mithilgala.is-a.dev
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </footer>
