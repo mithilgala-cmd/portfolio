@@ -34,12 +34,12 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: "Telemetry", href: "#telemetry", index: "01" },
-    { label: "Repositories", href: "#repos", index: "02" },
-    { label: "Engineering", href: "#engineering", index: "03" },
+    { label: "Projects", href: "#projects", index: "01" },
+    { label: "Experience", href: "#experience", index: "02" },
+    { label: "Skills", href: "#skills", index: "03" },
     { label: "Leadership", href: "#leadership", index: "04" },
-    { label: "Credentials", href: "#certifications", index: "05" },
-    { label: "Tooling", href: "#skills", index: "06" },
+    { label: "Certifications", href: "#certifications", index: "05" },
+    { label: "Contact", href: "#contact", index: "06" },
   ];
 
   return (

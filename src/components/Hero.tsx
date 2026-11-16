@@ -9,6 +9,8 @@ import {
   Copy,
   Check,
   ArrowUpRight,
+  Mail,
+  FileText,
 } from "lucide-react";
 
 export default function Hero() {
@@ -16,6 +18,9 @@ export default function Hero() {
   const [totalSolved, setTotalSolved] = useState<number>(
     portfolioData.fallbackStats.leetcode.totalSolved
   );
+
+  // TODO(mithil): Add resume PDF file to public/resume.pdf to enable primary CTA button
+  const hasResumePdf = false;
 
   useEffect(() => {
     let isMounted = true;
@@ -47,7 +52,7 @@ export default function Hero() {
   return (
     <section className="pt-10 sm:pt-16 pb-12 sm:pb-16 max-w-6xl mx-auto px-4 sm:px-6">
       <div className="max-w-4xl">
-        {/* Status Pill Badge */}
+        {/* Availability Status Pill */}
         <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#0b0f17] border border-white/10 text-xs font-mono text-slate-300 mb-6 shadow-sm">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -65,57 +70,64 @@ export default function Hero() {
         <div className="font-mono text-xs sm:text-sm text-cyan-400 mb-6 flex flex-wrap items-center gap-2">
           <span>{portfolioData.subheadline}</span>
           <span className="text-slate-600 hidden sm:inline">•</span>
-          <span className="text-slate-400">Software Engineering · Full-Stack & Cloud · Agentic AI</span>
+          <span className="text-slate-400">Backend & Distributed Systems · Agentic AI</span>
         </div>
 
-        {/* Concrete, authentic engineering summary */}
-        <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed mb-8">
-          Computer Engineering undergraduate (&apos;27) focused on{" "}
-          <strong className="text-white font-semibold">Distributed Systems</strong>,{" "}
-          <strong className="text-white font-semibold">Backend Engineering</strong>, and{" "}
-          <strong className="text-white font-semibold">Agentic AI Architectures</strong>.
-          Track record of{" "}
-          <span className="inline-flex items-center gap-1 font-mono text-cyan-400 font-bold bg-cyan-950/40 px-1.5 py-0.5 rounded border border-cyan-400/20">
+        {/* Concrete Build Statement + Single Proof Point */}
+        <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-medium mb-5">
+          I build backend services, distributed algorithm simulations, and agentic AI workflows.
+          Backed by{" "}
+          <span className="font-mono text-cyan-400 font-bold bg-cyan-950/40 px-1.5 py-0.5 rounded border border-cyan-400/20">
             {totalSolved}+
           </span>{" "}
-          solved algorithmic problems on LeetCode (Beats 99.21% / Top 0.8% in Java). Experienced
-          maintaining live financial web infrastructure and directing large-scale university
-          operations.
+          algorithmic solutions on LeetCode (top 0.8% in Java) and ongoing maintenance of
+          financial web infrastructure for an RBI-registered NBFC.
         </p>
 
-        {/* Action CTAs */}
-        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 font-mono text-xs">
+        {/* Short Plain-English About */}
+        <div className="p-4 sm:p-5 rounded-xl bg-[#0b0f17] border border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2 mb-8 font-sans">
+          <div className="text-[11px] font-mono uppercase tracking-wider text-cyan-400 font-bold">
+            {"//"} About
+          </div>
+          <p>
+            Computer Engineering undergraduate (&apos;27) at MPSTME, NMIMS Mumbai with a core focus on
+            backend systems, distributed computing fundamentals, and autonomous agent loops.
+          </p>
+          <p>
+            Currently maintaining regulatory web portals, legacy PHP services, and DNS/SSL configurations
+            for Minolta Finance Ltd., while directing operational logistics across collegiate conclaves.
+          </p>
+        </div>
+
+        {/* Primary & Secondary Action CTAs */}
+        <div className="flex flex-wrap items-center gap-3 font-mono text-xs mb-6">
+          {hasResumePdf && (
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-[#06080c] font-semibold transition-all shadow-md shadow-cyan-950/30"
+            >
+              <FileText className="w-4 h-4" />
+              <span>Resume (PDF)</span>
+            </a>
+          )}
+
           <a
-            href={portfolioData.socials.github.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-white font-medium transition-all"
+            href="#contact"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/20 text-white font-medium transition-all"
           >
-            <Github className="w-4 h-4 text-slate-300" />
-            <span>GitHub (@{portfolioData.socials.github.username})</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
+            <Mail className="w-4 h-4 text-cyan-400" />
+            <span>Contact</span>
           </a>
 
           <a
-            href={portfolioData.socials.leetcode.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-amber-400/50 text-white font-medium transition-all"
+            href="mailto:mithil.gala@gmail.com"
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-[#0b0f17] border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-white transition-all"
+            title="Direct mailto link"
           >
-            <Code2 className="w-4 h-4 text-amber-400" />
-            <span>LeetCode ({totalSolved} Solved)</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
-          </a>
-
-          <a
-            href={portfolioData.socials.linkedin.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-sky-400/50 text-white font-medium transition-all"
-          >
-            <Linkedin className="w-4 h-4 text-sky-400" />
-            <span>LinkedIn (4,440+)</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
+            <Mail className="w-3.5 h-3.5 text-cyan-400" />
+            <span>mithil.gala@gmail.com</span>
           </a>
 
           <button
@@ -123,21 +135,57 @@ export default function Hero() {
             className={`inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg font-medium transition-all border ${
               copiedEmail
                 ? "bg-emerald-950/60 border-emerald-500/50 text-emerald-300"
-                : "bg-cyan-500/10 hover:bg-cyan-500/20 border-cyan-400/30 text-cyan-300"
+                : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300 hover:text-white"
             }`}
           >
             {copiedEmail ? (
               <>
                 <Check className="w-4 h-4 text-emerald-400" />
-                <span>mithil.gala@gmail.com [Copied!]</span>
+                <span>Copied!</span>
               </>
             ) : (
               <>
                 <Copy className="w-4 h-4 text-cyan-400" />
-                <span>Copy Direct Email</span>
+                <span>Copy Email</span>
               </>
             )}
           </button>
+        </div>
+
+        {/* Social Profile Links */}
+        <div className="flex flex-wrap items-center gap-2.5 font-mono text-xs">
+          <a
+            href={portfolioData.socials.github.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#0b0f17] border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-white transition-all text-[11px]"
+          >
+            <Github className="w-3.5 h-3.5 text-slate-400" />
+            <span>GitHub</span>
+            <ArrowUpRight className="w-3 h-3 text-slate-500" />
+          </a>
+
+          <a
+            href={portfolioData.socials.leetcode.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#0b0f17] border border-white/10 hover:border-amber-400/40 text-slate-300 hover:text-white transition-all text-[11px]"
+          >
+            <Code2 className="w-3.5 h-3.5 text-amber-400" />
+            <span>LeetCode ({totalSolved})</span>
+            <ArrowUpRight className="w-3 h-3 text-slate-500" />
+          </a>
+
+          <a
+            href={portfolioData.socials.linkedin.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#0b0f17] border border-white/10 hover:border-sky-400/40 text-slate-300 hover:text-white transition-all text-[11px]"
+          >
+            <Linkedin className="w-3.5 h-3.5 text-sky-400" />
+            <span>LinkedIn</span>
+            <ArrowUpRight className="w-3 h-3 text-slate-500" />
+          </a>
         </div>
       </div>
     </section>

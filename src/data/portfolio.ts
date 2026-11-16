@@ -17,6 +17,24 @@ export interface ExperienceItem {
   badge?: string;
 }
 
+export interface LeadershipItem {
+  id: string;
+  role: string;
+  organization: string;
+  period: string;
+  description: string;
+  highlights?: string[];
+  badge?: string;
+}
+
+export interface AchievementItem {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  metric?: string;
+}
+
 export interface Certification {
   id: string;
   title: string;
@@ -75,6 +93,8 @@ export interface PortfolioData {
   };
   publicRepositories: PublicRepo[];
   experience: ExperienceItem[];
+  leadership: LeadershipItem[];
+  achievements: AchievementItem[];
   certifications: Certification[];
   skills: SkillCategory[];
 }
@@ -258,39 +278,17 @@ export const portfolioData: PortfolioData = {
   ],
   experience: [
     {
-      id: "4c-advisory",
-      role: "Advisory",
-      organization: "4C – The Marketing Cell of NMIMS",
-      period: "Jul 2026 – Present",
+      id: "minolta-finance",
+      role: "Web Infrastructure & Backend Maintenance",
+      organization: "Minolta Finance Ltd. (RBI-Registered NBFC)",
+      period: "2024 – Present",
       description:
-        "Providing strategic advisory and mentorship to the executive board on operational workflows, university relations, and logistical scaling for large-format collegiate marketing events.",
-      badge: "Current Leadership",
-    },
-    {
-      id: "4c-vp-operations",
-      role: "Vice President – Operations",
-      organization: "4C – The Marketing Cell of NMIMS",
-      period: "Jul 2025 – Jul 2026",
-      description:
-        "Directed end-to-end operations, resource allocation, budgeting, logistics, and multi-department teams for three flagship campus events: Wings & Roots, DeBattle, and Roulette.",
+        "Maintain legacy PHP scripts, SSL/TLS certificates, DNS routing, and public regulatory disclosure portals in adherence to statutory compliance standards.",
       highlights: [
-        "Managed cross-functional coordination across hundreds of attendees, guest dignitaries, and student teams",
-        "Streamlined supply chain logistics and venue timelines, reducing downtime and operational friction",
+        "Maintain official regulatory disclosure portals and audit documents adhering to NBFC statutory mandates",
+        "Manage legacy PHP backend scripts, production server environments, and domain routing",
       ],
-      badge: "Executive Board",
-    },
-    {
-      id: "sattva-logistics-head",
-      role: "Head of Logistics",
-      organization: "Sattva NMIMS & Social Conclave",
-      period: "Jul 2025 – Jul 2026",
-      description:
-        "Led event logistics operations across flagship cultural and social conclave events, managing material inventory, stage tech coordination, and crowd safety compliance.",
-      highlights: [
-        "Scaled event logistics for multi-day conclaves welcoming delegates and speakers across India",
-        "Spearheaded vendor negotiation and emergency management protocols",
-      ],
-      badge: "Flagship Cultural & Conclave",
+      badge: "Production Web",
     },
     {
       id: "agentic-ai-program",
@@ -305,14 +303,53 @@ export const portfolioData: PortfolioData = {
       ],
       badge: "Academic Training",
     },
+  ],
+  leadership: [
+    {
+      id: "4c-advisory",
+      role: "Advisory",
+      organization: "4C – The Marketing Cell of NMIMS",
+      period: "Jul 2026 – Present",
+      description:
+        "Advise the executive board on operational workflows, university relations, and logistical scaling for large-format collegiate marketing events.",
+      badge: "Current Leadership",
+    },
+    {
+      id: "4c-vp-operations",
+      role: "Vice President – Operations",
+      organization: "4C – The Marketing Cell of NMIMS",
+      period: "Jul 2025 – Jul 2026",
+      description:
+        "Directed event operations, budgeting, venue logistics, and multi-department teams for flagship collegiate events hosting 500+ attendees.",
+      badge: "Executive Board",
+    },
+    {
+      id: "sattva-logistics-head",
+      role: "Head of Logistics",
+      organization: "Sattva NMIMS & Social Conclave",
+      period: "Jul 2025 – Jul 2026",
+      description:
+        "Led event logistics operations across flagship cultural and social conclave events, managing material inventory, stage technical setups, and vendor timelines.",
+      badge: "Flagship Conclave",
+    },
     {
       id: "taqneeq-subhead",
       role: "Logistics Subhead",
       organization: "TAQNEEQ 17.0 – Official Tech Fest of MPSTME",
       period: "Jul 2024 – Jul 2025",
       description:
-        "Managed technical event infrastructure, scheduling, and venue coordination for NMIMS Mumbai's annual flagship technology festival.",
+        "Managed technical event infrastructure, venue scheduling, and logistics for NMIMS Mumbai's annual flagship technology festival.",
       badge: "Tech Fest Leadership",
+    },
+  ],
+  achievements: [
+    {
+      id: "half-marathon",
+      title: "Endurance Running Regimen",
+      category: "Endurance & Discipline",
+      description:
+        "Trained for timed 21.1 km half-marathons in Mumbai, balancing structured distance running regimens with engineering studies and campus operations.",
+      metric: "21.1 KM Half-Marathon Regimen",
     },
   ],
   certifications: [

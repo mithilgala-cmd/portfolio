@@ -42,11 +42,11 @@ export default function Projects() {
   };
 
   return (
-    <section id="repos" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="projects" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <div className="section-index mb-8">
-        <span>02 // REPOSITORIES</span>
-        <span className="text-slate-400 font-normal">Public Engineering Index</span>
+        <span>01 // PROJECTS</span>
+        <span className="text-slate-400 font-normal">Featured Systems & Repositories</span>
       </div>
 
       {/* Filter Tabs Bar */}
@@ -122,8 +122,7 @@ export default function Projects() {
             </div>
 
             {/* Direct GitHub Link */}
-            <div className="pt-3 border-t border-white/5 flex items-center justify-between font-mono text-xs">
-              <span className="text-slate-500 text-[11px]">github.com/mithilgala-cmd</span>
+            <div className="pt-3 border-t border-white/5 flex items-center justify-end font-mono text-xs">
               <a
                 href={repo.url}
                 target="_blank"
