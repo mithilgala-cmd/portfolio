@@ -18,14 +18,21 @@ This document tracks all data points, assets, and verification items requiring c
 
 ---
 
-## 3. Certification Direct Verification URLs
+## 3. Professional Headshot / Avatar
+- **Item**: Headshot image for Hero or About sections.
+- **Status**: No personal headshot file is currently in `public/`. A clean monospace monogram mark (`MG`) is used in the navigation header.
+- **Action Required**: Place a professional headshot at `public/headshot.jpg` if you want a photographic profile image rendered.
+
+---
+
+## 4. Certification Direct Verification URLs
 - **Item**: Certificate cards feature a "Verify" link only when a per-credential verification URL is available.
 - **Status**: Generic LinkedIn certification list URLs were removed. "Verify" button is currently hidden on all cards until direct credential URLs are supplied.
 - **Action Required**: Provide direct verification URLs (e.g., Credly URLs for AWS Academy, direct Anthropic verification links, or Udemy certificate verification links) in `src/data/portfolio.ts`.
 
 ---
 
-## 4. Case Study Architecture Diagrams
+## 5. Case Study Architecture Diagrams
 - **Item**: Architecture diagrams for the 4 featured projects:
   - `infrapulse` (`/projects/infrapulse`)
   - `agent-orchestration-system` (`/projects/agent-orchestration-system`)
@@ -36,37 +43,35 @@ This document tracks all data points, assets, and verification items requiring c
 
 ---
 
-## 5. Case Study Technical Decisions & Tradeoffs
+## 6. Case Study Technical Decisions & Tradeoffs
 - **Item**: Key decision, rejected alternative, and engineering rationale for each of the 4 featured projects.
 - **Status**: Hidden in UI until populated in `src/data/projects.ts`.
 - **Action Required**: Provide the technical decision, rejected alternative, and tradeoff rationale in `keyDecision` within `src/data/projects.ts`.
 
 ---
 
-## 6. Case Study Quantified Performance Benchmarks & Results
+## 7. Case Study Quantified Performance Benchmarks & Results
 - **Item**: Real, measured benchmarks (e.g. latency, throughput, requests/sec, rate limiting accuracy) for each featured project.
 - **Status**: Hidden in UI to prevent unverified or invented numbers.
 - **Action Required**: Provide real benchmark metrics in `results` within `src/data/projects.ts`.
 
 ---
 
-## 7. Case Study Known Limitations & Next Steps
+## 8. Case Study Known Limitations & Next Steps
 - **Item**: Technical constraints and roadmap items for each featured project.
 - **Status**: Hidden in UI until documented.
 - **Action Required**: Populate `limitations` and `nextSteps` arrays in `src/data/projects.ts`.
 
 ---
 
-## 8. Case Study Live Demo URLs
+## 9. Case Study Live Demo URLs
 - **Item**: Live interactive or deployed demo links for the featured projects.
 - **Status**: Hidden in UI (only GitHub repository links are rendered).
 - **Action Required**: Add live URLs in `links.demo` within `src/data/projects.ts` if hosted.
 
 ---
 
-## 9. Privacy-Friendly Analytics Provider
+## 10. Privacy-Friendly Analytics Provider Choice
 - **Item**: Site analytics integration.
 - **Status**: No third-party analytics script or dependency injected. Placeholder left in `src/app/layout.tsx`.
 - **Action Required**: Decide on privacy-friendly analytics (e.g. Cloudflare Web Analytics beacon token, Plausible, or self-hosted Umami script) and paste the token/script into `src/app/layout.tsx`.
-
----
