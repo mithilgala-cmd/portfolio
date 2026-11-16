@@ -53,12 +53,12 @@ export default function Hero() {
     <section className="pt-10 sm:pt-16 pb-12 sm:pb-16 max-w-6xl mx-auto px-4 sm:px-6">
       <div className="max-w-4xl">
         {/* Availability Status Pill */}
-        <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#0b0f17] border border-white/10 text-xs font-mono text-slate-300 mb-6 shadow-sm">
-          <span className="relative flex h-2 w-2">
+        <div className="inline-flex max-w-full items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#0b0f17] border border-white/10 text-xs font-mono text-slate-300 mb-6 shadow-sm overflow-hidden">
+          <span className="relative flex h-2 w-2 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          <span className="truncate">{portfolioData.statusBadge}</span>
+          <span className="truncate min-w-0">{portfolioData.statusBadge}</span>
         </div>
 
         {/* Primary Headline */}
@@ -87,7 +87,7 @@ export default function Hero() {
         {/* Short Plain-English About */}
         <div className="p-4 sm:p-5 rounded-xl bg-[#0b0f17] border border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2 mb-8 font-sans">
           <div className="text-[11px] font-mono uppercase tracking-wider text-cyan-400 font-bold">
-            {"//"} About
+            About
           </div>
           <p>
             Computer Engineering undergraduate (&apos;27) at MPSTME, NMIMS Mumbai with a core focus on

@@ -8,7 +8,8 @@ export default function Experience() {
     <section id="experience" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <h2 className="section-index mb-8">
-        <span>02 // EXPERIENCE</span>
+        <span>02</span>
+        <span>Experience</span>
         <span className="text-slate-400 font-normal">Production & Engineering Experience</span>
       </h2>
 

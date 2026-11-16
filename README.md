@@ -53,6 +53,13 @@ Personal engineering portfolio for **Mithil Gala** (B.Tech Computer Engineering 
 ### 4. Zero Inventory of Unsubstantiated Claims
 - **Decision**: All metrics, benchmark claims, and titles are tied strictly to verifiable source code or official records. Any metrics requiring private benchmarking or local files (such as `resume.pdf`) use code-level `TODO(mithil)` placeholders that remain hidden until populated.
 
+### 5. Content Security Policy (CSP) Tradeoffs
+- **Decision**: Configured a strict Content Security Policy in `next.config.ts`:
+  ```http
+  default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' https://api.github.com https://leetcode.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
+  ```
+- **Tradeoff**: In a static-export or ISR Next.js App Router environment where server middleware nonce generation adds dynamic per-request runtime overhead, `'unsafe-inline'` is scoped minimally to permit Next.js inline hydration scripts, dynamic `next/og` image routes, and inline JSON-LD Person schema. Direct external connections are locked strictly to `'self'`, `https://api.github.com`, and `https://leetcode.com`, preventing unauthorized network exfiltration, while `frame-ancestors 'none'` prevents clickjacking.
+
 ---
 
 ## Project Structure

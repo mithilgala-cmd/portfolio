@@ -18,7 +18,8 @@ export default function Contact() {
     <section id="contact" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <h2 className="section-index mb-8">
-        <span>06 // CONTACT</span>
+        <span>06</span>
+        <span>Contact</span>
         <span className="text-slate-400 font-normal">Get In Touch</span>
       </h2>
 
@@ -26,7 +27,7 @@ export default function Contact() {
         <div className="max-w-2xl">
           <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-semibold mb-2">
             <Mail className="w-4 h-4" />
-            <span>COMMUNICATION // DIRECT</span>
+            <span>Direct Communication</span>
           </div>
 
           <h3 className="text-2xl sm:text-3xl font-bold text-white font-sans mb-3">

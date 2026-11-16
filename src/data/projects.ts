@@ -84,7 +84,7 @@ export const featuredProjects: CaseStudyData[] = [
     repoName: "smart-gateway-mcp",
     tagline:
       "API gateway with Redis token-bucket rate limiting and Model Context Protocol server integration.",
-    language: "JavaScript / TypeScript",
+    language: "JavaScript",
     highlight: "Redis Token-Bucket & MCP",
     repoUrl: "https://github.com/mithilgala-cmd/smart-gateway-mcp",
     problem:
@@ -102,12 +102,11 @@ export const featuredProjects: CaseStudyData[] = [
   },
   {
     slug: "distributed-consensus-simulations",
-    title: "Distributed Consensus & Mutual Exclusion",
+    title: "Distributed algorithm simulations",
     repoName: "portfolio-projects",
-    tagline:
-      "Simulations of classic distributed algorithms including Bully leader election and Ricart–Agrawala mutual exclusion.",
+    tagline: "Bully and Ricart–Agrawala simulations.",
     language: "Python",
-    highlight: "Distributed Algorithms Simulation",
+    highlight: "Distributed Algorithms",
     repoUrl: "https://github.com/mithilgala-cmd/portfolio-projects",
     problem:
       "Understanding failure modes, message complexity, and race conditions in decentralized computing environments requires rigorous programmatic simulation of leader election protocols and distributed mutual exclusion.",
@@ -123,3 +122,12 @@ export const featuredProjects: CaseStudyData[] = [
     },
   },
 ];
+
+export function isComprehensiveCaseStudy(project: CaseStudyData): boolean {
+  return Boolean(
+    project.problem &&
+      (project.architectureDescription || project.architectureDiagramUrl) &&
+      project.keyDecision?.chosen &&
+      project.keyDecision?.rationale
+  );
+}

@@ -8,7 +8,8 @@ export default function Leadership() {
     <section id="leadership" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <h2 className="section-index mb-8">
-        <span>04 // LEADERSHIP</span>
+        <span>04</span>
+        <span>Leadership</span>
         <span className="text-slate-400 font-normal">Leadership & Achievements</span>
       </h2>
 

@@ -184,7 +184,7 @@ export default function CommandPalette({
         id: "repo-smart-gateway",
         category: "Repositories",
         title: "smart-gateway-mcp",
-        description: "Redis sliding token-bucket rate limiter & MCP server",
+        description: "Redis token-bucket rate limiter & MCP server",
         icon: <Terminal className="w-4 h-4 text-purple-400" />,
         action: () => openUrl("https://github.com/mithilgala-cmd/smart-gateway-mcp"),
       },

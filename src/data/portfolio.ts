@@ -292,11 +292,11 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "agentic-ai-program",
-      role: "5-Day Agentic AI Hands-on Training",
+      role: "5-Day International Agentic AI Program",
       organization: "MPSTME, NMIMS (Conducted by Dr. Shun Okuhara & Dr. Haruka Murai, Mie University, Japan)",
       period: "Sep 2026",
       description:
-        "Completed a 5-day, ~30-hour hands-on training program covering autonomous agent loops, tool integration, and multi-agent workflows conducted by visiting faculty from Japan.",
+        "5-Day International Agentic AI Program, ~30 hours, taught by visiting faculty from Japan. Covered autonomous agent loops, tool integration, and multi-agent workflows.",
       highlights: [
         "Constructed tool-calling autonomous loops with evaluation-guided task refinement",
         "Implemented multi-agent coordination and automated task dispatch workflows",

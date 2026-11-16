@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { featuredProjects } from "@/data/projects";
+import { featuredProjects, isComprehensiveCaseStudy } from "@/data/projects";
 import {
   ArrowLeft,
   Github,
@@ -32,12 +32,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!project) {
     return {
       title: "Project Not Found",
+      robots: { index: false, follow: false },
     };
   }
+
+  const isFull = isComprehensiveCaseStudy(project);
 
   return {
     title: `${project.title} · Case Study | Mithil Gala`,
     description: project.tagline,
+    robots: isFull
+      ? { index: true, follow: true }
+      : { index: false, follow: true },
   };
 }
 
@@ -59,7 +65,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             className="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors py-1"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>cd .. // Back to Projects</span>
+            <span>Back to Projects</span>
           </Link>
         </div>
 
@@ -115,7 +121,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           <section className="space-y-3">
             <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-semibold">
               <Terminal className="w-4 h-4" />
-              <span>01 // THE_PROBLEM</span>
+              <span>01 · Problem</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-white">Problem Statement</h2>
             <div className="p-5 rounded-xl bg-[#0b0f17] border border-white/10 text-sm text-slate-300 leading-relaxed">
@@ -129,7 +135,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-indigo-400 font-mono text-xs font-semibold">
                 <Layers className="w-4 h-4" />
-                <span>02 // ARCHITECTURE</span>
+                <span>02 · Architecture</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-white">System Architecture</h2>
               <div className="p-5 rounded-xl bg-[#0b0f17] border border-white/10 text-sm text-slate-300 leading-relaxed space-y-4">
@@ -156,7 +162,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-semibold">
                 <GitBranch className="w-4 h-4" />
-                <span>03 // KEY_DECISION</span>
+                <span>03 · Key Decision</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-white">
                 Technical Tradeoff & Decision
@@ -190,7 +196,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-semibold">
                 <Cpu className="w-4 h-4" />
-                <span>04 // VERIFIED_RESULTS</span>
+                <span>04 · Results</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-white">Quantified Outcomes</h2>
               <div className="p-5 rounded-xl bg-[#0b0f17] border border-white/10 space-y-4">
@@ -215,7 +221,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-orange-400 font-mono text-xs font-semibold">
                 <AlertTriangle className="w-4 h-4" />
-                <span>05 // LIMITATIONS</span>
+                <span>05 · Limitations</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-white">Known Constraints</h2>
               <div className="p-5 rounded-xl bg-[#0b0f17] border border-white/10">
@@ -234,7 +240,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-semibold">
                 <Lightbulb className="w-4 h-4" />
-                <span>06 // NEXT_ITERATIONS</span>
+                <span>06 · Next Steps</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-white">What I&apos;d Build Next</h2>
               <div className="p-5 rounded-xl bg-[#0b0f17] border border-white/10">

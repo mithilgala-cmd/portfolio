@@ -46,7 +46,8 @@ export default function Certifications() {
     <section id="certifications" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <h2 className="section-index mb-8">
-        <span>05 // CERTIFICATIONS</span>
+        <span>05</span>
+        <span>Certifications</span>
         <span className="text-slate-400 font-normal">Licenses & Certifications</span>
       </h2>
 

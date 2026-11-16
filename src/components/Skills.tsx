@@ -15,7 +15,8 @@ export default function Skills() {
     <section id="skills" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <h2 className="section-index mb-8">
-        <span>03 // SKILLS</span>
+        <span>03</span>
+        <span>Skills</span>
         <span className="text-slate-400 font-normal">Technical Competencies</span>
       </h2>
 
@@ -43,7 +44,7 @@ export default function Skills() {
             </div>
 
             <div className="mt-6 pt-3 border-t border-white/5 text-[11px] text-slate-400 font-mono">
-              {"//"} {cat.skills.length} technical competencies
+              {cat.skills.length} technical competencies
             </div>
           </SpotlightCard>
         ))}

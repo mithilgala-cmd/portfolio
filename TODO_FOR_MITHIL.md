@@ -75,3 +75,10 @@ This document tracks all data points, assets, and verification items requiring c
 - **Item**: Site analytics integration.
 - **Status**: No third-party analytics script or dependency injected. Placeholder left in `src/app/layout.tsx`.
 - **Action Required**: Decide on privacy-friendly analytics (e.g. Cloudflare Web Analytics beacon token, Plausible, or self-hosted Umami script) and paste the token/script into `src/app/layout.tsx`.
+
+---
+
+## 11. `portfolio-projects` Repository Visibility / URL
+- **Item**: Card 4 repository link (`https://github.com/mithilgala-cmd/portfolio-projects`).
+- **Status**: Fact audit revealed `https://github.com/mithilgala-cmd/portfolio-projects` returns HTTP 404 (repository is private or not yet published). The card is retained on the home page as "Distributed algorithm simulations" with verified wording "Bully and Ricart–Agrawala simulations".
+- **Action Required**: Either set `portfolio-projects` to public on GitHub with the simulation code, or repoint the card link if the code is stored in another repository.

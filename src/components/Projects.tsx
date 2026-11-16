@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
-import { featuredProjects } from "@/data/projects";
+import { featuredProjects, isComprehensiveCaseStudy } from "@/data/projects";
 import {
   ArrowUpRight,
   Terminal,
@@ -48,7 +48,8 @@ export default function Projects() {
     <section id="projects" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <h2 className="section-index mb-8">
-        <span>01 // PROJECTS</span>
+        <span>01</span>
+        <span>Projects</span>
         <span className="text-slate-400 font-normal">Featured Systems & Repositories</span>
       </h2>
 
@@ -84,24 +85,39 @@ export default function Projects() {
             </div>
 
             <div className="pt-4 border-t border-white/5 flex items-center justify-between font-mono text-xs">
-              <Link
-                href={`/projects/${project.slug}`}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-400/30 transition-all"
-              >
-                <BookOpen className="w-3.5 h-3.5" />
-                <span>Case Study</span>
-                <span>→</span>
-              </Link>
+              {isComprehensiveCaseStudy(project) ? (
+                <>
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-400/30 transition-all focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Case Study</span>
+                    <span>→</span>
+                  </Link>
 
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-slate-400 hover:text-white transition-colors"
-              >
-                <span>Code</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-slate-400 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  >
+                    <span>Code</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </>
+              ) : (
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-400/30 font-medium transition-all focus-visible:ring-2 focus-visible:ring-cyan-400"
+                >
+                  <FolderGit2 className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>GitHub Repository</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              )}
             </div>
           </SpotlightCard>
         ))}
