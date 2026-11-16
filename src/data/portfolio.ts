@@ -6,7 +6,17 @@ export interface Project {
   architectureHighlights: string[];
   techTags: string[];
   githubUrl: string;
+  secondaryUrl?: string;
   statusBadge: string;
+}
+
+export interface PublicRepo {
+  name: string;
+  language: string;
+  categoryTag: "All" | "Java" | "Python" | "JavaScript / TS";
+  description: string;
+  url: string;
+  highlight?: string;
 }
 
 export interface ExperienceItem {
@@ -43,6 +53,7 @@ export interface PortfolioData {
   statusBadge: string;
   bio: string;
   location: string;
+  email: string;
   liveUrl: string;
   socials: {
     github: {
@@ -75,6 +86,7 @@ export interface PortfolioData {
     };
   };
   projects: Project[];
+  publicRepositories: PublicRepo[];
   experience: ExperienceItem[];
   certifications: Certification[];
   skills: SkillCategory[];
@@ -85,10 +97,11 @@ export const portfolioData: PortfolioData = {
   brandMark: "MG.",
   headline: "Mithil Gala",
   subheadline: "B.Tech Computer Engineering '27 · MPSTME, NMIMS Mumbai",
-  statusBadge: "Open to 2027 Software Engineering Internships & Roles",
-  bio: "Software developer focused on Java, Data Structures & Algorithms, Distributed Systems, and Full-Stack Web Development. Proven track record of solving 625+ algorithmic problems and leading large-scale student operations as Ex-VP Operations at 4C NMIMS.",
+  statusBadge: "Open to 2027 Software Engineering Internships & Roles · Mumbai / Remote",
+  bio: "Systems and software engineer with focused expertise in Distributed Systems, High-Concurrency Architectures, Agentic AI, and Full-Stack Cloud Platforms. 630+ verified algorithmic solutions in Java and Python (Top 0.8% LeetCode Java ranking). Track record maintaining live financial web infrastructure and directing large-scale campus engineering operations.",
   location: "Mumbai, India",
-  liveUrl: "https://mithilgala.vercel.app",
+  email: "mithil.gala@gmail.com",
+  liveUrl: "https://mithilgala.is-a.dev",
   socials: {
     github: {
       username: "mithilgala-cmd",
@@ -107,16 +120,16 @@ export const portfolioData: PortfolioData = {
   },
   fallbackStats: {
     leetcode: {
-      totalSolved: 626,
-      easy: 306,
-      medium: 243,
+      totalSolved: 630,
+      easy: 308,
+      medium: 245,
       hard: 77,
       acceptanceRate: "85.93%",
       maxStreak: "141-day max streak",
       rankingHighlight: "Top 0.8% / Beats 99.21% in Java",
     },
     github: {
-      publicRepos: 18,
+      publicRepos: 15,
     },
   },
   projects: [
@@ -125,66 +138,204 @@ export const portfolioData: PortfolioData = {
       title: "Decentralized Smart Energy Grid",
       category: "Distributed Computing",
       description:
-        "Architected a fault-tolerant peer-to-peer smart energy grid eliminating single points of failure across decentralized solar, wind, storage, and consumer nodes. Achieved ~90% fault tolerance and ultra-low latency state synchronization under simulated cluster network partitions.",
+        "Architected a fault-tolerant peer-to-peer smart energy grid eliminating single points of failure across decentralized solar, wind, storage, and consumer nodes. Achieved ~90% fault tolerance and deterministic state synchronization under simulated cluster network partitions.",
       architectureHighlights: [
-        "Dynamic leader election via optimized Bully Algorithm ensuring zero orphaned partitions",
-        "Conflict-free distributed mutual exclusion using Ricart–Agrawala algorithm",
-        "Decentralized state gossip with Lamport Logical Clocks and k-node replication",
+        "Dynamic coordinator election via optimized Bully Algorithm ensuring zero orphaned partitions upon node failure",
+        "Conflict-free distributed mutual exclusion using Ricart–Agrawala algorithm for shared power bus arbitration",
+        "Decentralized state gossip with Lamport Logical Clocks and quorum-based k-node replication",
       ],
       techTags: [
-        "Gossip Protocol",
+        "Java",
         "Bully Algorithm",
         "Ricart–Agrawala",
         "Lamport Logical Clocks",
-        "k-Node Replication",
-        "Java",
+        "Gossip Protocol",
+        "P2P Consensus",
       ],
-      githubUrl: "https://github.com/mithilgala-cmd",
-      statusBadge: "Distributed Systems Architecture",
+      githubUrl: "https://github.com/mithilgala-cmd/portfolio-projects",
+      statusBadge: "Distributed Consensus Engine",
     },
     {
       id: "autonomous-multi-agent",
       title: "Autonomous Multi-Agent Workflow System",
       category: "Agentic AI & Capstone '27",
       description:
-        "Building an autonomous multi-agent task execution system featuring an iterative Plan → Act → Evaluate → Iterate → Goal execution loop. Leverages specialized agent workers, dynamic tool invocation, structured evaluation checkpoints, and human-in-the-loop oversight.",
+        "Multi-agent task orchestration system featuring an autonomous Plan → Act → Evaluate → Iterate → Goal execution loop. Leverages specialized agent workers, schema-driven tool calling, structured evaluation checkpoints, and human-in-the-loop escalation.",
       architectureHighlights: [
-        "Directed agent orchestration graph using LangChain and Python for deterministic step routing",
-        "Dynamic schema-driven tool calling with automated retry loops and validation fallbacks",
-        "Continuous evaluation feedback loop ensuring objective alignment before final output generation",
+        "Directed agent orchestration graph in Python for deterministic step routing and state persistence",
+        "Dynamic JSON schema-driven tool calling with automated retry loops and parameter validation guardrails",
+        "Self-correcting evaluation feedback loop ensuring objective convergence prior to final output delivery",
       ],
       techTags: [
         "Python",
         "LangChain",
         "Multi-Agent Systems",
         "LLM Tool Calling",
-        "Autonomous Agents",
+        "State Graphs",
+        "Autonomous Execution",
       ],
-      githubUrl: "https://github.com/mithilgala-cmd",
-      statusBadge: "Capstone '27 In-Progress",
+      githubUrl: "https://github.com/mithilgala-cmd/agent-orchestration-system",
+      statusBadge: "Capstone '27 Core",
     },
     {
       id: "fullstack-cloud-systems",
       title: "Full-Stack Web & Cloud Systems",
-      category: "MERN & AWS",
+      category: "Cloud Systems & MCP",
       description:
-        "End-to-end full-stack web applications and robust cloud backend architectures built with modern JavaScript frameworks, relational/NoSQL hybrid data modeling, and secure AWS infrastructure components.",
+        "High-throughput API gateway and rate-limiting infrastructure featuring Redis token-bucket caching, n8n webhook automations, and custom Model Context Protocol (MCP) server endpoints alongside production MERN backends.",
       architectureHighlights: [
-        "Scalable RESTful API backends with express routing, validation, and JWT security middleware",
-        "Optimized data querying across MongoDB Atlas collections and relational PostgreSQL/MySQL schemas",
-        "Cloud configuration management integrating AWS RDS multi-AZ deployments and AWS Secrets Manager",
+        "Distributed sliding token-bucket rate limiter with atomic Redis pipeline counters and cache hit acceleration",
+        "Model Context Protocol (MCP) server integration exposing verified tools for secure agent-driven execution",
+        "Production RESTful backend services with strict validation, JWT auth, and hybrid MongoDB / SQL schemas",
       ],
       techTags: [
-        "Java",
-        "React",
-        "Node.js",
-        "Express",
+        "JavaScript / Node.js",
+        "Redis",
+        "Model Context Protocol",
+        "Express.js",
         "MongoDB",
-        "SQL",
         "AWS",
       ],
-      githubUrl: "https://github.com/mithilgala-cmd",
-      statusBadge: "Full-Stack Production Architecture",
+      githubUrl: "https://github.com/mithilgala-cmd/smart-gateway-mcp",
+      secondaryUrl: "https://github.com/mithilgala-cmd/mern-student-management-system",
+      statusBadge: "MCP Gateway & Production APIs",
+    },
+  ],
+  publicRepositories: [
+    {
+      name: "infrapulse",
+      language: "Java",
+      categoryTag: "Java",
+      description:
+        "Enterprise infrastructure monitoring and troubleshooting platform for Linux systems with automated anomaly detection, incident management, and diagnostic workflows.",
+      url: "https://github.com/mithilgala-cmd/infrapulse",
+      highlight: "Linux Telemetry & Diagnostics",
+    },
+    {
+      name: "agent-orchestration-system",
+      language: "Python",
+      categoryTag: "Python",
+      description:
+        "Multi-agent orchestration platform with tool use, persistent memory, and human-in-the-loop escalation.",
+      url: "https://github.com/mithilgala-cmd/agent-orchestration-system",
+      highlight: "Autonomous Agent Runtime",
+    },
+    {
+      name: "smart-gateway-mcp",
+      language: "JavaScript",
+      categoryTag: "JavaScript / TS",
+      description:
+        "Smart API Gateway & Rate-Limiter Console featuring Redis token-bucket caching, n8n workflows, and a custom MCP server.",
+      url: "https://github.com/mithilgala-cmd/smart-gateway-mcp",
+      highlight: "Redis Token-Bucket & MCP",
+    },
+    {
+      name: "ChargeWise_EdgeAI",
+      language: "Python",
+      categoryTag: "Python",
+      description:
+        "Intelligent EV Charging & Battery Optimization Platform built for Tata Technologies InnoVent-27.",
+      url: "https://github.com/mithilgala-cmd/ChargeWise_EdgeAI",
+      highlight: "Tata InnoVent-27 Selection",
+    },
+    {
+      name: "crop-weather-pipeline",
+      language: "Python",
+      categoryTag: "Python",
+      description:
+        "End-to-end data engineering pipeline correlating India mandi crop prices with weather data using Airflow, dbt, DuckDB, and Streamlit.",
+      url: "https://github.com/mithilgala-cmd/crop-weather-pipeline",
+      highlight: "Airflow + dbt + DuckDB",
+    },
+    {
+      name: "mern-student-management-system",
+      language: "JavaScript",
+      categoryTag: "JavaScript / TS",
+      description:
+        "Full-stack Student Management System built with MongoDB, Express, React, and Node.js.",
+      url: "https://github.com/mithilgala-cmd/mern-student-management-system",
+      highlight: "Full-Stack MERN Architecture",
+    },
+    {
+      name: "leetcode-java",
+      language: "Java",
+      categoryTag: "Java",
+      description:
+        "Structured LeetCode DSA solutions and algorithmic pattern implementations in Java.",
+      url: "https://github.com/mithilgala-cmd/leetcode-java",
+      highlight: "Top 0.8% Java DSA Solutions",
+    },
+    {
+      name: "dsa-patterns-python",
+      language: "Python",
+      categoryTag: "Python",
+      description:
+        "Python data structures, coding interview patterns, and time/space complexity notes.",
+      url: "https://github.com/mithilgala-cmd/dsa-patterns-python",
+      highlight: "Algorithmic Interview Patterns",
+    },
+    {
+      name: "enterprise-servicedesk",
+      language: "Java",
+      categoryTag: "Java",
+      description:
+        "Enterprise IT service desk architecture and workflow repository for incident lifecycle orchestration.",
+      url: "https://github.com/mithilgala-cmd/enterprise-servicedesk",
+      highlight: "ITIL Workflow Architecture",
+    },
+    {
+      name: "LocalConnect",
+      language: "Java",
+      categoryTag: "Java",
+      description:
+        "Java local networking and service discovery application for high-throughput LAN communication.",
+      url: "https://github.com/mithilgala-cmd/LocalConnect",
+      highlight: "Socket Networking & Discovery",
+    },
+    {
+      name: "portfolio",
+      language: "TypeScript",
+      categoryTag: "JavaScript / TS",
+      description:
+        "Personal Next.js 15 App Router portfolio with live ISR GitHub & LeetCode telemetry and interactive systems widgets.",
+      url: "https://github.com/mithilgala-cmd/portfolio",
+      highlight: "Next.js 15 Systems Engineering",
+    },
+    {
+      name: "portfolio-projects",
+      language: "Python",
+      categoryTag: "Python",
+      description:
+        "Collection of DSA, Java, Python, Web, and ML implementations including distributed algorithm simulations.",
+      url: "https://github.com/mithilgala-cmd/portfolio-projects",
+      highlight: "Distributed Grid Simulations",
+    },
+    {
+      name: "Football-player-market-value-prediction",
+      language: "Python",
+      categoryTag: "Python",
+      description:
+        "Machine learning model predicting football player market values from performance stats and player metrics.",
+      url: "https://github.com/mithilgala-cmd/Football-player-market-value-prediction",
+      highlight: "Predictive ML Regression",
+    },
+    {
+      name: "Spotify-GestureControl",
+      language: "Python",
+      categoryTag: "Python",
+      description:
+        "Real-time webcam hand-gesture Spotify playback controller using OpenCV, MediaPipe, and Spotipy.",
+      url: "https://github.com/mithilgala-cmd/Spotify-GestureControl",
+      highlight: "Computer Vision & Edge Control",
+    },
+    {
+      name: "register",
+      language: "JavaScript",
+      categoryTag: "JavaScript / TS",
+      description:
+        "Custom DNS routing and domain records configuration for mithilgala.is-a.dev.",
+      url: "https://github.com/mithilgala-cmd/register",
+      highlight: "DNS & Edge Configuration",
     },
   ],
   experience: [
@@ -271,7 +422,8 @@ export const portfolioData: PortfolioData = {
       id: "cert-aws-cloud",
       title: "AWS Academy Graduate - Cloud Architecting",
       issuer: "Amazon Web Services (AWS)",
-      issueDate: "2026",
+      issueDate: "Sep 2026",
+      credentialId: "7FcufFZw",
       credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "Cloud & DevOps",
       featured: true,
@@ -279,8 +431,9 @@ export const portfolioData: PortfolioData = {
     {
       id: "cert-power-bi",
       title: "Microsoft Power BI Desktop for Business Intelligence",
-      issuer: "Microsoft",
+      issuer: "Udemy",
       issueDate: "Apr 2026",
+      credentialId: "UC-ded8cd88-7109-4991-8869-d4f611e94374",
       credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "Data & BI",
       featured: true,
@@ -288,124 +441,129 @@ export const portfolioData: PortfolioData = {
     {
       id: "cert-ai-certs-projects",
       title: "Managing Projects with AI",
-      issuer: "AI CERTs × Coursera",
+      issuer: "AI CERTs",
       issueDate: "Sep 2026",
+      credentialId: "5KJPML745IGH",
       credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: true,
     },
-    /*
-     * =========================================================================
-     * PLACEHOLDER ARRAY FOR THE REMAINING 12 CERTIFICATIONS (FROM LINKEDIN EXPORT)
-     * You can directly update the title, issuer, issueDate, and category below.
-     * All entries link to your verified LinkedIn certifications profile:
-     * https://www.linkedin.com/in/mithilgala/details/certifications/
-     * =========================================================================
-     */
     {
-      id: "cert-cloud-foundations",
-      title: "AWS Academy Cloud Foundations",
-      issuer: "Amazon Web Services",
-      issueDate: "2026",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Cloud & DevOps",
-      featured: false,
-    },
-    {
-      id: "cert-dsa-java",
-      title: "Data Structures & Algorithms in Java Specialization",
-      issuer: "Coursera / Academic Institution",
-      issueDate: "2025",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Software Eng",
-      featured: false,
-    },
-    {
-      id: "cert-distributed-systems",
-      title: "Distributed Computing & System Design Fundamentals",
-      issuer: "Online Learning Platform",
-      issueDate: "2026",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Software Eng",
-      featured: false,
-    },
-    {
-      id: "cert-langchain-rag",
-      title: "Building Applications with LangChain & Agentic LLMs",
-      issuer: "DeepLearning.AI",
-      issueDate: "2026",
+      id: "cert-claude-mcp-adv",
+      title: "Claude Academy: Model Context Protocol: Advanced topics",
+      issuer: "Anthropic",
+      issueDate: "Nov 2026",
+      credentialId: "f300ed76fbe391405b647c80a53a2e79",
       credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
     {
-      id: "cert-sql-advanced",
-      title: "SQL & Relational Database Design",
-      issuer: "HackerRank / Academic Provider",
-      issueDate: "2025",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Data & BI",
-      featured: false,
-    },
-    {
-      id: "cert-modern-react",
-      title: "Modern Full-Stack React & Next.js Development",
-      issuer: "Meta / Coursera",
-      issueDate: "2025",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Software Eng",
-      featured: false,
-    },
-    {
-      id: "cert-backend-apis",
-      title: "Developing Backend REST APIs with Node.js & Express",
-      issuer: "Coursera / IBM",
-      issueDate: "2025",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Software Eng",
-      featured: false,
-    },
-    {
-      id: "cert-git-github",
-      title: "Git, GitHub & Collaborative Open-Source Workflows",
-      issuer: "GitHub / LinkedIn Learning",
-      issueDate: "2024",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Software Eng",
-      featured: false,
-    },
-    {
-      id: "cert-data-analysis-python",
-      title: "Data Analysis and Visualization with Python",
-      issuer: "IBM SkillsBuild",
-      issueDate: "2025",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Data & BI",
-      featured: false,
-    },
-    {
-      id: "cert-cloud-security",
-      title: "Cloud Infrastructure & Secrets Management Essentials",
-      issuer: "AWS / Industry Training",
-      issueDate: "2026",
-      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
-      category: "Cloud & DevOps",
-      featured: false,
-    },
-    {
-      id: "cert-prompt-eng",
-      title: "Prompt Engineering for Generative AI & Tool Calling",
-      issuer: "Vanderbilt / Coursera",
-      issueDate: "2026",
+      id: "cert-claude-mcp-intro",
+      title: "Claude Academy: Introduction to Model Context Protocol",
+      issuer: "Anthropic",
+      issueDate: "Nov 2026",
+      credentialId: "acead8b6e549c271310f6e9da803a1eb",
       credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "AI & Agents",
       featured: false,
     },
     {
-      id: "cert-oop-software",
-      title: "Object-Oriented Programming & Clean Architecture in Java",
-      issuer: "Academic Specialization",
-      issueDate: "2024",
+      id: "cert-claude-enterprise",
+      title: "Claude Academy: Deploying Claude Enterprise with confidence",
+      issuer: "Anthropic",
+      issueDate: "Nov 2026",
+      credentialId: "ee18dd95430c83f5b0e17751cd7a4bdf",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "AI & Agents",
+      featured: false,
+    },
+    {
+      id: "cert-claude-fluency",
+      title: "Claude Academy: AI Fluency: Framework and foundations",
+      issuer: "Anthropic",
+      issueDate: "Nov 2026",
+      credentialId: "4e03534c37f40bf477edeba21121e33e",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "AI & Agents",
+      featured: false,
+    },
+    {
+      id: "cert-claude-code-action",
+      title: "Claude Academy: Claude Code in action",
+      issuer: "Anthropic",
+      issueDate: "Nov 2026",
+      credentialId: "8bda5e5a86c60c67ce67c9bfba052648",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "Software Eng",
+      featured: false,
+    },
+    {
+      id: "cert-claude-code-101",
+      title: "Claude Academy: Claude Code 101",
+      issuer: "Anthropic",
+      issueDate: "Oct 2026",
+      credentialId: "f04b91a83dbe822b0d103333de7d8483",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "Software Eng",
+      featured: false,
+    },
+    {
+      id: "cert-claude-platform-101",
+      title: "Claude Academy: Claude Platform 101",
+      issuer: "Anthropic",
+      issueDate: "Oct 2026",
+      credentialId: "367199ec10eb2bce000590150ddf9416",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "AI & Agents",
+      featured: false,
+    },
+    {
+      id: "cert-claude-cowork",
+      title: "Claude Academy: Introduction to Claude Cowork",
+      issuer: "Anthropic",
+      issueDate: "Oct 2026",
+      credentialId: "3655a684b41e903920f470cfee14d822",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "AI & Agents",
+      featured: false,
+    },
+    {
+      id: "cert-claude-tag",
+      title: "Claude Academy: Introduction to Claude Tag",
+      issuer: "Anthropic",
+      issueDate: "Oct 2026",
+      credentialId: "13ec902eb3d329b03b74d73a4aa77c61",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "AI & Agents",
+      featured: false,
+    },
+    {
+      id: "cert-claude-101",
+      title: "Claude Academy: Claude 101",
+      issuer: "Anthropic",
+      issueDate: "Oct 2026",
+      credentialId: "925bb1a37f871ee87edf149809abd4a0",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "AI & Agents",
+      featured: false,
+    },
+    {
+      id: "cert-adobe-hackathon",
+      title: "Adobe University Hackathon 2026 (Round 1 Assessment)",
+      issuer: "Unstop",
+      issueDate: "Aug 2026",
+      credentialId: "b8795c8a-4d99-4acd-901f-a3bf8f1f3973",
+      credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
+      category: "Software Eng",
+      featured: false,
+    },
+    {
+      id: "cert-dsa-pregrad",
+      title: "DSA Mentorship Program (C/C++)",
+      issuer: "Pregrad",
+      issueDate: "Mar 2024",
+      credentialId: "PRGLPR34173",
       credentialUrl: "https://www.linkedin.com/in/mithilgala/details/certifications/",
       category: "Software Eng",
       featured: false,
@@ -413,38 +571,43 @@ export const portfolioData: PortfolioData = {
   ],
   skills: [
     {
-      category: "Languages",
+      category: "Languages & Core",
       skills: [
-        "Java",
-        "Python",
-        "JavaScript ES6+",
+        "Java (SE / EE)",
+        "Python 3",
         "TypeScript",
-        "SQL",
+        "JavaScript ES6+",
+        "SQL (PostgreSQL / MySQL)",
+        "C / C++",
         "PHP",
-        "HTML5 / CSS3",
+        "Bash / Shell",
       ],
     },
     {
-      category: "Frameworks & Web",
+      category: "Systems & Architecture",
       skills: [
-        "React",
-        "Next.js",
-        "Node.js",
-        "Express.js",
-        "Tailwind CSS",
-        "REST APIs",
-      ],
-    },
-    {
-      category: "Core & Cloud",
-      skills: [
-        "Data Structures & Algorithms",
-        "OOP",
         "Distributed Systems",
-        "AWS RDS & Secrets Manager",
-        "Git & GitHub",
+        "Bully Election & Ricart–Agrawala",
+        "Lamport Logical Clocks",
+        "Gossip Protocols & Consensus",
+        "Multi-Agent Orchestration",
+        "Model Context Protocol (MCP)",
+        "Token-Bucket Rate Limiting",
+        "RESTful API Design",
+      ],
+    },
+    {
+      category: "Data, Cloud & Tooling",
+      skills: [
+        "Redis",
+        "MongoDB Atlas",
+        "DuckDB & dbt",
+        "Apache Airflow",
+        "AWS (RDS, Secrets Mgr, Cloud Architecting)",
+        "Docker & Linux",
+        "Git & CI/CD",
+        "Next.js 15 & React 19",
       ],
     },
   ],
 };
-

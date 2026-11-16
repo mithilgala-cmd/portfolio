@@ -2,8 +2,17 @@
 
 import React, { useState, useEffect } from "react";
 import { portfolioData } from "@/data/portfolio";
-import { Code2, Github, Linkedin, ArrowUpRight, Flame, Trophy, GitFork } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  Code2,
+  Github,
+  Linkedin,
+  ArrowUpRight,
+  Flame,
+  Trophy,
+  GitFork,
+  Radio,
+} from "lucide-react";
+import SpotlightCard from "./SpotlightCard";
 
 interface LiveStatsState {
   github: {
@@ -59,7 +68,7 @@ export default function CodingStats() {
           }
         }
       } catch (err) {
-        console.warn("Could not load dynamic stats, using verified fallbacks:", err);
+        console.warn("Telemetry fallback active:", err);
       }
     }
     fetchStats();
@@ -78,201 +87,223 @@ export default function CodingStats() {
   const hardPct = Math.max(1, 100 - easyPct - medPct);
 
   return (
-    <section id="coding" className="py-12 max-w-5xl mx-auto px-4 sm:px-6">
-      {/* Section Header */}
-      <div className="flex items-center gap-3 mb-8">
-        <span className="text-xs uppercase tracking-widest font-bold text-cyanAccent">
-          Coding Activity & Profiles
-        </span>
-        <div className="flex-1 h-px bg-borderDark" />
+    <section id="telemetry" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
+      {/* Section Header with Monospace Index */}
+      <div className="section-index mb-8">
+        <span>01 // TELEMETRY</span>
+        <span className="text-slate-400 font-normal">Real-Time Metrics & Activity</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {/* Card 1: LeetCode */}
-        <motion.a
-          href={portfolioData.socials.leetcode.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ y: -4 }}
-          transition={{ duration: 0.2 }}
-          className="glass-card rounded-2xl p-6 flex flex-col justify-between group"
-        >
+        {/* Card 1: LeetCode Telemetry */}
+        <SpotlightCard className="p-6 flex flex-col justify-between group">
           <div>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-lg bg-[#ffc01e]/10 text-[#ffc01e]">
-                  <Code2 className="w-5 h-5" />
+                <div className="p-2 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  <Code2 className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-100 group-hover:text-cyanAccent transition-colors">
-                    LeetCode
+                  <h3 className="font-bold text-sm text-slate-100 group-hover:text-cyan-400 transition-colors">
+                    LeetCode Telemetry
                   </h3>
-                  <span className="text-xs text-slate-400">@{stats.leetcode.username}</span>
+                  <span className="font-mono text-[11px] text-slate-400">
+                    @{stats.leetcode.username}
+                  </span>
                 </div>
               </div>
-              <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-cyanAccent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              <a
+                href={portfolioData.socials.leetcode.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-500 hover:text-cyan-400 transition-colors"
+                aria-label="View LeetCode Profile"
+              >
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
             </div>
 
             <div className="mb-4">
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-extrabold text-white tracking-tight">
+                <span className="text-3xl font-extrabold text-white font-mono tracking-tight">
                   {total}
                 </span>
-                <span className="text-xs font-semibold text-cyanAccent uppercase tracking-wide">
-                  Problems Solved
+                <span className="text-xs font-mono font-semibold text-cyan-400 uppercase">
+                  Solved
                 </span>
               </div>
-              <p className="text-xs text-slate-300 mt-1 flex items-center gap-1.5">
+              <div className="text-xs text-slate-300 mt-1 flex items-center gap-1.5 font-mono">
                 <Trophy className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
                 <span>{stats.leetcode.rankingHighlight}</span>
-              </p>
+              </div>
             </div>
 
             {/* Visual Breakdown Bar */}
-            <div className="space-y-2 mt-4 pt-4 border-t border-borderDark/60">
-              <div className="w-full h-2 rounded-full overflow-hidden flex bg-slate-800">
+            <div className="space-y-2 pt-3 border-t border-white/5 font-mono">
+              <div className="w-full h-1.5 rounded-full overflow-hidden flex bg-slate-800">
                 <div
                   style={{ width: `${easyPct}%` }}
-                  className="bg-lcEasy transition-all duration-500"
+                  className="bg-emerald-400 transition-all duration-500"
                   title={`Easy: ${easy}`}
                 />
                 <div
                   style={{ width: `${medPct}%` }}
-                  className="bg-lcMed transition-all duration-500"
+                  className="bg-amber-400 transition-all duration-500"
                   title={`Medium: ${med}`}
                 />
                 <div
                   style={{ width: `${hardPct}%` }}
-                  className="bg-lcHard transition-all duration-500"
+                  className="bg-rose-500 transition-all duration-500"
                   title={`Hard: ${hard}`}
                 />
               </div>
 
-              <div className="flex justify-between text-xs text-slate-400">
+              <div className="flex justify-between text-[11px] text-slate-400">
                 <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-lcEasy inline-block" />
-                  Easy: <b className="text-slate-200">{easy}</b>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  E: <b className="text-slate-200">{easy}</b>
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-lcMed inline-block" />
-                  Med: <b className="text-slate-200">{med}</b>
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  M: <b className="text-slate-200">{med}</b>
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-lcHard inline-block" />
-                  Hard: <b className="text-slate-200">{hard}</b>
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  H: <b className="text-slate-200">{hard}</b>
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="mt-5 pt-4 border-t border-borderDark/60 flex items-center justify-between text-xs text-slate-400">
-            <span className="flex items-center gap-1">
+          <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span className="flex items-center gap-1 text-slate-300">
               <Flame className="w-3.5 h-3.5 text-orange-400" />
               <span>{stats.leetcode.maxStreak}</span>
             </span>
-            <span className="text-slate-400">
-              Acceptance: <span className="text-emerald-400 font-semibold">{stats.leetcode.acceptanceRate}</span>
+            <span>
+              Acc: <span className="text-emerald-400 font-bold">{stats.leetcode.acceptanceRate}</span>
             </span>
           </div>
-        </motion.a>
+        </SpotlightCard>
 
-        {/* Card 2: GitHub */}
-        <motion.a
-          href={portfolioData.socials.github.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ y: -4 }}
-          transition={{ duration: 0.2 }}
-          className="glass-card rounded-2xl p-6 flex flex-col justify-between group"
-        >
+        {/* Card 2: GitHub Code Index */}
+        <SpotlightCard className="p-6 flex flex-col justify-between group">
           <div>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-lg bg-slate-800 text-slate-100">
-                  <Github className="w-5 h-5" />
+                <div className="p-2 rounded bg-white/5 text-slate-200 border border-white/10">
+                  <Github className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-100 group-hover:text-cyanAccent transition-colors">
-                    GitHub
+                  <h3 className="font-bold text-sm text-slate-100 group-hover:text-cyan-400 transition-colors">
+                    GitHub Codebase
                   </h3>
-                  <span className="text-xs text-slate-400">@{stats.github.username}</span>
+                  <span className="font-mono text-[11px] text-slate-400">
+                    @{stats.github.username}
+                  </span>
                 </div>
               </div>
-              <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-cyanAccent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              <a
+                href={portfolioData.socials.github.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-500 hover:text-cyan-400 transition-colors"
+                aria-label="View GitHub Profile"
+              >
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
             </div>
 
             <div className="mb-4">
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-extrabold text-white tracking-tight">
+                <span className="text-3xl font-extrabold text-white font-mono tracking-tight">
                   {stats.github.publicRepos}
                 </span>
-                <span className="text-xs font-semibold text-cyanAccent uppercase tracking-wide">
+                <span className="text-xs font-mono font-semibold text-cyan-400 uppercase">
                   Public Repositories
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
-                <GitFork className="w-3.5 h-3.5 text-cyanAccent" />
-                <span>Open-source algorithms, MERN architectures & DSA</span>
+              <p className="text-xs text-slate-400 mt-1 flex items-center gap-1.5 font-mono">
+                <GitFork className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                <span>Distributed consensus, multi-agent graphs & DSA</span>
               </p>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed mt-2">
-              Explore hands-on distributed systems code, multi-agent capstone prototypes, and production-tested data structure solutions.
+            <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-white/5">
+              Source code spanning Linux monitoring (Java), autonomous orchestrator loops (Python),
+              and Redis token-bucket rate limiters.
             </p>
           </div>
 
-          <div className="mt-5 pt-4 border-t border-borderDark/60 flex items-center justify-between text-xs text-cyanAccent font-medium">
-            <span>Explore Repositories</span>
-            <span>→</span>
+          <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-cyan-400">
+            <a href="#repos" className="hover:underline flex items-center gap-1">
+              <span>View Repository Index</span>
+              <span>→</span>
+            </a>
+            <span className="text-slate-500">All 15 Public</span>
           </div>
-        </motion.a>
+        </SpotlightCard>
 
-        {/* Card 3: LinkedIn */}
-        <motion.a
-          href={portfolioData.socials.linkedin.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ y: -4 }}
-          transition={{ duration: 0.2 }}
-          className="glass-card rounded-2xl p-6 flex flex-col justify-between group"
-        >
+        {/* Card 3: Engineering Network */}
+        <SpotlightCard className="p-6 flex flex-col justify-between group">
           <div>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-lg bg-[#0077b5]/10 text-[#0077b5]">
-                  <Linkedin className="w-5 h-5" />
+                <div className="p-2 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                  <Linkedin className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-100 group-hover:text-cyanAccent transition-colors">
-                    LinkedIn
+                  <h3 className="font-bold text-sm text-slate-100 group-hover:text-cyan-400 transition-colors">
+                    Professional Network
                   </h3>
-                  <span className="text-xs text-slate-400">in/{stats.linkedin.username}</span>
+                  <span className="font-mono text-[11px] text-slate-400">
+                    in/{stats.linkedin.username}
+                  </span>
                 </div>
               </div>
-              <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-cyanAccent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              <a
+                href={portfolioData.socials.linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-500 hover:text-cyan-400 transition-colors"
+                aria-label="View LinkedIn Profile"
+              >
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
             </div>
 
             <div className="mb-4">
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-extrabold text-white tracking-tight">
+                <span className="text-3xl font-extrabold text-white font-mono tracking-tight">
                   {stats.linkedin.followers}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-1">
-                Active engineering community & peer network
+              <p className="text-xs text-slate-400 mt-1 font-mono">
+                Technical community, engineering peers & alumni
               </p>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed mt-2">
-              Sharing technical milestones in Agentic AI workflows, algorithmic consistency, systems architecture, and collegiate tech leadership.
+            <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-white/5">
+              Publishing insights on Agentic AI workflows, algorithmic consistency, and university
+              operations scaling.
             </p>
           </div>
 
-          <div className="mt-5 pt-4 border-t border-borderDark/60 flex items-center justify-between text-xs text-cyanAccent font-medium">
-            <span>View Network & Insights</span>
-            <span>→</span>
+          <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-cyan-400">
+            <a
+              href={portfolioData.socials.linkedin.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline flex items-center gap-1"
+            >
+              <span>Connect on LinkedIn</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+            <span className="text-emerald-400 flex items-center gap-1">
+              <Radio className="w-3 h-3 animate-pulse" /> Live
+            </span>
           </div>
-        </motion.a>
+        </SpotlightCard>
       </div>
     </section>
   );
