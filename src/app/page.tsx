@@ -3,7 +3,6 @@ import Preloader from "@/components/Preloader";
 import Hero from "@/components/Hero";
 import CodingStats from "@/components/CodingStats";
 import Projects from "@/components/Projects";
-import PublicRepositories from "@/components/PublicRepositories";
 import AboutBento from "@/components/AboutBento";
 import Experience from "@/components/Experience";
 import Certifications from "@/components/Certifications";
@@ -19,7 +18,6 @@ export default function Home() {
         <Hero />
         <CodingStats />
         <Projects />
-        <PublicRepositories />
         <AboutBento />
         <Experience />
         <Certifications />

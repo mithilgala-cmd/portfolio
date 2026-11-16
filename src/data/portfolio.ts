@@ -1,15 +1,3 @@
-export interface Project {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  architectureHighlights: string[];
-  techTags: string[];
-  githubUrl: string;
-  secondaryUrl?: string;
-  statusBadge: string;
-}
-
 export interface PublicRepo {
   name: string;
   language: string;
@@ -85,7 +73,6 @@ export interface PortfolioData {
       publicRepos: number;
     };
   };
-  projects: Project[];
   publicRepositories: PublicRepo[];
   experience: ExperienceItem[];
   certifications: Certification[];
@@ -98,7 +85,7 @@ export const portfolioData: PortfolioData = {
   headline: "Mithil Gala",
   subheadline: "B.Tech Computer Engineering '27 · MPSTME, NMIMS Mumbai",
   statusBadge: "Open to 2027 Software Engineering Internships & Roles · Mumbai / Remote",
-  bio: "Systems and software engineer with focused expertise in Distributed Systems, High-Concurrency Architectures, Agentic AI, and Full-Stack Cloud Platforms. 630+ verified algorithmic solutions in Java and Python (Top 0.8% LeetCode Java ranking). Track record maintaining live financial web infrastructure and directing large-scale campus engineering operations.",
+  bio: "Software and systems engineer focused on Full-Stack Cloud Platforms, Agentic AI Architectures, and High-Performance Java/Python Backend Systems. 630+ verified algorithmic solutions on LeetCode (Top 0.8% LeetCode Java ranking). Track record maintaining live financial web infrastructure and directing large-scale campus engineering operations.",
   location: "Mumbai, India",
   email: "mithil.gala@gmail.com",
   liveUrl: "https://mithilgala.is-a.dev",
@@ -132,75 +119,6 @@ export const portfolioData: PortfolioData = {
       publicRepos: 15,
     },
   },
-  projects: [
-    {
-      id: "distributed-smart-grid",
-      title: "Decentralized Smart Energy Grid",
-      category: "Distributed Computing",
-      description:
-        "Architected a fault-tolerant peer-to-peer smart energy grid eliminating single points of failure across decentralized solar, wind, storage, and consumer nodes. Achieved ~90% fault tolerance and deterministic state synchronization under simulated cluster network partitions.",
-      architectureHighlights: [
-        "Dynamic coordinator election via optimized Bully Algorithm ensuring zero orphaned partitions upon node failure",
-        "Conflict-free distributed mutual exclusion using Ricart–Agrawala algorithm for shared power bus arbitration",
-        "Decentralized state gossip with Lamport Logical Clocks and quorum-based k-node replication",
-      ],
-      techTags: [
-        "Java",
-        "Bully Algorithm",
-        "Ricart–Agrawala",
-        "Lamport Logical Clocks",
-        "Gossip Protocol",
-        "P2P Consensus",
-      ],
-      githubUrl: "https://github.com/mithilgala-cmd/portfolio-projects",
-      statusBadge: "Distributed Consensus Engine",
-    },
-    {
-      id: "autonomous-multi-agent",
-      title: "Autonomous Multi-Agent Workflow System",
-      category: "Agentic AI & Capstone '27",
-      description:
-        "Multi-agent task orchestration system featuring an autonomous Plan → Act → Evaluate → Iterate → Goal execution loop. Leverages specialized agent workers, schema-driven tool calling, structured evaluation checkpoints, and human-in-the-loop escalation.",
-      architectureHighlights: [
-        "Directed agent orchestration graph in Python for deterministic step routing and state persistence",
-        "Dynamic JSON schema-driven tool calling with automated retry loops and parameter validation guardrails",
-        "Self-correcting evaluation feedback loop ensuring objective convergence prior to final output delivery",
-      ],
-      techTags: [
-        "Python",
-        "LangChain",
-        "Multi-Agent Systems",
-        "LLM Tool Calling",
-        "State Graphs",
-        "Autonomous Execution",
-      ],
-      githubUrl: "https://github.com/mithilgala-cmd/agent-orchestration-system",
-      statusBadge: "Capstone '27 Core",
-    },
-    {
-      id: "fullstack-cloud-systems",
-      title: "Full-Stack Web & Cloud Systems",
-      category: "Cloud Systems & MCP",
-      description:
-        "High-throughput API gateway and rate-limiting infrastructure featuring Redis token-bucket caching, n8n webhook automations, and custom Model Context Protocol (MCP) server endpoints alongside production MERN backends.",
-      architectureHighlights: [
-        "Distributed sliding token-bucket rate limiter with atomic Redis pipeline counters and cache hit acceleration",
-        "Model Context Protocol (MCP) server integration exposing verified tools for secure agent-driven execution",
-        "Production RESTful backend services with strict validation, JWT auth, and hybrid MongoDB / SQL schemas",
-      ],
-      techTags: [
-        "JavaScript / Node.js",
-        "Redis",
-        "Model Context Protocol",
-        "Express.js",
-        "MongoDB",
-        "AWS",
-      ],
-      githubUrl: "https://github.com/mithilgala-cmd/smart-gateway-mcp",
-      secondaryUrl: "https://github.com/mithilgala-cmd/mern-student-management-system",
-      statusBadge: "MCP Gateway & Production APIs",
-    },
-  ],
   publicRepositories: [
     {
       name: "infrapulse",
@@ -299,7 +217,7 @@ export const portfolioData: PortfolioData = {
       description:
         "Personal Next.js 15 App Router portfolio with live ISR GitHub & LeetCode telemetry and interactive systems widgets.",
       url: "https://github.com/mithilgala-cmd/portfolio",
-      highlight: "Next.js 15 Systems Engineering",
+      highlight: "Next.js 15 Engineering Portfolio",
     },
     {
       name: "portfolio-projects",
@@ -584,16 +502,16 @@ export const portfolioData: PortfolioData = {
       ],
     },
     {
-      category: "Systems & Architecture",
+      category: "Frameworks & Architecture",
       skills: [
-        "Distributed Systems",
-        "Bully Election & Ricart–Agrawala",
-        "Lamport Logical Clocks",
-        "Gossip Protocols & Consensus",
+        "React 19 & Next.js 15",
+        "Node.js & Express.js",
         "Multi-Agent Orchestration",
         "Model Context Protocol (MCP)",
         "Token-Bucket Rate Limiting",
-        "RESTful API Design",
+        "RESTful API Architecture",
+        "Distributed Systems Fundamentals",
+        "Object-Oriented Design (OOP)",
       ],
     },
     {
@@ -606,7 +524,7 @@ export const portfolioData: PortfolioData = {
         "AWS (RDS, Secrets Mgr, Cloud Architecting)",
         "Docker & Linux",
         "Git & CI/CD",
-        "Next.js 15 & React 19",
+        "Tailwind CSS",
       ],
     },
   ],

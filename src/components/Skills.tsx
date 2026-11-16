@@ -8,7 +8,8 @@ import SpotlightCard from "./SpotlightCard";
 export default function Skills() {
   const getCategoryIcon = (category: string) => {
     if (category.includes("Languages")) return <Code className="w-4 h-4 text-cyan-400" />;
-    if (category.includes("Systems")) return <Cpu className="w-4 h-4 text-indigo-400" />;
+    if (category.includes("Frameworks") || category.includes("Architecture"))
+      return <Cpu className="w-4 h-4 text-indigo-400" />;
     return <Cloud className="w-4 h-4 text-emerald-400" />;
   };
 
@@ -16,7 +17,7 @@ export default function Skills() {
     <section id="skills" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <div className="section-index mb-8">
-        <span>07 // TOOLING & SPECIFICATIONS</span>
+        <span>06 // TOOLING & SPECIFICATIONS</span>
         <span className="text-slate-400 font-normal">Technical Competencies</span>
       </div>
 

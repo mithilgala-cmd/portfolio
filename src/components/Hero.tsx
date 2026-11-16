@@ -65,15 +65,15 @@ export default function Hero() {
         <div className="font-mono text-xs sm:text-sm text-cyan-400 mb-6 flex flex-wrap items-center gap-2">
           <span>{portfolioData.subheadline}</span>
           <span className="text-slate-600 hidden sm:inline">•</span>
-          <span className="text-slate-400">Systems & Distributed Architectures</span>
+          <span className="text-slate-400">Software Engineering · Full-Stack & Cloud · Agentic AI</span>
         </div>
 
         {/* Concrete, authentic engineering summary */}
         <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed mb-8">
           Computer Engineering undergraduate (&apos;27) focused on{" "}
-          <strong className="text-white font-semibold">Distributed Systems</strong>,{" "}
-          <strong className="text-white font-semibold">High-Concurrency Cloud Platforms</strong>, and{" "}
-          <strong className="text-white font-semibold">Autonomous Multi-Agent Graph Architectures</strong>.
+          <strong className="text-white font-semibold">High-Concurrency Cloud Platforms</strong>,{" "}
+          <strong className="text-white font-semibold">Autonomous Multi-Agent Architectures</strong>, and{" "}
+          <strong className="text-white font-semibold">Backend Software Engineering</strong>.
           Verified track record with{" "}
           <span className="inline-flex items-center gap-1 font-mono text-cyan-400 font-bold bg-cyan-950/40 px-1.5 py-0.5 rounded border border-cyan-400/20">
             {totalSolved}+

@@ -18,7 +18,7 @@ Canonical Live URL: [https://mithilgala.is-a.dev](https://mithilgala.is-a.dev)
   - Dark slate/obsidian palette (`#06080c` / `#0b0f17`) with crisp `1px` hairline structural borders (`rgba(255, 255, 255, 0.08)`).
   - Subtle blueprint dot-matrix background texture.
   - Cursor-tracking radial spotlight hover illumination on cards.
-  - Strict monospace section indexes (`01 // TELEMETRY`, `02 // SYSTEMS & ARCHITECTURE`, `03 // OPEN-SOURCE REPOS`, `04 // ABOUT & ENGINEERING`, `05 // LEADERSHIP`, `06 // CREDENTIALS`, `07 // TOOLING & SPECIFICATIONS`).
+  - Strict monospace section indexes (`01 // TELEMETRY`, `02 // REPOSITORIES`, `03 // ABOUT & ENGINEERING`, `04 // LEADERSHIP`, `05 // CREDENTIALS`, `06 // TOOLING & SPECIFICATIONS`).
 
 - **Tasteful System Boot Preloader (`Preloader.tsx`):**
   - High-speed (~1.1s), non-blocking boot sequence cached per browser session via `sessionStorage`.
@@ -33,15 +33,7 @@ Canonical Live URL: [https://mithilgala.is-a.dev](https://mithilgala.is-a.dev)
   - Next.js Route Handler configured with `revalidate = 900` (15-minute ISR cache) dynamically reading public repository metrics from GitHub REST API and solved algorithm counts from LeetCode GraphQL API.
   - Verified baseline fallbacks: `630+ Solved` (`308 Easy, 245 Medium, 77 Hard`, `85.93% Acceptance`, `141-day max streak`, `Top 0.8% / Beats 99.21% in Java`).
 
-- **Interactive Architecture Project Simulators:**
-  1. **Decentralized Smart Energy Grid** (`https://github.com/mithilgala-cmd/portfolio-projects`):
-     - Interactive **Mini Cluster Consensus Simulator** modeling dynamic node partition/outage, Bully Coordinator Election, and Ricart–Agrawala distributed mutual exclusion locking across Solar, Wind, Battery, and Grid nodes.
-  2. **Autonomous Multi-Agent Workflow System** (`https://github.com/mithilgala-cmd/agent-orchestration-system`):
-     - Interactive **Execution Loop Inspector** stepping through `Plan → Act → Evaluate → Iterate → Goal`, displaying live JSON tool-calling schemas, retry guardrails, and state machine transitions.
-  3. **Full-Stack Web & Cloud Systems** (`https://github.com/mithilgala-cmd/smart-gateway-mcp`):
-     - Interactive **Token-Bucket Rate Limiter & MCP Gateway Flow** demonstrating sliding token replenishment, cache hit/miss statuses, and Model Context Protocol (MCP) tool dispatch routing.
-
-- **Complete Public Repository Directory (`PublicRepositories.tsx`):**
+- **Complete Public Repository Directory (`Projects.tsx`):**
   - Filterable engineering index (`All (15)`, `Java`, `Python`, `JavaScript / TS`) linking directly to all 15 public repositories on GitHub:
     1. `infrapulse` (Java)
     2. `agent-orchestration-system` (Python)
@@ -85,22 +77,17 @@ portfolio/
 │   │   ├── layout.tsx                    # Canonical domain metadata & OpenGraph
 │   │   └── page.tsx                      # Root page composition
 │   ├── components/
-│   │   ├── widgets/
-│   │   │   ├── ConsensusSimulator.tsx   # Interactive Bully election & Ricart–Agrawala lock simulator
-│   │   │   ├── AgentLoopInspector.tsx   # Interactive 5-stage agentic workflow inspector
-│   │   │   └── RateLimiterWidget.tsx    # Interactive Redis token-bucket & MCP router
-│   │   ├── AboutBento.tsx               # 4-tile asymmetric engineering bento grid
-│   │   ├── Certifications.tsx           # All 17 verified professional credentials
-│   │   ├── CodingStats.tsx              # Telemetry activity cards with cursor spotlight
+│   │   ├── AboutBento.tsx               # 03 // 4-tile asymmetric engineering bento grid
+│   │   ├── Certifications.tsx           # 05 // All 17 verified professional credentials
+│   │   ├── CodingStats.tsx              # 01 // Telemetry activity cards with cursor spotlight
 │   │   ├── CommandPalette.tsx           # ⌘K / Ctrl+K interactive command modal
-│   │   ├── Experience.tsx               # Leadership, conclaves & academic programs timeline
+│   │   ├── Experience.tsx               # 04 // Leadership, conclaves & academic programs timeline
 │   │   ├── Footer.tsx                   # Monospace telemetry footer with verified links
 │   │   ├── Hero.tsx                     # Status badge, engineering bio & recruiter CTAs
 │   │   ├── Navbar.tsx                   # Glassmorphism header, ⌘K trigger & instant copy email
 │   │   ├── Preloader.tsx                # Fast (~1.1s) monospace session boot sequence
-│   │   ├── Projects.tsx                 # Core systems showcase with embedded simulators
-│   │   ├── PublicRepositories.tsx       # Filterable index of all 15 public repositories
-│   │   ├── Skills.tsx                   # Categorized tooling, languages & cloud specs
+│   │   ├── Projects.tsx                 # 02 // Filterable index of all 15 public repositories
+│   │   ├── Skills.tsx                   # 06 // Categorized tooling, languages & cloud specs
 │   │   └── SpotlightCard.tsx            # Cursor-tracking radial spotlight card wrapper
 │   └── data/
 │       └── portfolio.ts                  # Single source of truth for portfolio data

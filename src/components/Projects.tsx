@@ -1,143 +1,138 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { portfolioData } from "@/data/portfolio";
-import {
-  Github,
-  Server,
-  Cpu,
-  Layers,
-  ArrowUpRight,
-  ExternalLink,
-  CheckCircle2,
-  Terminal,
-} from "lucide-react";
+import { GitFork, ArrowUpRight, Terminal } from "lucide-react";
 import SpotlightCard from "./SpotlightCard";
-import ConsensusSimulator from "./widgets/ConsensusSimulator";
-import AgentLoopInspector from "./widgets/AgentLoopInspector";
-import RateLimiterWidget from "./widgets/RateLimiterWidget";
+
+type FilterLanguage = "All" | "Java" | "Python" | "JavaScript / TS";
 
 export default function Projects() {
-  const renderInteractiveWidget = (projectId: string) => {
-    switch (projectId) {
-      case "distributed-smart-grid":
-        return <ConsensusSimulator />;
-      case "autonomous-multi-agent":
-        return <AgentLoopInspector />;
-      case "fullstack-cloud-systems":
-        return <RateLimiterWidget />;
+  const [selectedFilter, setSelectedFilter] = useState<FilterLanguage>("All");
+
+  const repos = portfolioData.publicRepositories;
+
+  const filteredRepos = repos.filter((repo) => {
+    if (selectedFilter === "All") return true;
+    return repo.categoryTag === selectedFilter;
+  });
+
+  const filters: { label: string; value: FilterLanguage }[] = [
+    { label: `All (${repos.length})`, value: "All" },
+    { label: "Java", value: "Java" },
+    { label: "Python", value: "Python" },
+    { label: "JavaScript / TS", value: "JavaScript / TS" },
+  ];
+
+  const getLanguageColor = (lang: string) => {
+    switch (lang) {
+      case "Java":
+        return "text-orange-400 bg-orange-950/40 border-orange-500/30";
+      case "Python":
+        return "text-blue-400 bg-blue-950/40 border-blue-500/30";
+      case "JavaScript":
+      case "TypeScript":
+      case "JavaScript / TS":
+        return "text-amber-300 bg-amber-950/40 border-amber-500/30";
+      case "System Design":
+        return "text-emerald-400 bg-emerald-950/40 border-emerald-500/30";
       default:
-        return null;
+        return "text-slate-300 bg-slate-800 border-white/10";
     }
   };
 
-  const getProjectIcon = (category: string) => {
-    if (category.includes("Distributed")) return <Server className="w-4 h-4 text-cyan-400" />;
-    if (category.includes("Agentic") || category.includes("AI"))
-      return <Cpu className="w-4 h-4 text-indigo-400" />;
-    return <Layers className="w-4 h-4 text-emerald-400" />;
-  };
-
   return (
-    <section id="projects" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="repos" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Section Header with Monospace Index */}
       <div className="section-index mb-8">
-        <span>02 // SYSTEMS & ARCHITECTURE</span>
-        <span className="text-slate-400 font-normal">Featured Core Projects</span>
+        <span>02 // REPOSITORIES</span>
+        <span className="text-slate-400 font-normal">Public Engineering Index</span>
       </div>
 
-      <div className="space-y-10">
-        {portfolioData.projects.map((project) => (
-          <SpotlightCard key={project.id} className="p-6 sm:p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Left Column: Project Info & Architecture Specs (lg: 6 cols) */}
-              <div className="lg:col-span-6 flex flex-col justify-between h-full">
-                <div>
-                  {/* Category & Status */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-cyan-400">
-                      {getProjectIcon(project.category)}
-                      <span>{project.category}</span>
-                    </span>
-                    <span className="font-mono text-[11px] text-slate-400 bg-white/5 px-2.5 py-0.5 rounded border border-white/10">
-                      {project.statusBadge}
-                    </span>
-                  </div>
+      {/* Filter Tabs Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+          {filters.map((f) => {
+            const isActive = selectedFilter === f.value;
+            return (
+              <button
+                key={f.value}
+                onClick={() => setSelectedFilter(f.value)}
+                className={`px-3 py-1.5 rounded-lg border transition-all ${
+                  isActive
+                    ? "bg-cyan-500/10 text-cyan-300 border-cyan-400/50 font-bold"
+                    : "bg-[#0b0f17] text-slate-400 border-white/10 hover:border-white/20 hover:text-white"
+                }`}
+              >
+                {f.label}
+              </button>
+            );
+          })}
+        </div>
 
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-white mb-3 tracking-tight font-sans">
-                    {project.title}
-                  </h3>
+        <div className="font-mono text-xs text-slate-500 flex items-center gap-2">
+          <GitFork className="w-3.5 h-3.5 text-cyan-400" />
+          <span>
+            Showing {filteredRepos.length} of {repos.length} Repositories
+          </span>
+        </div>
+      </div>
 
-                  {/* Description */}
-                  <p className="text-sm text-slate-300 leading-relaxed mb-5">
-                    {project.description}
-                  </p>
-
-                  {/* Architecture Highlights */}
-                  <div className="mb-5 space-y-2 bg-[#06080c] p-4 rounded-xl border border-white/10 font-mono">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                      <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                      <span>Architectural Highlights</span>
-                    </p>
-                    <ul className="space-y-2 pt-1">
-                      {project.architectureHighlights.map((highlight, hIdx) => (
-                        <li key={hIdx} className="text-xs text-slate-300 flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                          <span className="font-sans leading-normal">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-6 font-mono">
-                    {project.techTags.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[11px] font-medium px-2.5 py-1 rounded bg-white/5 text-slate-300 border border-white/10"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Direct Action Links */}
-                <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4 font-mono text-xs">
+      {/* Repositories Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {filteredRepos.map((repo) => (
+          <SpotlightCard
+            key={repo.name}
+            className="p-5 flex flex-col justify-between group hover:border-cyan-400/40 transition-colors"
+          >
+            <div>
+              {/* Header: Name & Language badge */}
+              <div className="flex items-start justify-between gap-2 mb-2 pb-2 border-b border-white/5">
+                <div className="min-w-0">
                   <a
-                    href={project.githubUrl}
+                    href={repo.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-white font-semibold transition-colors"
+                    className="font-mono font-bold text-sm text-white group-hover:text-cyan-400 transition-colors flex items-center gap-1.5 truncate"
                   >
-                    <Github className="w-4 h-4 text-slate-300" />
-                    <span>View Repository</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-cyan-400" />
+                    <Terminal className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                    <span className="truncate">{repo.name}</span>
                   </a>
-
-                  {project.secondaryUrl && (
-                    <a
-                      href={project.secondaryUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-slate-400 hover:text-cyan-400 transition-colors"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Secondary Service Repo</span>
-                    </a>
-                  )}
-
-                  <span className="text-[11px] text-slate-500 ml-auto">MIT / Open Source</span>
                 </div>
+                <span
+                  className={`font-mono text-[10px] font-semibold px-2 py-0.5 rounded border flex-shrink-0 ${getLanguageColor(
+                    repo.language
+                  )}`}
+                >
+                  {repo.language}
+                </span>
               </div>
 
-              {/* Right Column: Interactive System Architecture Simulator (lg: 6 cols) */}
-              <div className="lg:col-span-6">
-                <div className="rounded-xl overflow-hidden border border-white/10 shadow-xl">
-                  {renderInteractiveWidget(project.id)}
+              {/* Highlight Tag */}
+              {repo.highlight && (
+                <div className="font-mono text-[10px] text-cyan-400/90 mb-2 font-medium">
+                  {"//"} {repo.highlight}
                 </div>
-              </div>
+              )}
+
+              {/* Description */}
+              <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                {repo.description}
+              </p>
+            </div>
+
+            {/* Direct GitHub Link */}
+            <div className="pt-3 border-t border-white/5 flex items-center justify-between font-mono text-xs">
+              <span className="text-slate-500 text-[11px]">github.com/mithilgala-cmd</span>
+              <a
+                href={repo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-semibold"
+              >
+                <span>Code</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </SpotlightCard>
         ))}
