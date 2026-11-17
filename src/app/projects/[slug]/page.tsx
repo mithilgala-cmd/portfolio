@@ -61,11 +61,11 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
         {/* Navigation Back Link */}
         <div className="mb-8 font-mono text-xs">
           <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 text-[#5C5A54] hover:text-[#1A1A18] transition-colors py-1"
+            href="/#work"
+            className="inline-flex items-center gap-2 text-[#5C5A54] hover:text-[#1A1A18] transition-colors py-1 min-h-[44px]"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Projects</span>
+            <span>Back to Selected Work</span>
           </Link>
         </div>
 
@@ -93,7 +93,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
               href={project.links.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#1A1A18] text-[#F6F3EC] border border-[#1A1A18] hover:bg-[#1A1A18]/90 font-medium transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#1A1A18] text-[#F6F3EC] border border-[#1A1A18] hover:bg-[#1A1A18]/90 font-medium transition-all min-h-[44px]"
             >
               <Github className="w-4 h-4" />
               <span>GitHub Repository</span>
@@ -105,7 +105,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                 href={project.links.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#F6F3EC] border border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18] font-medium transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#F6F3EC] border border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18] font-medium transition-all min-h-[44px]"
               >
                 <span>Live Demo</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -116,11 +116,11 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
 
         {/* Case Study Body Sections */}
         <div className="space-y-12">
-          {/* Section 1: Problem */}
+          {/* Section: Problem */}
           <section className="space-y-3">
             <div className="flex items-center gap-2 text-[#5C5A54] font-mono text-xs font-semibold">
               <Terminal className="w-4 h-4 text-[#B5361A]" />
-              <span>01 · Problem</span>
+              <span>Problem</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-serif font-normal text-[#1A1A18]">Problem Statement</h2>
             <div className="p-5 border border-[#D9D4C7] bg-[#F6F3EC] text-sm text-[#5C5A54] leading-relaxed">
@@ -128,12 +128,12 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             </div>
           </section>
 
-          {/* Section 2: Architecture */}
+          {/* Section: Architecture */}
           {(project.architectureDiagramUrl || project.architectureDescription) && (
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-[#5C5A54] font-mono text-xs font-semibold">
                 <Layers className="w-4 h-4 text-[#B5361A]" />
-                <span>02 · Architecture</span>
+                <span>Architecture</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-serif font-normal text-[#1A1A18]">System Architecture</h2>
               <div className="p-5 border border-[#D9D4C7] bg-[#F6F3EC] text-sm text-[#5C5A54] leading-relaxed space-y-4">
@@ -153,12 +153,12 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Section 3: Key Decision and Rejected Alternative */}
+          {/* Section: Key Decision and Rejected Alternative */}
           {project.keyDecision && (
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-[#5C5A54] font-mono text-xs font-semibold">
                 <GitBranch className="w-4 h-4 text-[#B5361A]" />
-                <span>03 · Key Decision</span>
+                <span>Key Decision</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-serif font-normal text-[#1A1A18]">
                 Technical Tradeoff & Decision
@@ -186,12 +186,12 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Section 4: Results */}
+          {/* Section: Results */}
           {project.results && (
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-[#5C5A54] font-mono text-xs font-semibold">
                 <Cpu className="w-4 h-4 text-[#B5361A]" />
-                <span>04 · Results</span>
+                <span>Results</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-serif font-normal text-[#1A1A18]">Quantified Outcomes</h2>
               <div className="p-5 border border-[#D9D4C7] bg-[#F6F3EC] space-y-4">
@@ -210,12 +210,12 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Section 5: Limitations */}
+          {/* Section: Limitations */}
           {project.limitations && project.limitations.length > 0 && (
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-[#5C5A54] font-mono text-xs font-semibold">
                 <AlertTriangle className="w-4 h-4 text-[#B5361A]" />
-                <span>05 · Limitations</span>
+                <span>Limitations</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-serif font-normal text-[#1A1A18]">Known Constraints</h2>
               <div className="p-5 border border-[#D9D4C7] bg-[#F6F3EC]">
@@ -228,12 +228,12 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Section 6: Next Steps */}
+          {/* Section: Next Steps */}
           {project.nextSteps && project.nextSteps.length > 0 && (
             <section className="space-y-3">
               <div className="flex items-center gap-2 text-[#5C5A54] font-mono text-xs font-semibold">
                 <Lightbulb className="w-4 h-4 text-[#B5361A]" />
-                <span>06 · Next Steps</span>
+                <span>Next Steps</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-serif font-normal text-[#1A1A18]">What I&apos;d Build Next</h2>
               <div className="p-5 border border-[#D9D4C7] bg-[#F6F3EC]">
@@ -250,17 +250,17 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
         {/* Footer Navigation Back */}
         <div className="mt-16 pt-8 border-t border-[#D9D4C7] flex justify-between items-center font-mono text-xs">
           <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 text-[#B5361A] hover:underline"
+            href="/#work"
+            className="inline-flex items-center gap-2 text-[#B5361A] hover:underline min-h-[44px]"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Return to Projects Index</span>
+            <span>Return to Selected Work</span>
           </Link>
           <a
             href={project.links.repo}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#5C5A54] hover:text-[#1A1A18] flex items-center gap-1"
+            className="text-[#5C5A54] hover:text-[#1A1A18] flex items-center gap-1 min-h-[44px]"
           >
             <span>View Source on GitHub</span>
             <ExternalLink className="w-3.5 h-3.5" />

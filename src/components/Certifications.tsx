@@ -44,7 +44,7 @@ export default function Certifications() {
           href={portfolioData.socials.linkedin.certificationsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] transition-colors"
+          className="inline-flex items-center gap-1 font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] transition-colors min-h-[44px]"
         >
           <span>LinkedIn Directory</span>
           <ArrowUpRight className="w-3.5 h-3.5" />

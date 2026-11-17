@@ -1,30 +1,20 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { portfolioData } from "@/data/portfolio";
+import CopyEmailButton from "@/components/CopyEmailButton";
 import {
   Github,
   Code2,
   Linkedin,
-  Copy,
-  Check,
   ArrowUpRight,
   FileText,
 } from "lucide-react";
 
 export default function Hero() {
-  const [copiedEmail, setCopiedEmail] = useState(false);
   const totalSolved = portfolioData.fallbackStats.leetcode.totalSolved;
 
   // TODO(mithil): Add resume PDF file to public/resume.pdf to enable primary CTA button
   const hasResumePdf = false;
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText("mithil.gala@gmail.com");
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2000);
-  };
 
   return (
     <section className="pt-10 sm:pt-16 pb-12 sm:pb-16 max-w-6xl mx-auto px-4 sm:px-6">
@@ -142,32 +132,13 @@ export default function Hero() {
               </a>
             )}
 
-            <button
-              onClick={handleCopyEmail}
-              className={`inline-flex items-center gap-2 px-4 py-2.5 font-mono text-xs transition-all border ${
-                copiedEmail
-                  ? "border-[#B5361A] text-[#B5361A] bg-[#F6F3EC]"
-                  : "bg-[#F6F3EC] border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18]"
-              }`}
-            >
-              {copiedEmail ? (
-                <>
-                  <Check className="w-4 h-4 text-[#B5361A]" />
-                  <span>mithil.gala@gmail.com copied</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-[#5C5A54]" />
-                  <span>Copy Email</span>
-                </>
-              )}
-            </button>
+            <CopyEmailButton />
 
             <a
               href={portfolioData.socials.linkedin.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#F6F3EC] border border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18] font-mono text-xs transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#F6F3EC] border border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18] font-mono text-xs transition-all min-h-[44px]"
             >
               <Linkedin className="w-4 h-4 text-[#5C5A54]" />
               <span>LinkedIn</span>
@@ -178,7 +149,7 @@ export default function Hero() {
               href={portfolioData.socials.github.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#F6F3EC] border border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18] font-mono text-xs transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#F6F3EC] border border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18] font-mono text-xs transition-all min-h-[44px]"
             >
               <Github className="w-4 h-4 text-[#5C5A54]" />
               <span>GitHub</span>
@@ -189,7 +160,7 @@ export default function Hero() {
               href={portfolioData.socials.leetcode.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#F6F3EC] border border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18] font-mono text-xs transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#F6F3EC] border border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18] font-mono text-xs transition-all min-h-[44px]"
             >
               <Code2 className="w-4 h-4 text-[#5C5A54]" />
               <span>LeetCode</span>

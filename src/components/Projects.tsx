@@ -35,7 +35,7 @@ export default function Projects() {
       {/* Index List for Featured Projects */}
       <div className="divide-y divide-[#D9D4C7] border-t border-b border-[#D9D4C7] mb-8">
         {featuredProjects.map((project) => (
-          <div
+          <article
             key={project.slug}
             className="py-6 sm:py-7 flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 group"
           >
@@ -61,7 +61,7 @@ export default function Projects() {
               {isComprehensiveCaseStudy(project) ? (
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="text-[#B5361A] hover:underline font-medium flex items-center gap-1 min-h-[44px] sm:min-h-0 items-center"
+                  className="text-[#B5361A] hover:underline font-medium flex items-center gap-1 min-h-[44px]"
                 >
                   <span>Case Study</span>
                   <span>→</span>
@@ -72,13 +72,13 @@ export default function Projects() {
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#5C5A54] hover:text-[#1A1A18] transition-colors flex items-center gap-1 min-h-[44px] sm:min-h-0 items-center"
+                className="text-[#5C5A54] hover:text-[#1A1A18] transition-colors flex items-center gap-1 min-h-[44px]"
               >
                 <span>Source</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
@@ -118,7 +118,7 @@ export default function Projects() {
                       href={repo.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-[#1A1A18] hover:text-[#B5361A] transition-colors flex items-center gap-1 truncate"
+                      className="font-medium text-[#1A1A18] hover:text-[#B5361A] transition-colors flex items-center gap-1 truncate min-h-[44px]"
                     >
                       <span className="truncate">{repo.name}</span>
                       <ArrowUpRight className="w-3 h-3 text-[#5C5A54]" />

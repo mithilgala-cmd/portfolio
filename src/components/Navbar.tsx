@@ -70,7 +70,7 @@ export default function Navbar() {
         {/* Editorial Brand Mark */}
         <Link
           href="#"
-          className="flex items-center gap-2 text-[#1A1A18] transition-colors"
+          className="flex items-center gap-2 text-[#1A1A18] transition-colors min-h-[44px] min-w-[44px]"
         >
           <div className="w-7 h-7 border border-[#D9D4C7] bg-[#F6F3EC] hidden sm:flex items-center justify-center font-mono text-xs font-bold text-[#1A1A18]">
             MG
@@ -103,7 +103,7 @@ export default function Navbar() {
           {/* Quick Copy Email Button */}
           <button
             onClick={handleCopyEmail}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono transition-all border min-h-[44px] ${
+            className={`flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-mono transition-all border min-h-[44px] min-w-[44px] ${
               copiedEmail
                 ? "border-[#B5361A] text-[#B5361A] bg-[#F6F3EC]"
                 : "bg-[#F6F3EC] border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18]"
@@ -150,8 +150,9 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Drawer */}
       {mobileMenuOpen && (
-        <div
+        <nav
           id="mobile-nav-menu"
+          aria-label="Mobile navigation"
           className="lg:hidden bg-[#F6F3EC] border-b border-[#D9D4C7] px-4 py-3 space-y-1 font-mono w-full"
         >
           <div className="flex flex-col space-y-1 text-sm">
@@ -188,7 +189,7 @@ export default function Navbar() {
               </a>
             </div>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

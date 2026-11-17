@@ -23,7 +23,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="hover:text-[#1A1A18] transition-colors flex items-center gap-1.5"
+              className="hover:text-[#1A1A18] transition-colors flex items-center gap-1.5 min-h-[44px] py-2"
             >
               <Github className="w-4 h-4 text-[#5C5A54]" />
               <span>GitHub</span>
@@ -33,7 +33,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LeetCode Profile"
-              className="hover:text-[#1A1A18] transition-colors flex items-center gap-1.5"
+              className="hover:text-[#1A1A18] transition-colors flex items-center gap-1.5 min-h-[44px] py-2"
             >
               <Code2 className="w-4 h-4 text-[#5C5A54]" />
               <span>LeetCode</span>
@@ -43,7 +43,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="hover:text-[#1A1A18] transition-colors flex items-center gap-1.5"
+              className="hover:text-[#1A1A18] transition-colors flex items-center gap-1.5 min-h-[44px] py-2"
             >
               <Linkedin className="w-4 h-4 text-[#5C5A54]" />
               <span>LinkedIn</span>
@@ -63,7 +63,7 @@ export default function Footer() {
               href={portfolioData.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#1A1A18] hover:underline"
+              className="text-[#1A1A18] hover:underline min-h-[44px] inline-flex items-center"
             >
               mithilgala.is-a.dev
             </a>

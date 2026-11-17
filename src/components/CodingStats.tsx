@@ -46,7 +46,7 @@ export default function CodingStats() {
                 href={portfolioData.socials.leetcode.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] flex items-center gap-1"
+                className="font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] flex items-center gap-1 min-h-[44px]"
               >
                 <span>@{portfolioData.socials.leetcode.username}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -77,7 +77,7 @@ export default function CodingStats() {
                 <span className="font-mono text-[10px] text-[#5C5A54] block mb-0.5">
                   MEDIUM ({medPercent}%)
                 </span>
-                <span className="font-serif text-2xl sm:text-3xl font-normal text-[#d97706]">
+                <span className="font-serif text-2xl sm:text-3xl font-normal text-[#92400e]">
                   {medLC}
                 </span>
               </div>
@@ -132,7 +132,7 @@ export default function CodingStats() {
                   href={portfolioData.socials.github.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] flex items-center gap-1"
+                  className="font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] flex items-center gap-1 min-h-[44px]"
                 >
                   <span>@{portfolioData.socials.github.username}</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -159,7 +159,7 @@ export default function CodingStats() {
                   href={portfolioData.socials.linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] flex items-center gap-1"
+                  className="font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] flex items-center gap-1 min-h-[44px]"
                 >
                   <span>/in/{portfolioData.socials.linkedin.username}</span>
                   <ArrowUpRight className="w-3 h-3" />

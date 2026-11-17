@@ -1,35 +1,22 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { portfolioData } from "@/data/portfolio";
-import { Mail, Copy, Check, ArrowUpRight, Github, Code2, Linkedin, MapPin } from "lucide-react";
-import SpotlightCard from "./SpotlightCard";
+import CopyEmailButton from "@/components/CopyEmailButton";
+import { Mail, ArrowUpRight, Github, Code2, Linkedin, MapPin } from "lucide-react";
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(portfolioData.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <section id="contact" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Editorial Section Header */}
       <div className="flex items-baseline justify-between border-b border-[#D9D4C7] pb-3 mb-8">
-        <div className="flex items-baseline gap-3">
-          <span className="font-mono text-xs text-[#5C5A54]">07</span>
-          <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A18]">
-            Contact
-          </h2>
-        </div>
+        <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A18]">
+          Contact
+        </h2>
         <span className="font-mono text-xs text-[#5C5A54] hidden sm:inline">
           Direct Communication & Inquiries
         </span>
       </div>
 
-      <SpotlightCard className="p-6 sm:p-8">
+      <div className="border border-[#D9D4C7] bg-[#F6F3EC] p-6 sm:p-8">
         <div className="max-w-2xl">
           <div className="flex items-center gap-2 text-[#5C5A54] font-mono text-xs mb-2">
             <Mail className="w-4 h-4 text-[#B5361A]" />
@@ -49,32 +36,13 @@ export default function Contact() {
           <div className="flex flex-wrap items-center gap-3 font-mono text-xs mb-8">
             <a
               href={`mailto:${portfolioData.email}`}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#1A1A18] text-[#F6F3EC] font-medium hover:bg-[#1A1A18]/90 transition-all border border-[#1A1A18]"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#1A1A18] text-[#F6F3EC] font-medium hover:bg-[#1A1A18]/90 transition-all border border-[#1A1A18] min-h-[44px]"
             >
               <Mail className="w-4 h-4" />
               <span>{portfolioData.email}</span>
             </a>
 
-            <button
-              onClick={handleCopyEmail}
-              className={`inline-flex items-center gap-2 px-4 py-2.5 font-medium transition-all border ${
-                copied
-                  ? "border-[#B5361A] text-[#B5361A] bg-[#F6F3EC]"
-                  : "bg-[#F6F3EC] border-[#D9D4C7] hover:border-[#1A1A18] text-[#1A1A18]"
-              }`}
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 text-[#B5361A]" />
-                  <span>Email Copied</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-[#5C5A54]" />
-                  <span>Copy Email</span>
-                </>
-              )}
-            </button>
+            <CopyEmailButton />
           </div>
 
           {/* Location & Social Connections */}
@@ -89,7 +57,7 @@ export default function Contact() {
                 href={portfolioData.socials.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#1A1A18] transition-colors flex items-center gap-1"
+                className="hover:text-[#1A1A18] transition-colors flex items-center gap-1 min-h-[44px] py-1"
               >
                 <Github className="w-3.5 h-3.5" />
                 <span>GitHub</span>
@@ -100,7 +68,7 @@ export default function Contact() {
                 href={portfolioData.socials.leetcode.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#1A1A18] transition-colors flex items-center gap-1"
+                className="hover:text-[#1A1A18] transition-colors flex items-center gap-1 min-h-[44px] py-1"
               >
                 <Code2 className="w-3.5 h-3.5" />
                 <span>LeetCode</span>
@@ -111,7 +79,7 @@ export default function Contact() {
                 href={portfolioData.socials.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#1A1A18] transition-colors flex items-center gap-1"
+                className="hover:text-[#1A1A18] transition-colors flex items-center gap-1 min-h-[44px] py-1"
               >
                 <Linkedin className="w-3.5 h-3.5" />
                 <span>LinkedIn</span>
@@ -120,7 +88,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </SpotlightCard>
+      </div>
     </section>
   );
 }
