@@ -399,7 +399,7 @@ export const portfolioData: PortfolioData = {
       issuer: "AI CERTs",
       issueDate: "Sep 2026",
       credentialId: "5KJPML745IGH",
-      credentialUrl: "https://www.aicerts.ai/verify/?id=5KJPML745IGH",
+      credentialUrl: "https://coursera.org/verify/5KJPML745IGH",
       category: "AI & Agents",
       featured: true,
     },
