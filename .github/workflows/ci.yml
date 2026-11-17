@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [main, portfolio-v3, portfolio-v3-fixes]
+    branches: [main, portfolio-v3, portfolio-v3-fixes, redesign-v4]
   pull_request:
-    branches: [main, portfolio-v3, portfolio-v3-fixes]
+    branches: [main, portfolio-v3, portfolio-v3-fixes, redesign-v4]
 
 jobs:
   validate:

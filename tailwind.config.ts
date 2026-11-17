@@ -9,19 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#06080c",
-        surface: "#0b0f17",
-        surfaceHover: "#111824",
-        surfaceElevated: "#151e2e",
-        borderHairline: "rgba(255, 255, 255, 0.08)",
-        borderSubtle: "#1a2436",
-        borderActive: "rgba(56, 189, 248, 0.4)",
-        cyanAccent: "#38bdf8",
-        lcEasy: "#00b8a3",
-        lcMed: "#ffc01e",
-        lcHard: "#ff375f",
+        paper: "#F6F3EC",
+        ink: "#1A1A18",
+        muted: "#5C5A54",
+        rule: "#D9D4C7",
+        accent: "#B5361A",
       },
       fontFamily: {
+        serif: ["var(--font-serif)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: [
           "var(--font-mono)",

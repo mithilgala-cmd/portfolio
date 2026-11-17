@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 
 interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -12,25 +12,9 @@ export default function SpotlightCard({
   className = "",
   ...props
 }: SpotlightCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    cardRef.current.style.setProperty("--mouse-x", `${x}px`);
-    cardRef.current.style.setProperty("--mouse-y", `${y}px`);
-  };
-
   return (
     <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      className={`spotlight-card rounded-xl ${className}`}
+      className={`border border-[#D9D4C7] bg-[#F6F3EC] p-6 transition-all duration-150 hover:border-[#1A1A18] ${className}`}
       {...props}
     >
       {children}
