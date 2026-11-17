@@ -9,7 +9,6 @@ import {
   Flame,
   Trophy,
 } from "lucide-react";
-import SpotlightCard from "./SpotlightCard";
 
 export default function CodingStats() {
   const { leetcode, github } = statsData;
@@ -25,22 +24,16 @@ export default function CodingStats() {
 
   return (
     <section id="telemetry" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
-      {/* Editorial Section Header */}
-      <div className="flex items-baseline justify-between border-b border-[#D9D4C7] pb-3 mb-8">
-        <div className="flex items-baseline gap-3">
-          <span className="font-mono text-xs text-[#5C5A54]">06</span>
-          <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A18]">
-            Telemetry
-          </h2>
-        </div>
-        <span className="font-mono text-xs text-[#5C5A54] hidden sm:inline">
-          Committed Engineering Stats & Problem Solving
-        </span>
+      {/* Editorial Plain Section Header */}
+      <div className="border-b border-[#D9D4C7] pb-3 mb-8">
+        <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A18]">
+          Telemetry
+        </h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        {/* LeetCode Telemetry Card */}
-        <SpotlightCard className="p-6 md:col-span-2 flex flex-col justify-between">
+        {/* LeetCode Telemetry Section */}
+        <div className="p-6 md:col-span-2 border border-[#D9D4C7] bg-[#F6F3EC] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-3 border-b border-[#D9D4C7] mb-4">
               <div className="flex items-center gap-2">
@@ -124,12 +117,11 @@ export default function CodingStats() {
               </div>
             </div>
           </div>
-        </SpotlightCard>
+        </div>
 
         {/* GitHub & LinkedIn Side Column */}
         <div className="flex flex-col gap-6">
-          {/* GitHub Telemetry Card */}
-          <SpotlightCard className="p-6 flex flex-col justify-between flex-1">
+          <div className="p-6 border border-[#D9D4C7] bg-[#F6F3EC] flex flex-col justify-between flex-1">
             <div>
               <div className="flex items-center justify-between pb-3 border-b border-[#D9D4C7] mb-3">
                 <div className="flex items-center gap-2">
@@ -154,10 +146,9 @@ export default function CodingStats() {
                 Open-source systems, algorithmic problem sets & distributed simulations.
               </p>
             </div>
-          </SpotlightCard>
+          </div>
 
-          {/* LinkedIn Network Card */}
-          <SpotlightCard className="p-6 flex flex-col justify-between flex-1">
+          <div className="p-6 border border-[#D9D4C7] bg-[#F6F3EC] flex flex-col justify-between flex-1">
             <div>
               <div className="flex items-center justify-between pb-3 border-b border-[#D9D4C7] mb-3">
                 <div className="flex items-center gap-2">
@@ -182,7 +173,7 @@ export default function CodingStats() {
                 Engineering reach across campus operations, student leadership, and industry peers.
               </p>
             </div>
-          </SpotlightCard>
+          </div>
         </div>
       </div>
 
