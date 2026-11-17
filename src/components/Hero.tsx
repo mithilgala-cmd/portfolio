@@ -10,7 +10,6 @@ import {
   Copy,
   Check,
   ArrowUpRight,
-  Mail,
   FileText,
 } from "lucide-react";
 
