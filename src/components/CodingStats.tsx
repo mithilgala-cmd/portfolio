@@ -11,28 +11,43 @@ import {
 } from "lucide-react";
 
 export default function CodingStats() {
-  const { leetcode, github } = statsData;
+  const { leetcode, github, updatedAt } = statsData;
 
-  const totalLC = leetcode.totalSolved || portfolioData.fallbackStats.leetcode.totalSolved;
-  const easyLC = leetcode.easy || portfolioData.fallbackStats.leetcode.easy;
-  const medLC = leetcode.medium || portfolioData.fallbackStats.leetcode.medium;
-  const hardLC = leetcode.hard || portfolioData.fallbackStats.leetcode.hard;
+  const totalLC = leetcode.totalSolved;
+  const easyLC = leetcode.easy;
+  const medLC = leetcode.medium;
+  const hardLC = leetcode.hard;
 
   const easyPercent = Math.round((easyLC / totalLC) * 100);
   const medPercent = Math.round((medLC / totalLC) * 100);
   const hardPercent = Math.round((hardLC / totalLC) * 100);
 
+  // Format date dynamically in "as of Month YYYY" format
+  const dateObj = new Date(updatedAt);
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+  }).format(dateObj);
+
   return (
-    <section id="telemetry" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="numbers" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Editorial Plain Section Header */}
-      <div className="border-b border-[#D9D4C7] pb-3 mb-8">
-        <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A18]">
-          Telemetry
-        </h2>
+      <div className="flex items-baseline justify-between border-b border-[#D9D4C7] pb-3 mb-8">
+        <div className="flex items-baseline gap-3">
+          <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A18]">
+            Numbers
+          </h2>
+          <span className="font-mono text-xs text-[#5C5A54]">
+            as of {formattedDate}
+          </span>
+        </div>
+        <span className="font-mono text-xs text-[#5C5A54] hidden sm:inline">
+          Verified Algorithmic & Systems Output
+        </span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        {/* LeetCode Telemetry Section */}
+        {/* LeetCode Solved Section */}
         <div className="p-6 md:col-span-2 border border-[#D9D4C7] bg-[#F6F3EC] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-3 border-b border-[#D9D4C7] mb-4">
@@ -180,7 +195,7 @@ export default function CodingStats() {
       {/* Automated Pipeline Colophon Note */}
       <div className="p-3 border border-[#D9D4C7] bg-[#F6F3EC] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 font-mono text-[11px] text-[#5C5A54]">
         <div>
-          <span>Data Pipeline: Committed baseline in </span>
+          <span>Data Pipeline: Committed data in </span>
           <code className="text-[#1A1A18]">src/data/stats.json</code>
           <span> updated daily via GitHub Actions.</span>
         </div>

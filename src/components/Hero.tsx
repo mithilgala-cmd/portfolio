@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import fs from "fs";
+import path from "path";
 import { portfolioData } from "@/data/portfolio";
+import statsData from "@/data/stats.json";
 import CopyEmailButton from "@/components/CopyEmailButton";
 import {
   Github,
@@ -11,52 +14,45 @@ import {
 } from "lucide-react";
 
 export default function Hero() {
-  const totalSolved = portfolioData.fallbackStats.leetcode.totalSolved;
+  const totalSolved = statsData.leetcode.totalSolved;
+  const publicRepos = statsData.github.publicRepos;
+  const acceptanceRate = statsData.leetcode.acceptanceRate;
 
-  // TODO(mithil): Add resume PDF file to public/resume.pdf to enable primary CTA button
-  const hasResumePdf = false;
+  // Show Resume navigation and hero links only if public/resume.pdf exists
+  const hasResumePdf = fs.existsSync(path.join(process.cwd(), "public", "resume.pdf"));
 
   return (
     <section className="pt-10 sm:pt-16 pb-12 sm:pb-16 max-w-6xl mx-auto px-4 sm:px-6">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
         {/* Main Text Column */}
         <div className="md:col-span-8">
-          {/* Mobile Avatar (visible on mobile <768px) */}
-          <div className="flex md:hidden items-center gap-4 mb-6">
-            <div className="relative w-20 h-20 shrink-0 border border-[#D9D4C7] overflow-hidden bg-[#F6F3EC]">
-              <Image
-                src="/mithil-gala-square.jpg"
-                alt="Mithil Gala"
-                width={80}
-                height={80}
-                priority
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div>
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 border border-[#D9D4C7] bg-[#F6F3EC] text-[11px] font-mono text-[#5C5A54]">
-                <span className="relative flex h-2 w-2 shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-                </span>
-                <span>Open for 2027 Roles</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Availability Status Pill (desktop) */}
-          <div className="hidden md:inline-flex items-center gap-2.5 px-3 py-1.5 border border-[#D9D4C7] bg-[#F6F3EC] text-xs font-mono text-[#5C5A54] mb-6">
+          {/* Availability Status Line (visible across all viewports) */}
+          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 border border-[#D9D4C7] bg-[#F6F3EC] text-xs font-mono text-[#5C5A54] mb-6">
             <span className="relative flex h-2 w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
             </span>
-            <span className="truncate">{portfolioData.statusBadge}</span>
+            <span>Open to 2027 software engineering internships and roles · Mumbai / Remote</span>
           </div>
 
-          {/* Primary Editorial Headline */}
-          <h1 className="text-4xl sm:text-6xl font-serif font-normal tracking-tight text-[#1A1A18] mb-3">
-            Mithil Gala
-          </h1>
+          {/* Primary Editorial Headline with 96px Mobile Avatar beside Name */}
+          <div className="flex items-center justify-between gap-4 mb-3">
+            <h1 className="text-4xl sm:text-6xl font-serif font-normal tracking-tight text-[#1A1A18]">
+              Mithil Gala
+            </h1>
+            {/* 96px Mobile Profile Avatar beside Name (visible on mobile <768px) */}
+            <div className="md:hidden relative w-24 h-24 shrink-0 border border-[#D9D4C7] overflow-hidden bg-[#F6F3EC]">
+              <Image
+                src="/mithil-gala-square.jpg"
+                alt="Mithil Gala avatar"
+                width={96}
+                height={96}
+                priority
+                className="object-cover w-full h-full"
+                style={{ objectPosition: "50% 40%" }}
+              />
+            </div>
+          </div>
 
           {/* Credentials Subtitle */}
           <div className="font-mono text-xs sm:text-sm text-[#5C5A54] mb-6 flex flex-wrap items-center gap-2">
@@ -67,7 +63,7 @@ export default function Hero() {
 
           {/* Concrete Build Statement */}
           <p className="text-base sm:text-lg text-[#1A1A18] leading-relaxed font-normal mb-5 max-w-2xl">
-            I build backend services, distributed algorithm simulations, and agentic AI workflows.
+            I build backend services, distributed systems infrastructure, and agentic AI workflows.
             Backed by{" "}
             <span className="font-mono font-medium text-[#1A1A18] border border-[#D9D4C7] px-1.5 py-0.5 bg-[#F6F3EC]">
               {totalSolved}+ solved on LeetCode
@@ -86,10 +82,10 @@ export default function Hero() {
                 LeetCode Track
               </div>
               <div className="font-serif text-xl text-[#1A1A18]">
-                {portfolioData.fallbackStats.leetcode.totalSolved} Solved
+                {totalSolved} Solved
               </div>
               <div className="font-mono text-[11px] text-[#5C5A54]">
-                {portfolioData.fallbackStats.leetcode.acceptanceRate} acceptance
+                {acceptanceRate} acceptance
               </div>
             </div>
 
@@ -98,7 +94,7 @@ export default function Hero() {
                 Public Repos
               </div>
               <div className="font-serif text-xl text-[#1A1A18]">
-                {portfolioData.fallbackStats.github.publicRepos} Repositories
+                {publicRepos} Repositories
               </div>
               <div className="font-mono text-[11px] text-[#5C5A54]">
                 MIT Licensed Code

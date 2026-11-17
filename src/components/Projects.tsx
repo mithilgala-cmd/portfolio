@@ -13,7 +13,6 @@ export default function Projects() {
     "infrapulse",
     "agent-orchestration-system",
     "smart-gateway-mcp",
-    "portfolio-projects",
   ]);
 
   const moreRepos = portfolioData.publicRepositories.filter(

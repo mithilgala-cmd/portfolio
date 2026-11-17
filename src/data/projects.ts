@@ -41,7 +41,7 @@ export const featuredProjects: CaseStudyData[] = [
     tagline:
       "Enterprise infrastructure monitoring and troubleshooting platform for Linux systems.",
     language: "Java",
-    highlight: "Linux Telemetry & Diagnostics",
+    highlight: "Linux Systems & Diagnostics",
     repoUrl: "https://github.com/mithilgala-cmd/infrapulse",
     problem:
       "Managing distributed Linux host health requires real-time system metrics collection, rapid anomaly identification, and consolidated diagnostic workflows to minimize troubleshooting latency during infrastructure incidents.",
@@ -97,27 +97,6 @@ export const featuredProjects: CaseStudyData[] = [
     // nextSteps: undefined,
     links: {
       repo: "https://github.com/mithilgala-cmd/smart-gateway-mcp",
-      // demo: undefined,
-    },
-  },
-  {
-    slug: "distributed-consensus-simulations",
-    title: "Distributed algorithm simulations",
-    repoName: "portfolio-projects",
-    tagline: "Bully and Ricart–Agrawala simulations.",
-    language: "Python",
-    highlight: "Distributed Algorithms",
-    repoUrl: "https://github.com/mithilgala-cmd/portfolio-projects",
-    problem:
-      "Understanding failure modes, message complexity, and race conditions in decentralized computing environments requires rigorous programmatic simulation of leader election protocols and distributed mutual exclusion.",
-    // Placeholders below are hidden from UI until filled by Mithil
-    // architectureDiagramUrl: undefined,
-    // keyDecision: undefined,
-    // results: undefined,
-    // limitations: undefined,
-    // nextSteps: undefined,
-    links: {
-      repo: "https://github.com/mithilgala-cmd/portfolio-projects",
       // demo: undefined,
     },
   },

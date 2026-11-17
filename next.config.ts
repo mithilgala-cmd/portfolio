@@ -7,7 +7,7 @@ const cspHeader = `
   style-src 'self' 'unsafe-inline';
   img-src 'self' blob: data: https:;
   font-src 'self' data:;
-  connect-src 'self' https://api.github.com https://leetcode.com;
+  connect-src 'self';
   frame-ancestors 'none';
   base-uri 'self';
   form-action 'self';

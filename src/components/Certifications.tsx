@@ -36,7 +36,7 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-12 max-w-6xl mx-auto px-4 sm:px-6">
       {/* Editorial Plain Section Header */}
-      <div className="flex items-baseline justify-between border-b border-[#D9D4C7] pb-3 mb-8">
+      <div className="flex items-baseline justify-between border-b border-[#D9D4C7] pb-3 mb-4">
         <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A18]">
           Certifications
         </h2>
@@ -46,9 +46,16 @@ export default function Certifications() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 font-mono text-xs text-[#5C5A54] hover:text-[#1A1A18] transition-colors min-h-[44px]"
         >
-          <span>LinkedIn Directory</span>
+          <span>LinkedIn Certifications</span>
           <ArrowUpRight className="w-3.5 h-3.5" />
         </a>
+      </div>
+
+      {/* Featured Certifications & Dynamic Course Count Summary */}
+      <div className="mb-6 font-mono text-xs text-[#5C5A54] leading-relaxed">
+        <span>AWS Academy Graduate (Cloud Architecting) and Managing Projects with AI (AI CERTs), plus </span>
+        <span className="text-[#1A1A18] font-semibold">{totalCount - 2} shorter courses</span>
+        <span> across cloud infrastructure, generative AI, and agent architectures.</span>
       </div>
 
       {/* Filter Tabs */}

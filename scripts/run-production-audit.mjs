@@ -96,11 +96,18 @@ async function main() {
     const desktopPhotoVisible = desktopHeroImg ? await desktopHeroImg.isVisible() : false;
     console.log(`Desktop Hero Photo visible: ${desktopPhotoVisible}`);
 
-    // Check placeholder words on page
-    const pageContent = await page.content();
-    const bannedPlaceholders = ['Lorem', 'ipsum', 'TODO', 'TBD', '[Placeholder]', 'Insert here'];
-    const foundPlaceholders = bannedPlaceholders.filter((word) => pageContent.includes(word));
-    console.log(`Placeholder text check: found [${foundPlaceholders.join(', ')}]`);
+    // Check prohibited words and deleted repos on page
+    const visibleBodyText = await page.innerText('body');
+    const pageHtml = await page.content();
+    const bannedPlaceholders = ['Lorem', 'ipsum', 'TODO', 'TBD', '[Placeholder]', 'Insert here', 'telemetry', 'baseline', 'fallback'];
+    const foundVisibleProhibited = bannedPlaceholders.filter((word) => visibleBodyText.toLowerCase().includes(word.toLowerCase()));
+    const foundDeletedRepo = pageHtml.includes('portfolio-projects');
+    console.log(`Visible prohibited text / placeholder check: found [${foundVisibleProhibited.join(', ')}]`);
+    console.log(`Deleted repo 'portfolio-projects' present in HTML: ${foundDeletedRepo}`);
+
+    // Verify Numbers section heading
+    const numbersSection = await page.$('#numbers');
+    console.log(`'Numbers' section present: ${!!numbersSection}`);
 
     // Verify Selected Work is an index list, not card wrappers
     const selectedWorkStructure = await page.evaluate(() => {
@@ -153,9 +160,21 @@ async function main() {
     console.log(`Scroll check at 360px: scrollWidth=${scroll360.scrollWidth}, clientWidth=${scroll360.clientWidth}, overflow=${hasScroll360}`);
 
     // Mobile avatar check
-    const mobileAvatarImg = await page.$('img[alt="Mithil Gala"]');
-    const mobileAvatarVisible = mobileAvatarImg ? await mobileAvatarImg.isVisible() : false;
-    console.log(`Mobile Avatar visible: ${mobileAvatarVisible}`);
+    const mobileAvatarDetails = await page.evaluate(() => {
+      const img = document.querySelector('img[alt="Mithil Gala avatar"]');
+      if (!img) return { found: false };
+      const rect = img.getBoundingClientRect();
+      const style = window.getComputedStyle(img);
+      return {
+        found: true,
+        width: rect.width,
+        height: rect.height,
+        objectPosition: style.objectPosition,
+        objectFit: style.objectFit,
+        visible: rect.width > 0 && rect.height > 0,
+      };
+    });
+    console.log('Mobile Avatar audit:', JSON.stringify(mobileAvatarDetails));
 
     // Mobile tap targets
     const smallTapTargets = await page.evaluate(() => {

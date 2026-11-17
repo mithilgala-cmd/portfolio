@@ -33,11 +33,10 @@ This document tracks all data points, assets, and verification items requiring c
 ---
 
 ## 5. Case Study Architecture Diagrams
-- **Item**: Architecture diagrams for the 4 featured projects:
+- **Item**: Architecture diagrams for the featured projects:
   - `infrapulse` (`/projects/infrapulse`)
   - `agent-orchestration-system` (`/projects/agent-orchestration-system`)
   - `smart-gateway-mcp` (`/projects/smart-gateway-mcp`)
-  - `distributed-consensus-simulations` (`/projects/distributed-consensus-simulations`)
 - **Status**: Hidden in UI until diagram URLs/assets are supplied.
 - **Action Required**: Add architecture diagrams/flowcharts to `public/` and populate `architectureDiagramUrl` in `src/data/projects.ts`.
 
@@ -78,7 +77,7 @@ This document tracks all data points, assets, and verification items requiring c
 
 ---
 
-## 11. `portfolio-projects` Repository Visibility / URL
-- **Item**: Card 4 repository link (`https://github.com/mithilgala-cmd/portfolio-projects`).
-- **Status**: Fact audit revealed `https://github.com/mithilgala-cmd/portfolio-projects` returns HTTP 404 (repository is private or not yet published). The card is retained on the home page as "Distributed algorithm simulations" with verified wording "Bully and Ricart–Agrawala simulations".
-- **Action Required**: Either set `portfolio-projects` to public on GitHub with the simulation code, or repoint the card link if the code is stored in another repository.
+## 11. `portfolio-projects` Repository (Deleted & Excluded)
+- **Item**: Repository `https://github.com/mithilgala-cmd/portfolio-projects`.
+- **Status**: Permanently deleted by Mithil. In accordance with strict credibility guidelines, all references, URLs, and unsupported project cards (`distributed-consensus-simulations`) have been completely purged from the portfolio, project index, metadata, and routing.
+- **Action Required**: None. The repository is intentionally deleted and permanently excluded from the portfolio.

@@ -104,7 +104,7 @@ export const portfolioData: PortfolioData = {
   brandMark: "MG.",
   headline: "Mithil Gala",
   subheadline: "B.Tech Computer Engineering '27 · MPSTME, NMIMS Mumbai",
-  statusBadge: "Open to 2027 Software Engineering Internships & Roles · Mumbai / Remote",
+  statusBadge: "Open to 2027 software engineering internships and roles · Mumbai / Remote",
   bio: "Software and systems engineer focused on cloud backends, distributed systems, and agentic AI architectures. 630+ algorithmic solutions on LeetCode (Top 0.8% LeetCode Java ranking). Track record maintaining live financial web infrastructure and directing large-scale campus engineering operations.",
   location: "Mumbai, India",
   email: "mithil.gala@gmail.com",
@@ -147,7 +147,7 @@ export const portfolioData: PortfolioData = {
       description:
         "Enterprise infrastructure monitoring and troubleshooting platform for Linux systems with automated anomaly detection, incident management, and diagnostic workflows.",
       url: "https://github.com/mithilgala-cmd/infrapulse",
-      highlight: "Linux Telemetry & Diagnostics",
+      highlight: "Linux Systems & Diagnostics",
     },
     {
       name: "agent-orchestration-system",
@@ -235,18 +235,9 @@ export const portfolioData: PortfolioData = {
       language: "TypeScript",
       categoryTag: "JavaScript / TS",
       description:
-        "Personal Next.js 15 App Router portfolio with live ISR GitHub & LeetCode telemetry and interactive systems widgets.",
+        "Personal Next.js 15 App Router portfolio with committed GitHub & LeetCode metrics and systems architecture case studies.",
       url: "https://github.com/mithilgala-cmd/portfolio",
       highlight: "Next.js 15 Engineering Portfolio",
-    },
-    {
-      name: "portfolio-projects",
-      language: "Python",
-      categoryTag: "Python",
-      description:
-        "Collection of DSA, Java, Python, Web, and ML implementations including distributed algorithm simulations.",
-      url: "https://github.com/mithilgala-cmd/portfolio-projects",
-      highlight: "Distributed Grid Simulations",
     },
     {
       name: "Football-player-market-value-prediction",

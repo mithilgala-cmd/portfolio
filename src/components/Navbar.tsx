@@ -49,7 +49,7 @@ export default function Navbar() {
     { label: "Skills", href: "#skills" },
     { label: "Leadership", href: "#leadership" },
     { label: "Certifications", href: "#certifications" },
-    { label: "Telemetry", href: "#telemetry" },
+    { label: "Numbers", href: "#numbers" },
     { label: "Contact", href: "#contact" },
   ];
 
