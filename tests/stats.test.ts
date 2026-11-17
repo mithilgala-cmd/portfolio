@@ -1,14 +1,15 @@
 import test from "node:test";
 import assert from "node:assert";
-import { getStats } from "../src/lib/stats.ts";
-import { portfolioData } from "../src/data/portfolio.ts";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { fetchStatsWithFetcher, updateStatsFile } from "../scripts/update-stats.mjs";
 
-test("GET /api/stats - Success path with live upstream APIs", async () => {
+test("Stats Pipeline - Successful fetch returns validated stats numbers", async () => {
   const mockFetcher: typeof fetch = async (input, init) => {
     const url = input.toString();
 
     if (url.includes("api.github.com")) {
-      return new Response(JSON.stringify({ public_repos: 42 }), {
+      return new Response(JSON.stringify({ public_repos: 18 }), {
         status: 200,
         headers: { "Content-Type": "application/json" },
       });
@@ -21,9 +22,9 @@ test("GET /api/stats - Success path with live upstream APIs", async () => {
             matchedUser: {
               submitStats: {
                 acSubmissionNum: [
-                  { difficulty: "All", count: 680 },
-                  { difficulty: "Easy", count: 200 },
-                  { difficulty: "Medium", count: 400 },
+                  { difficulty: "All", count: 650 },
+                  { difficulty: "Easy", count: 315 },
+                  { difficulty: "Medium", count: 255 },
                   { difficulty: "Hard", count: 80 },
                 ],
               },
@@ -40,57 +41,45 @@ test("GET /api/stats - Success path with live upstream APIs", async () => {
     return new Response("Not Found", { status: 404 });
   };
 
-  const response = await getStats(mockFetcher);
+  const { ghResult, lcResult } = await fetchStatsWithFetcher(mockFetcher);
 
-  assert.strictEqual(response.source, "live");
-  assert.strictEqual(response.data.github.source, "live");
-  assert.strictEqual(response.data.github.publicRepos, 42);
-  assert.strictEqual(response.data.leetcode.source, "live");
-  assert.strictEqual(response.data.leetcode.totalSolved, 680);
-  assert.strictEqual(response.data.leetcode.easy, 200);
-  assert.strictEqual(response.data.leetcode.medium, 400);
-  assert.strictEqual(response.data.leetcode.hard, 80);
-  assert.ok(response.fetchedAt);
+  assert.strictEqual(ghResult.publicRepos, 18);
+  assert.strictEqual(lcResult.totalSolved, 650);
+  assert.strictEqual(lcResult.easy, 315);
+  assert.strictEqual(lcResult.medium, 255);
+  assert.strictEqual(lcResult.hard, 80);
 });
 
-test("GET /api/stats - Upstream timeout path triggers fallback", async () => {
+test("Stats Pipeline - Upstream timeout leaves committed file untouched and returns false", async () => {
   const mockTimeoutFetcher: typeof fetch = async () => {
     throw new DOMException("The operation was aborted due to timeout", "TimeoutError");
   };
 
-  const response = await getStats(mockTimeoutFetcher);
+  const statsFilePath = path.resolve(process.cwd(), "src/data/stats.json");
+  const beforeContent = await fs.readFile(statsFilePath, "utf-8");
 
-  assert.strictEqual(response.source, "fallback");
-  assert.strictEqual(response.data.github.source, "fallback");
-  assert.strictEqual(
-    response.data.github.publicRepos,
-    portfolioData.fallbackStats.github.publicRepos
-  );
-  assert.strictEqual(response.data.leetcode.source, "fallback");
-  assert.strictEqual(
-    response.data.leetcode.totalSolved,
-    portfolioData.fallbackStats.leetcode.totalSolved
-  );
-  assert.ok(response.fetchedAt);
+  const success = await updateStatsFile(mockTimeoutFetcher);
+
+  assert.strictEqual(success, false);
+  const afterContent = await fs.readFile(statsFilePath, "utf-8");
+  assert.strictEqual(beforeContent, afterContent);
 });
 
-test("GET /api/stats - Upstream error (500 Internal Error) triggers fallback", async () => {
-  const mockErrorFetcher: typeof fetch = async () => {
-    return new Response("Internal Server Error", { status: 500 });
-  };
+test("Stats Pipeline - src/data/stats.json conforms to expected schema", async () => {
+  const statsFilePath = path.resolve(process.cwd(), "src/data/stats.json");
+  const raw = await fs.readFile(statsFilePath, "utf-8");
+  const data = JSON.parse(raw);
 
-  const response = await getStats(mockErrorFetcher);
+  assert.ok(data.leetcode, "Missing leetcode object");
+  assert.ok(typeof data.leetcode.totalSolved === "number");
+  assert.ok(typeof data.leetcode.easy === "number");
+  assert.ok(typeof data.leetcode.medium === "number");
+  assert.ok(typeof data.leetcode.hard === "number");
+  assert.ok(typeof data.leetcode.acceptanceRate === "string");
+  assert.ok(typeof data.leetcode.maxStreak === "string");
+  assert.ok(typeof data.leetcode.rankingHighlight === "string");
 
-  assert.strictEqual(response.source, "fallback");
-  assert.strictEqual(response.data.github.source, "fallback");
-  assert.strictEqual(
-    response.data.github.publicRepos,
-    portfolioData.fallbackStats.github.publicRepos
-  );
-  assert.strictEqual(response.data.leetcode.source, "fallback");
-  assert.strictEqual(
-    response.data.leetcode.totalSolved,
-    portfolioData.fallbackStats.leetcode.totalSolved
-  );
-  assert.ok(response.fetchedAt);
+  assert.ok(data.github, "Missing github object");
+  assert.ok(typeof data.github.publicRepos === "number");
+  assert.ok(data.github.publicRepos > 0);
 });
