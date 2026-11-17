@@ -18,10 +18,10 @@ This document tracks all data points, assets, and verification items requiring c
 
 ---
 
-## 3. Professional Headshot / Avatar
-- **Item**: Headshot image for Hero or About sections.
-- **Status**: No personal headshot file is currently in `public/`. A clean monospace monogram mark (`MG`) is used in the navigation header.
-- **Action Required**: Place a professional headshot at `public/headshot.jpg` if you want a photographic profile image rendered.
+## 3. Professional Profile Photos
+- **Item**: Profile photos for Hero (desktop portrait and mobile avatar).
+- **Status**: Verified and integrated `public/mithil-gala.webp` (desktop hero portrait) and `public/mithil-gala-square.jpg` (mobile avatar).
+- **Action Required**: None (resolved in Phase 3).
 
 ---
 
