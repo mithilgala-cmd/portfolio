@@ -2,11 +2,13 @@
   "name": "mithilgala-portfolio",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test tests/stats.test.ts"
   },
   "dependencies": {

@@ -18,9 +18,10 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "64px 72px",
-          backgroundColor: "#06080c",
-          color: "#f1f5f9",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
+          backgroundColor: "#F6F3EC",
+          color: "#1A1A18",
+          border: "8px solid #D9D4C7",
+          fontFamily: "serif",
         }}
       >
         {/* Top Header */}
@@ -36,47 +37,55 @@ export default async function Image() {
             style={{
               display: "flex",
               alignItems: "center",
-              padding: "8px 18px",
-              borderRadius: "9999px",
-              backgroundColor: "#0b0f17",
-              border: "1px solid rgba(16, 185, 129, 0.4)",
-              color: "#34d399",
-              fontSize: "18px",
+              padding: "6px 16px",
+              border: "1px solid #D9D4C7",
+              backgroundColor: "#F6F3EC",
+              color: "#1A1A18",
+              fontSize: "16px",
+              fontFamily: "monospace",
             }}
           >
             <div
               style={{
-                width: "10px",
-                height: "10px",
-                borderRadius: "5px",
-                backgroundColor: "#10b981",
+                width: "8px",
+                height: "8px",
+                borderRadius: "4px",
+                backgroundColor: "#059669",
                 marginRight: "10px",
                 display: "flex",
               }}
             />
-            <span style={{ display: "flex" }}>Open to 2027 SWE internships</span>
+            <span style={{ display: "flex" }}>Open to 2027 SWE Roles</span>
           </div>
 
           <div
             style={{
               display: "flex",
-              color: "#38bdf8",
-              fontSize: "20px",
-              fontWeight: 700,
+              alignItems: "center",
+              fontFamily: "monospace",
+              fontSize: "16px",
+              color: "#5C5A54",
             }}
           >
-            mithilgala.is-a.dev
+            <span>mithilgala.is-a.dev</span>
           </div>
         </div>
 
-        {/* Center */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        {/* Center Main Title */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
+        >
           <div
             style={{
-              display: "flex",
-              fontSize: "64px",
-              fontWeight: 900,
-              color: "#ffffff",
+              fontSize: "76px",
+              fontWeight: 400,
+              lineHeight: 1.1,
+              color: "#1A1A18",
               marginBottom: "12px",
             }}
           >
@@ -86,9 +95,9 @@ export default async function Image() {
           <div
             style={{
               display: "flex",
-              fontSize: "30px",
-              fontWeight: 600,
-              color: "#38bdf8",
+              fontSize: "24px",
+              fontFamily: "monospace",
+              color: "#B5361A",
               marginBottom: "16px",
             }}
           >
@@ -99,11 +108,12 @@ export default async function Image() {
             style={{
               display: "flex",
               fontSize: "20px",
-              color: "#94a3b8",
-              maxWidth: "800px",
+              color: "#5C5A54",
+              maxWidth: "850px",
+              lineHeight: 1.5,
             }}
           >
-            B.Tech Computer Engineering &apos;27 at MPSTME, NMIMS Mumbai. Focus on Backend Infrastructure, Distributed Systems &amp; Agentic AI.
+            B.Tech Computer Engineering &apos;27 at MPSTME, NMIMS Mumbai. Specializing in Backend Infrastructure, Distributed Systems &amp; Agentic AI.
           </div>
         </div>
 
@@ -113,19 +123,20 @@ export default async function Image() {
             display: "flex",
             alignItems: "center",
             paddingTop: "24px",
-            borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-            color: "#64748b",
-            fontSize: "17px",
+            borderTop: "1px solid #D9D4C7",
+            color: "#5C5A54",
+            fontSize: "16px",
+            fontFamily: "monospace",
           }}
         >
           <div style={{ display: "flex", marginRight: "16px" }}>
-            {"// 630+ LeetCode Solutions (Top 0.8% Java)"}
+            630+ LeetCode Solutions (Top 0.8% Java)
           </div>
-          <div style={{ display: "flex", marginRight: "16px" }}>•</div>
+          <div style={{ display: "flex", marginRight: "16px" }}>|</div>
           <div style={{ display: "flex", marginRight: "16px" }}>
-            Production Web &amp; Financial Backend
+            Production Web Infrastructure
           </div>
-          <div style={{ display: "flex", marginRight: "16px" }}>•</div>
+          <div style={{ display: "flex", marginRight: "16px" }}>|</div>
           <div style={{ display: "flex" }}>
             Agentic AI Workflows
           </div>
