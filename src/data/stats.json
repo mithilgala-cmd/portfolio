@@ -1,8 +1,8 @@
 {
   "leetcode": {
-    "totalSolved": 635,
-    "easy": 307,
-    "medium": 248,
+    "totalSolved": 637,
+    "easy": 308,
+    "medium": 249,
     "hard": 80,
     "acceptanceRate": "85.93%",
     "maxStreak": "141-day max streak",
@@ -11,5 +11,5 @@
   "github": {
     "publicRepos": 15
   },
-  "updatedAt": "2026-11-20T06:26:07.070Z"
+  "updatedAt": "2026-11-21T06:16:26.818Z"
 }
