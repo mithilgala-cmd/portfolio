@@ -1,9 +1,9 @@
 {
   "leetcode": {
-    "totalSolved": 639,
+    "totalSolved": 640,
     "easy": 310,
     "medium": 249,
-    "hard": 80,
+    "hard": 81,
     "acceptanceRate": "85.93%",
     "maxStreak": "141-day max streak",
     "rankingHighlight": "Top 0.8% / Beats 99.21% in Java"
@@ -11,5 +11,5 @@
   "github": {
     "publicRepos": 15
   },
-  "updatedAt": "2026-11-24T09:04:27.082Z"
+  "updatedAt": "2026-11-25T07:42:09.884Z"
 }
