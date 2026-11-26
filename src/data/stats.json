@@ -1,7 +1,7 @@
 {
   "leetcode": {
-    "totalSolved": 640,
-    "easy": 310,
+    "totalSolved": 641,
+    "easy": 311,
     "medium": 249,
     "hard": 81,
     "acceptanceRate": "85.93%",
@@ -11,5 +11,5 @@
   "github": {
     "publicRepos": 15
   },
-  "updatedAt": "2026-11-25T07:42:09.884Z"
+  "updatedAt": "2026-11-26T07:32:13.222Z"
 }
